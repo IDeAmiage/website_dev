@@ -12,16 +12,13 @@ export class EntrepriseComponent implements OnInit {
 
   constructor(public api: ApiService) { }
 
-  ngOnInit() {
-    // simple example to call the api and return the response in our variable to display
-    console.log(this.api.getUsers().subscribe(
+  ngOnInit(): void {
+    this.api.getUsers().subscribe(
       response => {
         this.text = response;
       }
-    ));
-
+    );
   }
-
 
 
 

@@ -1,11 +1,14 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
-import { AppComponent } from './app.component';
+import { EntrepriseRoutingModule } from './entreprise-routing.module';
+import { HomeComponent } from './components/home/home.component';
+import { CovoiturageComponent } from './components/covoiturage/covoiturage.component';
+import { EntrepriseComponent } from './entreprise.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavComponent } from './nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -14,18 +17,19 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { AppRoutingModule } from './app-routing.module';
-import { EntrepriseModule } from './entreprise/entreprise.module';
-import { CollectivitesModule } from './collectivites/collectivites.module';
-import { ParticuliersModule } from './particuliers/particuliers.module';
+import { OpendataComponent } from './components/opendata/opendata.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavComponent,
-   ],
+    HomeComponent,
+    CovoiturageComponent,
+    EntrepriseComponent,
+    OpendataComponent
+  ],
   imports: [
+    CommonModule,
+    EntrepriseRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
@@ -37,13 +41,7 @@ import { ParticuliersModule } from './particuliers/particuliers.module';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    AppRoutingModule,
-    HttpClientModule,
-    EntrepriseModule,
-    CollectivitesModule,
-    ParticuliersModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    HttpClientModule
+  ]
 })
-export class AppModule { }
+export class EntrepriseModule { }

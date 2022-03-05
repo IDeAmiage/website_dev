@@ -31,7 +31,8 @@ Install angular: `npm install -g @angular/cli`
 > - Go to the app directory: `cd backend` </br>
 > - Install dependencies: `npm install` </br>
 > - Run the app in localhost: `nodemon --exec npm start app.js`</br>
-> *If nodemon is not install ->`npm i nodemon`*
+> *If nodemon is not install ->`npm i nodemon`* </br>
+
 *When all these steps are done just launch you web browser with this access:* </br>
 Access to localhost: [here](http://localhost:4200/)
 

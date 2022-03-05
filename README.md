@@ -14,7 +14,9 @@ Install node: [here](https://nodejs.org/en/download/)
 Verify your installation:
 `npm --version`
 
-Install angular: `npm install -g @angular/cli`
+Install angular: `npm install -g @angular/cli` </br>
+
+These following steps have to be executed in two differents terminals </br>
 
 > ## angular app
 > 
@@ -23,7 +25,7 @@ Install angular: `npm install -g @angular/cli`
 >
 > - Install dependencies: `npm install` </br>
 >
-> - Run the app in localhost: `ng se rve`</br>
+> - Run the app in localhost: `ng serve`</br>
 
 >## express app 
 >

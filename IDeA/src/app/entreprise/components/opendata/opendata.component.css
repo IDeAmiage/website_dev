@@ -19,3 +19,10 @@
 .dashboard-card-content {
   text-align: center;
 }
+
+.data-button {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+

@@ -1,0 +1,26 @@
+<div class="exporters" fxLayout="row" fxLayoutGap="20px">
+  <button mat-raised-button (click)="exporter.exportTable('csv', {fileName:'mon_fichier'})">CSV</button>
+  <button mat-raised-button (click)="exporter.exportTable('xlsx', {fileName:'mon_fichier'})">Excel</button>
+  <button mat-raised-button (click)="exporter.exportTable('json', {fileName:'mon_fichier'})">JSON</button>
+  <button mat-raised-button (click)="exporter.exportTable('txt', {fileName:'mon_fichier'})">Txt</button>
+</div>
+
+<div class="ma-table">
+  <div class="mat-elevation-z8">
+    <table mat-table matTableExporter [dataSource]="this.table" #exporter="matTableExporter" matSort>
+
+      <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ col }} </th>
+        <td mat-cell *matCellDef="let element"> {{ element.fields[col] }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>
+

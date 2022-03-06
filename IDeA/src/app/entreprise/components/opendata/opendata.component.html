@@ -1,11 +1,11 @@
 <div class="grid-container">
   <h1 class="mat-h1">Opendata</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+  <mat-grid-list cols="4" >
+    <mat-grid-tile *ngFor="let card of this.liste" [colspan]=1 [rowspan]=1>
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            {{card.title}}
+            {{card.fields.dataset_id}}
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
             </button>
@@ -16,9 +16,16 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
+          <div>Number of records: {{card.fields.records_count}}</div>
+          <div>Size of records: {{card.fields.records_size}}</div>
+          <div>Last measure: {{card.fields.data_processed}}</div>
+          <button mat-icon-button class="data-button" (click)="this.showTable(this.card.fields.dataset_id)" routerLink="table">
+            <mat-icon>description</mat-icon>
+          </button>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
+
+<!-- <p>{{this.obj}}</p> -->

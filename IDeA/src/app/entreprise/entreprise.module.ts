@@ -1,3 +1,4 @@
+import { TableViewComponent } from './components/table-view/table-view.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -18,6 +19,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { OpendataComponent } from './components/opendata/opendata.component';
+import {MatTableModule} from '@angular/material/table';
+import { FormsModule } from '@angular/forms';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableExporterModule } from 'mat-table-exporter';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+
 
 
 @NgModule({
@@ -25,7 +34,8 @@ import { OpendataComponent } from './components/opendata/opendata.component';
     HomeComponent,
     CovoiturageComponent,
     EntrepriseComponent,
-    OpendataComponent
+    OpendataComponent,
+    TableViewComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +51,13 @@ import { OpendataComponent } from './components/opendata/opendata.component';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    FormsModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableExporterModule,
+    FlexLayoutModule
   ]
 })
 export class EntrepriseModule { }

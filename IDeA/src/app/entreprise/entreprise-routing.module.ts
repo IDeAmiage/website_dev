@@ -1,3 +1,4 @@
+import { TableViewComponent } from './components/table-view/table-view.component';
 import { OpendataComponent } from './components/opendata/opendata.component';
 import { CovoiturageComponent } from './components/covoiturage/covoiturage.component';
 import { HomeComponent } from './components/home/home.component';
@@ -11,7 +12,8 @@ const routes: Routes = [
       {path:'', component:HomeComponent},
       {path:'home', component:HomeComponent},
       {path:'covoiturage', component:CovoiturageComponent},
-      {path:'opendata', component:OpendataComponent}
+      {path:'opendata', component:OpendataComponent},
+      {path:'opendata/table', component:TableViewComponent},
     ]
   }
 ];

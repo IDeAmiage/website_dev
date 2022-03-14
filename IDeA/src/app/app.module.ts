@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FirebaseService } from './firebase.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -63,15 +64,7 @@ import { NotifierComponent } from './notifier/notifier.component';
     EntrepriseModule,
     CollectivitesModule,
     ParticuliersModule,
-    AngularFireModule.initializeApp({
-      apiKey: "AIzaSyDzyStYpeKHo20YdcUNa3Ufn52b4jRBiY0",
-      authDomain: "idea-website-fcb5a.firebaseapp.com",
-      projectId: "idea-website-fcb5a",
-      storageBucket: "idea-website-fcb5a.appspot.com",
-      messagingSenderId: "1038158697045",
-      appId: "1:1038158697045:web:ab9f3085ba091da8d03adc",
-      measurementId: "G-PC0VKBGW5E"
-  }),
+    AngularFireModule.initializeApp(environment.firebase),
     MatTableModule,
     ReactiveFormsModule,
     FormsModule,

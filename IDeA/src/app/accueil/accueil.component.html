@@ -1,0 +1,8 @@
+<button *ngIf="!this.firebaseService.isLoggedIn" mat-raised-button (click)="loginEntreprise()">Entreprise</button>
+<button *ngIf="!this.firebaseService.isLoggedIn"  mat-raised-button (click)="loginCollectivites()">Collectivités</button>
+<button *ngIf="!this.firebaseService.isLoggedIn" mat-raised-button (click)="loginParticuliers()">Particuliers</button>
+<button *ngIf="this.firebaseService.isLoggedIn"  mat-raised-button (click)="logout()">logout</button>
+<br><br><br>
+<div style="margin-left: 40px;">
+  <iframe [src]="safeUrl" frameborder="0" allowfullscreen></iframe>
+</div>

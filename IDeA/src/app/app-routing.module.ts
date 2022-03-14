@@ -1,10 +1,16 @@
+import { AccueilComponent } from './accueil/accueil.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { OpendataComponent } from './entreprise/components/opendata/opendata.component';
 
 const routes: Routes = [
-  // {path:'', component: OpendataComponent},
+  {path:'', component: AccueilComponent},
+  {path:'login', component: LoginComponent},
+  {path:'signup', component: SignupComponent},
 ]
 
 @NgModule({

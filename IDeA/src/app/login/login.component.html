@@ -1,0 +1,73 @@
+<!-- <div *ngIf="!this.firebaseService.isLoggedIn">
+  <div *ngIf="this.firebaseService.status=='entreprise'">
+    <h2>Sign in</h2>
+    <input type="text" #email>
+    <input type="text" #password>
+    <button (click)="onSignin(email.value,password.value)">Sign up</button>
+  </div>
+</div> -->
+<div *ngIf="!this.firebaseService.isLoggedIn" >
+  <div *ngIf="this.firebaseService.status=='entreprise' || this.firebaseService.status=='collectivites'">
+    <mat-card>
+      <mat-card-title>Login</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="submit()" >
+          <p>
+            <mat-form-field>
+              <input matInput placeholder="Email address" formControlName="email" />
+              <mat-error *ngIf="email?.errors?.['required']" >Email is required</mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <input matInput placeholder="Password" formControlName="password" type="password" />
+              <mat-error *ngIf="password?.errors?.['required']" >Password is required</mat-error>
+            </mat-form-field>
+          </p>
+          <div class="button">
+            <button mat-raised-button color="primary" type="submit">Login</button>
+          </div>
+          <span>New user? <a routerLink="/signup">Sign Up!</a></span>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div *ngIf="this.firebaseService.status=='particuliers'" >
+    <mat-card>
+      <mat-card-title>Login</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="submit()" >
+          <p>
+            <mat-form-field>
+              <input matInput placeholder="Email address" formControlName="email" />
+              <mat-error *ngIf="email?.errors?.['required']" >Email is required</mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <input matInput placeholder="Password" formControlName="password" type="password" />
+              <mat-error *ngIf="password?.errors?.['required']" >Password is required</mat-error>
+            </mat-form-field>
+          </p>
+          <div class="button">
+            <button mat-raised-button color="primary" type="submit">Login</button>
+          </div>
+          <span>New user? <a routerLink="/signup">Sign Up!</a></span>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="button">
+          <button mat-raised-button class="google-login-btn" (click)="this.firebaseService.googleSignin()">
+            Log in with Google
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+
+
+
+
+

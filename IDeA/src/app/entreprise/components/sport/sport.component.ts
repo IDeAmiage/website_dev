@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { FirebaseService } from './../../../firebase.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SportComponent implements OnInit {
 
-  constructor() { }
+  constructor(public firebase: FirebaseService, public router: Router) { }
 
   ngOnInit() {
+  }
+
+
+  logout(){
+    this.firebase.logout();
+    this.router.navigate(['/']);
   }
 
 }

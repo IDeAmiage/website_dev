@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavComponent } from './nav/nav.component';
+// import { NavComponent } from './entreprise/components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -32,16 +32,18 @@ import { EntrepriseRoutingModule } from './entreprise/entreprise-routing.module'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { AccueilComponent } from './accueil/accueil.component';
+import { NotifierComponent } from './notifier/notifier.component';
 
 
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
-    NavComponent,
+    // NavComponent,
     SignupComponent,
     LoginComponent,
-      AccueilComponent
+      AccueilComponent,
+      NotifierComponent
    ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { NotifierService } from './../notifier.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
@@ -11,7 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public firebaseService: FirebaseService, public router: Router){
+  constructor(public firebaseService: FirebaseService, public router: Router, private notifier: NotifierService){
 
   }
   ngOnInit(): void {

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { FirebaseService } from './../../../firebase.service';
 import { Component, Output } from '@angular/core';
 import { map } from 'rxjs/operators';
@@ -14,26 +15,27 @@ export class HomeComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { imageSrc: "assets/Entreprise/foodtruck.jpg",title: 'Food-trucks', cols: 1, rows: 1 },
-          { imageSrc: "assets/Entreprise/covoiturage.jpg",title: 'Covoiturage', cols: 1, rows: 1 },
-          { imageSrc: "assets/Entreprise/conferences.jpeg",title: 'Conférences', cols: 1, rows: 1 },
-          { imageSrc: "assets/Entreprise/sport.jpg",title: 'Sport', cols: 1, rows: 1 }
+          { imageSrc: "assets/Entreprise/foodtruck.jpg",title: 'Food-trucks', rlink:'foodtrucks',cols: 1, rows: 1 },
+          { imageSrc: "assets/Entreprise/covoiturage.jpg",title: 'Covoiturage', rlink:'covoiturage', cols: 1, rows: 1 },
+          { imageSrc: "assets/Entreprise/conferences.jpeg",title: 'Conférences', rlink:'conferences', cols: 1, rows: 1 },
+          { imageSrc: "assets/Entreprise/sport.jpg",title: 'Sport', rlink:'sport',cols: 1, rows: 1 }
         ];
       }
 
       return [
-        { imageSrc: "assets/Entreprise/foodtruck.jpg",title: 'Food-trucks', cols: 1, rows: 1 },
-        { imageSrc: "assets/Entreprise/covoiturage.jpg",title: 'Covoiturage', cols: 1, rows: 1 },
-        { imageSrc: "assets/Entreprise/conferences.jpeg",title: 'Conférences', cols: 1, rows: 1 },
-        { imageSrc: "assets/Entreprise/sport.jpg",title: 'Sport', cols: 1, rows: 1 }
+        { imageSrc: "assets/Entreprise/foodtruck.jpg",title: 'Food-trucks', rlink:'foodtrucks', cols: 1, rows: 1 },
+        { imageSrc: "assets/Entreprise/covoiturage.jpg",title: 'Covoiturage', rlink:'covoiturage', cols: 1, rows: 1 },
+        { imageSrc: "assets/Entreprise/conferences.jpeg",title: 'Conférences', rlink:'conferences', cols: 1, rows: 1 },
+        { imageSrc: "assets/Entreprise/sport.jpg",title: 'Sport', rlink:'sport', cols: 1, rows: 1 }
       ];
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver, public firebase:FirebaseService) {}
+  constructor(private breakpointObserver: BreakpointObserver, public firebase:FirebaseService, public router: Router) {}
 
   logout(){
     this.firebase.logout();
+    this.router.navigate(['/']);
   }
 
 

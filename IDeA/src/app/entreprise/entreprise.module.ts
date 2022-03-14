@@ -1,3 +1,7 @@
+import { NavComponent } from './components/nav/nav.component';
+import { SportComponent } from './components/sport/sport.component';
+import { ConferencesComponent } from './components/conferences/conferences.component';
+import { FoodTrucksComponent } from './components/food-trucks/food-trucks.component';
 import { TableViewComponent } from './components/table-view/table-view.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -25,6 +29,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -36,7 +41,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CovoiturageComponent,
     EntrepriseComponent,
     OpendataComponent,
-    TableViewComponent
+    TableViewComponent,
+    FoodTrucksComponent,
+    ConferencesComponent,
+    SportComponent,
+    NavComponent
   ],
   imports: [
     CommonModule,
@@ -47,13 +56,17 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
+    MatSnackBarModule,
     MatIconModule,
     MatListModule,
     MatGridListModule,
     MatCardModule,
+    MatToolbarModule,
     MatMenuModule,
     HttpClientModule,
     MatTableModule,
+    MatSidenavModule,
+    MatMenuModule,
     FormsModule,
     MatPaginatorModule,
     MatSortModule,

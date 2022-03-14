@@ -1,3 +1,4 @@
+import { NotifierService } from './notifier.service';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -12,7 +13,7 @@ export class FirebaseService {
 
   isLoggedIn = false;
   status = "";
-  constructor(public firebaseAuth: AngularFireAuth, public router: Router) { }
+  constructor(public firebaseAuth: AngularFireAuth, public router: Router, public notifier: NotifierService) { }
 
   async googleSignin(){
     return this.AuthLogin(new GoogleAuthProvider());
@@ -25,7 +26,10 @@ export class FirebaseService {
               localStorage.setItem('user',JSON.stringify(result.user))
               this.router.navigate([this.status])
             })
-            .catch((error)=>{console.log(error);});
+            .catch((error)=>{
+              console.log(error);
+              this.notifier.showNotification('Error when login', 'OK','error');
+            });
   }
 
   async signin(email: string, password:string){
@@ -33,13 +37,16 @@ export class FirebaseService {
       .then(res=>{
         this.isLoggedIn = true;
         localStorage.setItem('user',JSON.stringify(res.user))
+        console.log(JSON.stringify(res.user));
+        this.notifier.showNotification('You are logged in','OK', 'success');
       });
   }
   async signup(email: string, password:string){
     await this.firebaseAuth.createUserWithEmailAndPassword(email,password)
       .then(res=>{
         this.isLoggedIn = true;
-        localStorage.setItem('user',JSON.stringify(res.user))
+        localStorage.setItem('user',JSON.stringify(res.user));
+        this.notifier.showNotification('Votre compte a bien été créé','OK','success');
       });
   }
 
@@ -47,5 +54,6 @@ export class FirebaseService {
     this.firebaseAuth.signOut();
     localStorage.removeItem('user');
     this.isLoggedIn = false;
+    this.notifier.showNotification('Vous avez été déconnecté','OK','success');
   }
 }

@@ -1,3 +1,4 @@
+import { FirebaseService } from './../../../firebase.service';
 import { OpendatasoftV1Service } from './../../../opendatasoftV1.service';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
@@ -19,7 +20,8 @@ export class OpendataComponent implements OnInit {
   constructor(private opendata: OpendatasoftV1Service,
               private breakpointObserver: BreakpointObserver,
               private router: Router,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              public firebase: FirebaseService) {}
 
   ngOnInit(): void {
     this.opendata.getCatalog().subscribe(
@@ -33,8 +35,11 @@ export class OpendataComponent implements OnInit {
   public showTable(ds:any): void{
     this.opendata.current_dataset = ds;
     console.log(this.opendata.current_dataset);
+  }
 
-
+  public logout(){
+    this.firebase.logout();
+    this.router.navigate(['/']);
   }
 
 }

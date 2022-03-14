@@ -1,3 +1,6 @@
+import { NotifierService } from './../../../notifier.service';
+import { Router } from '@angular/router';
+import { FirebaseService } from './../../../firebase.service';
 import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
@@ -16,6 +19,12 @@ export class NavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, public firebase: FirebaseService,
+     public router: Router, public notifier: NotifierService) {}
+
+  public logout(){
+    this.firebase.logout();
+    this.router.navigate(['/']);
+  }
 
 }

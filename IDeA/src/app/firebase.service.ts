@@ -1,3 +1,4 @@
+import { User } from './User';
 import { NotifierService } from './notifier.service';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
@@ -11,6 +12,8 @@ import firebase from 'firebase/compat';
 })
 export class FirebaseService {
 
+  public user = new User();
+
   isLoggedIn = false;
   status = "";
   constructor(public firebaseAuth: AngularFireAuth, public router: Router, public notifier: NotifierService) { }
@@ -23,6 +26,8 @@ export class FirebaseService {
     return this.firebaseAuth.signInWithPopup(provider)
             .then((result)=>{
               this.isLoggedIn = true;
+              this.user._id = result.user?.uid;
+              console.log(this.user);
               localStorage.setItem('user',JSON.stringify(result.user))
               this.router.navigate([this.status])
             })
@@ -37,7 +42,10 @@ export class FirebaseService {
       .then(res=>{
         this.isLoggedIn = true;
         localStorage.setItem('user',JSON.stringify(res.user))
-        console.log(JSON.stringify(res.user));
+        this.user._id = res.user?.uid;
+        this.user._name = res.user?.email?.split('.')[0]!;
+        console.log(this.user._name);
+        localStorage.setItem('user',JSON.stringify(res.user))
         this.notifier.showNotification('You are logged in','OK', 'success');
       });
   }

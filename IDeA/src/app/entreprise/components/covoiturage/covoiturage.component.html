@@ -1,3 +1,37 @@
-<button (click)="logout()" mat-raised-button>Logout</button>
+<!-- <button (click)="logout()" mat-raised-button>Logout</button> -->
 
-<p>covoiturage works!</p>
+<!-- <button (click)="testfirestore()">test firestore</button> -->
+<!-- <button (click)="readTest()">get</button> -->
+
+<button mat-raised-button (click)="onCreate()"> Post an announce</button>
+
+<div *ngIf="this.loader.isLoading | async" class="loader-container">
+  <mat-spinner style="top: 50%; left: 50%;"></mat-spinner>
+</div>
+
+<!-- <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="100"> -->
+<div id="back">
+</div>
+
+<div fxLayout="row wrap"  fxLayoutGap="100" style="margin-left: 3%" >
+  <div *ngFor="let item of this.TrajetListe" fxFlex="30" style="margin-right: 15%;">
+    <mat-card class="example-card">
+      <mat-card-subtitle align="end">{{item._user._name}}</mat-card-subtitle>
+      <mat-card-title>{{item._depart}} -> {{item._destination}} <mat-icon color="primary">directions_car_filled</mat-icon></mat-card-title>
+      <mat-card-content>
+        <p>{{item._nbKms | number:'3.'}} Kms <mat-icon style="color: red;">timeline</mat-icon></p>
+        <p>{{item._co2Emission}} Kg <mat-icon style="color: rgb(6, 250, 6);">co2</mat-icon></p>
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
+      <mat-card-actions align="end">
+        <a href="tel:{{item._user._phone}}" mat-button>MESSAGE <mat-icon color="primary">chat</mat-icon></a>
+        <a href="https://www.google.fr/maps/dir/{{item._depart}}/{{item._destination}}/" mat-button>MAP <mat-icon color="primary">map</mat-icon></a>
+      </mat-card-actions>
+      <mat-card-footer>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>
+
+

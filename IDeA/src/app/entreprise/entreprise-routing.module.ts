@@ -1,3 +1,4 @@
+import { PostCovoiturageComponent } from './components/post-covoiturage/post-covoiturage.component';
 import { ConferencesComponent } from './components/conferences/conferences.component';
 import { SportComponent } from './components/sport/sport.component';
 import { FoodTrucksComponent } from './components/food-trucks/food-trucks.component';
@@ -23,12 +24,14 @@ const routes: Routes = [
     path: 'entreprise', component: EntrepriseComponent, children:[
       {path:'', component:HomeComponent},
       {path:'home', component:HomeComponent},
-      {path:'covoiturage', component:CovoiturageComponent},
+      {path:'covoiturage', component:CovoiturageComponent, children:[
+        {path: 'post-covoiturage', component: PostCovoiturageComponent}
+      ]},
       {path:'opendata', component:OpendataComponent},
       {path:'opendata/table', component:TableViewComponent},
       {path:'foodtrucks', component: FoodTrucksComponent},
       {path:'sport', component: SportComponent},
-      {path:'conferences', component: ConferencesComponent}
+      {path:'conferences', component: ConferencesComponent},
 
     ],
     ...canActivate(redirectUnauthorizedToLogin)

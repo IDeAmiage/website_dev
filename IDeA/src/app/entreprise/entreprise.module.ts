@@ -1,3 +1,6 @@
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { PostCovoiturageComponent } from './components/post-covoiturage/post-covoiturage.component';
 import { NavComponent } from './components/nav/nav.component';
 import { SportComponent } from './components/sport/sport.component';
 import { ConferencesComponent } from './components/conferences/conferences.component';
@@ -13,7 +16,7 @@ import { EntrepriseComponent } from './entreprise.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -30,6 +33,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSelectModule} from '@angular/material/select';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { InterceptorService } from '../interceptor.service';
 
 
 
@@ -45,7 +54,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     FoodTrucksComponent,
     ConferencesComponent,
     SportComponent,
-    NavComponent
+    NavComponent,
+    PostCovoiturageComponent
   ],
   imports: [
     CommonModule,
@@ -55,6 +65,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatSidenavModule,
     MatSnackBarModule,
     MatIconModule,
@@ -63,16 +75,22 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatCardModule,
     MatToolbarModule,
     MatMenuModule,
+    MatExpansionModule,
     HttpClientModule,
     MatTableModule,
     MatSidenavModule,
     MatMenuModule,
+    MatDialogModule,
+    MatSelectModule,
     FormsModule,
     MatPaginatorModule,
     MatSortModule,
     MatTableExporterModule,
     FlexLayoutModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
+  ],
+  providers: [{provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}]
 })
 export class EntrepriseModule { }

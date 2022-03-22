@@ -1,5 +1,5 @@
-<button (click)="logout()" mat-raised-button>Logout</button>
-<button routerLink="opendata" mat-raised-button>Open data</button>
+<!-- <button (click)="logout()" mat-raised-button>Logout</button>
+<button routerLink="opendata" mat-raised-button>Open data</button> -->
 <div class="grid-container">
   <mat-grid-list cols="2" rowHeight="500px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">

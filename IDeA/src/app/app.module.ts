@@ -1,7 +1,9 @@
+import { InterceptorService } from './interceptor.service';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from './../environments/environment';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FirebaseService } from './firebase.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -34,7 +36,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { AccueilComponent } from './accueil/accueil.component';
 import { NotifierComponent } from './notifier/notifier.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
+// import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+// import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -65,7 +70,11 @@ import { NotifierComponent } from './notifier/notifier.component';
     CollectivitesModule,
     ParticuliersModule,
     AngularFireModule.initializeApp(environment.firebase),
+    // provideFirebaseApp(() => initializeApp(environment.firebase)),
+    // provideFirestore(() => getFirestore()),
+    AngularFirestoreModule,
     MatTableModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     FormsModule,
     MatPaginatorModule,
@@ -76,7 +85,7 @@ import { NotifierComponent } from './notifier/notifier.component';
     AppRoutingModule,
 
   ],
-  providers: [FirebaseService],
+  providers: [FirebaseService, {provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

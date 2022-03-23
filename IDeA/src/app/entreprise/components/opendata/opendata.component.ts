@@ -1,3 +1,4 @@
+import { LoaderService } from './../../../loader.service';
 import { FirebaseService } from './../../../firebase.service';
 import { OpendatasoftV1Service } from './../../../opendatasoftV1.service';
 import { Component, OnInit } from '@angular/core';
@@ -21,7 +22,8 @@ export class OpendataComponent implements OnInit {
               private breakpointObserver: BreakpointObserver,
               private router: Router,
               private route: ActivatedRoute,
-              public firebase: FirebaseService) {}
+              public firebase: FirebaseService,
+              public loader: LoaderService) {}
 
   ngOnInit(): void {
     this.opendata.getCatalog().subscribe(

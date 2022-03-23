@@ -1,3 +1,7 @@
+<div *ngIf="this.loader.isLoading | async" class="loader-container">
+  <mat-spinner style="top: 50%; left: 50%;"></mat-spinner>
+</div>
+
 <div class="grid-container">
   <h1 class="mat-h1">Opendata</h1>
   <mat-grid-list cols="4" >

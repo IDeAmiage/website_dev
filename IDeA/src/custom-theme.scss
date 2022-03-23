@@ -13,6 +13,24 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 
+/* SCSS HEX */
+$deep-jungle-green: #18534fff;
+$skobeloff: #226d68ff;
+$azure-x-11-web-color: #ecf8f6ff;
+$medium-champagne: #feeaa1ff;
+$persian-orange: #d6955bff;
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
+$gradient-right: linear-gradient(90deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
+$gradient-bottom: linear-gradient(180deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
+$gradient-left: linear-gradient(270deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
+$gradient-top-right: linear-gradient(45deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
+$gradient-bottom-right: linear-gradient(135deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
+$gradient-top-left: linear-gradient(225deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
+$gradient-bottom-left: linear-gradient(315deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
+$gradient-radial: radial-gradient(#18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
+
 
 $IDeA-primary: mat.define-palette(mat.$cyan-palette, 800);
 $IDeA-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);

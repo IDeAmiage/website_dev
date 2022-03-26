@@ -1,4 +1,4 @@
-.container{
+#container{
   /* Full height */
   height: 100%;
 
@@ -11,38 +11,20 @@
   background-color: transparent;
 }
 
-.navbar button{
-  color:white
+#navbar button{
+  color: white;
 }
 
-/* .landes{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: available;
-} */
-/*
-.landes{
-  position: absolute;
-  height: 50%;
-  width: 50%;
-  top: 50%;
-  left: 50%;
-  margin: auto;
-} */
-
-.landes{
+#landes{
   margin: auto;
   display: flex;
   width: 60%;
-  /* border: 5px solid #FFFF00; */
   padding: 10px;
   align-items: center;
   justify-content: center;
 }
 
-.landesspan{
+#landesspan{
   color: white;
   font-size: 1500%;
   /* font-size: ; */
@@ -54,7 +36,7 @@
   justify-content: center;
 }
 
-.landes button{
+#landes button{
   color:black;
 }
 

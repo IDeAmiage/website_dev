@@ -1,33 +1,27 @@
-<div class="container">
-  <div class="navbar">
+<div id="container">
+  <div id="navbar">
     <mat-toolbar class="transparent">
       <span>Bienvenue</span>
       <span class="spacer"></span>
       <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="loginEntreprise()">Entreprise</button>
-      <button *ngIf="!this.firebaseService.isLoggedIn"  mat-button (click)="loginCollectivites()">Collectivités</button>
-      <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="loginParticuliers()">Particuliers</button>
+      <button *ngIf="!this.firebaseService.isLoggedIn"  mat-button (click)="loginCollectivites()">Collectivité</button>
+      <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="loginParticuliers()">Particulier</button>
       <button *ngIf="this.firebaseService.isLoggedIn"  mat-button (click)="logout()">logout</button>
-      <button mat-icon-button>
-        <mat-icon>menu</mat-icon>
-      </button>
+      <button mat-icon-button><mat-icon>menu</mat-icon></button>
     </mat-toolbar>
   </div>
-  <div id="spacediv"></div>
-  <div>
-    <span class="landesspan">Landes</span>
+  <div *ngIf="!this.explorerClic" id="welcome">
+    <div id="spacediv"></div>
+    <div>
+      <span id="landesspan">Landes</span>
+    </div>
+    <br>
+    <div id="landes">
+      <button mat-raised-button (click)="onClickExplorer()">Explorer</button>
+    </div>
   </div>
-  <br>
-  <div class="landes">
-    <button mat-raised-button>Explorer</button>
+  <div *ngIf="this.explorerClic" id="explorer" style="margin-left: 40px;">
+      <iframe [src]="urlDax" allowfullscreen></iframe>
+      <iframe [src]="urlDax" allowfullscreen></iframe>
   </div>
-<!--
-  <div class="landes">
-    test
-  </div> -->
 </div>
-
-
-
-<!-- <div style="margin-left: 40px;">
-  <iframe [src]="safeUrl" frameborder="0" allowfullscreen></iframe>
-</div> -->

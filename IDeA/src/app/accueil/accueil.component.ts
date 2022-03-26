@@ -10,14 +10,16 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 })
 export class AccueilComponent implements OnInit {
 
-  safeUrl!: SafeUrl;
+  urlDax!: SafeUrl;
+  explorerClic!: boolean;
 
   constructor(public firebaseService: FirebaseService, public router: Router, private _sanitizer: DomSanitizer){}
 
   ngOnInit(): void {
-    this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/teQjqnU_0nw');
-
+    this.urlDax = this._sanitizer.bypassSecurityTrustResourceUrl('https://youtu.be/tZJlT948Qos');
+    this.explorerClic = false;
   }
+
   loginEntreprise(){
     this.firebaseService.status = "entreprise";
     this.router.navigate(['login']);
@@ -37,4 +39,7 @@ export class AccueilComponent implements OnInit {
     this.firebaseService.logout();
   }
 
+  onClickExplorer(): void {
+    this.explorerClic = true;
+  }
 }

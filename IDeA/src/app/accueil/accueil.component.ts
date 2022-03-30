@@ -16,7 +16,7 @@ export class AccueilComponent implements OnInit {
   constructor(public firebaseService: FirebaseService, public router: Router, private _sanitizer: DomSanitizer){}
 
   ngOnInit(): void {
-    this.urlDax = this._sanitizer.bypassSecurityTrustResourceUrl('https://youtu.be/tZJlT948Qos');
+    this.urlDax = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/tZJlT948Qos');
     this.explorerClic = false;
   }
 

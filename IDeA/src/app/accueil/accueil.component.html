@@ -21,6 +21,11 @@
     </div>
   </div>
   <div *ngIf="this.explorerClic" id="explorer" style="margin-left: 40px;">
-      <iframe [src]="urlDax" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile><iframe [src]="urlDax" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe></mat-grid-tile>
+      <mat-grid-tile><iframe [src]="urlDax" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe></mat-grid-tile>
+      <mat-grid-tile><iframe [src]="urlDax" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe></mat-grid-tile>
+      <mat-grid-tile><iframe [src]="urlDax" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe></mat-grid-tile>
+    </mat-grid-list>
   </div>
 </div>

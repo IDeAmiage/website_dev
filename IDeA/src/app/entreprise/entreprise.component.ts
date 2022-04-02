@@ -1,3 +1,4 @@
+import { FirestorageService } from './../firestorage.service';
 import { ApiService } from './../api.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,15 +10,24 @@ import { Component, OnInit } from '@angular/core';
 export class EntrepriseComponent implements OnInit {
 
   public text:any;
+  public currentUser: any;
 
-  constructor(public api: ApiService) { }
+  constructor(public api: ApiService, public firestore: FirestorageService) { }
 
   ngOnInit(): void {
-    // this.api.getUsers().subscribe(
-    //   response => {
-    //     this.text = response;
-    //   }
-    // );
+    this.loadUserData();
+
+  }
+
+  async loadUserData(){
+    await this.firestore.getUser(this.firestore.user._id).subscribe(res=>{
+      localStorage.setItem('user',JSON.stringify(res));
+      this.currentUser = JSON.parse(localStorage.getItem("user")!);
+      console.log(this.currentUser);
+    })
+
+
+
   }
 
 

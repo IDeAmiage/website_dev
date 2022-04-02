@@ -25,7 +25,10 @@
       </button>
       <span #entreprise><mat-icon color="accent">maps_home_work</mat-icon> Entreprise</span>
       <div class="spacer"></div>
-      <button mat-raised-button (click)="logout()" color="accent">Logout   <mat-icon>logout</mat-icon></button>
+      <div *ngFor="let item of this.EntrepriseUser" >
+        <button mat-raised-button>{{item._name}} <mat-icon>account_circle</mat-icon></button>
+      </div>
+      <button mat-raised-button (click)="logout()" color="accent">Logout<mat-icon>logout</mat-icon></button>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>

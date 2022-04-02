@@ -1,8 +1,9 @@
+import { FirebaseService } from './firebase.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Injectable } from '@angular/core';
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
-import firebase from 'firebase/compat';
 import { Observable } from 'rxjs';
+import { User } from './User';
 
 
 
@@ -10,6 +11,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FirestorageService {
+  public user = new User();
 
 constructor(private firestore: AngularFirestore) { }
 
@@ -23,8 +25,13 @@ constructor(private firestore: AngularFirestore) { }
   }
 
   getObject(collectionName:string){
-
     return this.firestore.collection(collectionName).valueChanges();
+  }
+
+  getUser(id:string){
+    return this.firestore.collection('user', ref =>
+      ref.where('_id', '==',id)
+    ).valueChanges();
   }
 
 }

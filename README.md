@@ -6,6 +6,7 @@ Some formations are available here: </br>
 [beginner](https://www.youtube.com/watch?v=AAu8bjj6-UI)
 [angular-material](https://www.youtube.com/watch?v=jUfEn032IL8)
 [express integration](https://www.youtube.com/watch?v=dT1ID4q57fs&t=468s)
+https://hackafro.github.io/angular-epic-spinners/
 
 ## Installation
 

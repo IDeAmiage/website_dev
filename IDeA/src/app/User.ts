@@ -9,4 +9,6 @@ export class User {
  _avis: string[] = new Array();
  _note: number=0;
  _nbTrajects: number=0;
+ _score: number=0;
+ _strava_account: string="";
 }

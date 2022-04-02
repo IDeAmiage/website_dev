@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
-  res.json('respond with a resource');
+  res.json('ceci est un test')
 });
 
 module.exports = router;

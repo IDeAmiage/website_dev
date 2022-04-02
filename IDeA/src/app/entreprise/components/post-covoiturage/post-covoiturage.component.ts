@@ -50,14 +50,14 @@ export class PostCovoiturageComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.firebase.user._id);
+    console.log(this.firestore.user._id);
 
   }
 
   saveCar(){
     this.userCar._carburant = this.fuel.value;
     this.userCar._type = this.size.value;
-    this.firebase.user._car = this.userCar;
+    this.firestore.user._car = this.userCar;
     this.nextStep();
   }
 
@@ -76,7 +76,7 @@ export class PostCovoiturageComponent implements OnInit {
     var dist = geolib.getDistance(
       { latitude: ad1._lat, longitude: ad1._lon },
       { latitude: ad2._lat, longitude: ad2._lon })
-    this.trajet._user = this.firebase.user;
+    this.trajet._user = this.firestore.user;
     this.trajet._depart = ad1._city;
     this.trajet._destination = ad2._city;
     this.trajet._nbKms = dist;
@@ -89,10 +89,12 @@ export class PostCovoiturageComponent implements OnInit {
     console.log(JSON.stringify(this.trajet));
     this.trajet._user._car = Object.assign({}, this.trajet._user._car)
     this.trajet._user = Object.assign({}, this.trajet._user)
+    // this.trajet._user._nbTrajects++;
     this.trajet = Object.assign({}, this.trajet)
     await this.api.getCo2Calculation(this.trajet).toPromise().then((res)=>{
       this.trajet._co2Emission = parseFloat(res.toString());
     })
+    // this.trajet._user._score = this.trajet._user._score + this.trajet._co2Emission;
     this.firestore.insertObject(this.trajet,"trajet");
 
     // this.router.navigate(['/entreprise/covoiturage']);

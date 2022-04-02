@@ -2,8 +2,9 @@
 
 <!-- <button (click)="testfirestore()">test firestore</button> -->
 <!-- <button (click)="readTest()">get</button> -->
-
-<button mat-raised-button (click)="onCreate()"> Post an announce</button>
+<div align="end" style="padding: 5px;">
+  <button mat-raised-button (click)="onCreate()"  color="warn"> Post an announce <mat-icon color="primary">post_add</mat-icon></button>
+</div>
 
 <div *ngIf="this.loader.isLoading | async" class="loader-container">
   <mat-spinner style="top: 50%; left: 50%;"></mat-spinner>

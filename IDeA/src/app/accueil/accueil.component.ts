@@ -16,7 +16,6 @@ export class AccueilComponent implements OnInit {
 
   ngOnInit(): void {
     this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/teQjqnU_0nw');
-
   }
   loginEntreprise(){
     this.firebaseService.status = "entreprise";

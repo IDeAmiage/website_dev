@@ -1,14 +1,13 @@
 #container{
-  /* Full height */
   height: 100%;
-
-  /* Center and scale the image nicely */
   background: url(/assets/Accueil/background.jpg) no-repeat center;
   background-size: cover;
 }
 
-.transparent{
-  background-color: transparent;
+#container-explorer{
+  height: 100%;
+  background: url(/assets/Accueil/background-blur.png) no-repeat center;
+  background-size: cover;
 }
 
 #navbar button{
@@ -27,7 +26,6 @@
 #landesspan{
   color: white;
   font-size: 1500%;
-  /* font-size: ; */
   margin: auto;
   display: flex;
   width: 60%;
@@ -44,10 +42,6 @@ span{
   color: white;
 }
 
-.spacer {
-  flex: 1 1 auto;
-}
-
-#spacediv{
-  margin-top: 10%;
+.explorer-text {
+  font-size: 750%;
 }

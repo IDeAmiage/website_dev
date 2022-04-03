@@ -12,12 +12,14 @@ export class AccueilComponent implements OnInit {
 
   urlDax!: SafeUrl;
   explorerClic!: boolean;
+  container!: string;
 
   constructor(public firebaseService: FirebaseService, public router: Router, private _sanitizer: DomSanitizer){}
 
   ngOnInit(): void {
     this.urlDax = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/tZJlT948Qos');
     this.explorerClic = false;
+    this.container = "container";
   }
 
   loginEntreprise(){
@@ -41,5 +43,6 @@ export class AccueilComponent implements OnInit {
 
   onClickExplorer(): void {
     this.explorerClic = true;
+    this.container = "container-explorer";
   }
 }

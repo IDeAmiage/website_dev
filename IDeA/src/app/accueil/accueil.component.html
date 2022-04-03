@@ -1,40 +1,41 @@
-<div [id]="container">
+<div [class]="content" fxLayout="column" fxFill>
+
   <div id="navbar">
-    <mat-toolbar [style.background-color]="'transparent'">
+    <mat-toolbar [style.background-color]="'transparent'" fxLayout="row" fxLayoutAlign="start center">
       <span>Bienvenue</span>
-      <span [style.flex]="'1 1 auto'"></span>
-      <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="loginEntreprise()">Entreprise</button>
-      <button *ngIf="!this.firebaseService.isLoggedIn"  mat-button (click)="loginCollectivites()">Collectivité</button>
-      <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="loginParticuliers()">Particulier</button>
+      <span fxFlex></span>
+      <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="login(accueil[0].status)">{{accueil[0].title}}</button>
+      <button *ngIf="!this.firebaseService.isLoggedIn"  mat-button (click)="login(accueil[1].status)">{{accueil[1].title}}</button>
+      <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="login(accueil[2].status)">{{accueil[2].title}}</button>
       <button *ngIf="this.firebaseService.isLoggedIn"  mat-button (click)="logout()">logout</button>
       <button mat-icon-button><mat-icon>menu</mat-icon></button>
     </mat-toolbar>
   </div>
-  <div *ngIf="!this.explorerClic" id="welcome">
-    <div [style.margin-top]="'10%'"></div>
-    <div>
-      <span id="landesspan">Landes</span>
-    </div>
-    <br>
-    <div id="landes">
+
+
+  <div *ngIf="this.isExplorer" id="welcome" fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="100px" fxFlex>
+      <span id="landes">Landes</span>
       <button mat-raised-button (click)="onClickExplorer()">Explorer</button>
-    </div>
   </div>
-  <div *ngIf="this.explorerClic" id="explorer" fxLayout="column" fxFill fxLayoutAlign="space-evenly stretch" fxLayoutGap>
+
+
+  <div *ngIf="!this.isExplorer" id="explorer" fxLayout="column" fxLayoutAlign="space-evenly stretch" fxFlex>
     <div id="plages">
-      <span class="explorer-text">Nos plages</span>
-      <div fxLayout="row" fxLayoutAlign="space-evenly center" >
-        <iframe [src]="urlDax" width="50%" height="50%" frameborder="0" style="border:0" allowfullscreen></iframe>
-        <iframe [src]="urlDax" width="50%" height="50%" frameborder="0" style="border:0" allowfullscreen></iframe>
-        <iframe [src]="urlDax" width="50%" height="50%" frameborder="0" style="border:0" allowfullscreen></iframe>
+      <span class="explorer-text" [style.padding-left]="'10%'">Nos plages</span>
+      <br><br><br>
+      <div fxLayout="row" fxLayoutAlign="space-evenly center">
+        <iframe [src]="urlHossegor" width="450" height="254" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <iframe [src]="urlCapbreton" width="450" height="254" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <iframe [src]="urlBouceau" width="450" height="254" frameborder="0" style="border:0" allowfullscreen></iframe>
       </div>
     </div>
     <div id="histoire">
-      <span class="explorer-text">Notre histoire</span>
-      <div fxLayout="row" fxLayoutAlign="space-evenly center" >
-        <iframe [src]="urlDax" width="50%" height="50%" frameborder="0" style="border:0" allowfullscreen></iframe>
-        <iframe [src]="urlDax" width="50%" height="50%" frameborder="0" style="border:0" allowfullscreen></iframe>
-        <iframe [src]="urlDax" width="50%" height="50%" frameborder="0" style="border:0" allowfullscreen></iframe>
+      <span class="explorer-text" [style.padding-left]="'10%'">Notre histoire</span>
+      <br><br><br>
+      <div fxLayout="row" fxLayoutAlign="space-evenly center">
+        <iframe [src]="urlMimizan" width="450" height="254" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <iframe [src]="urlMarsan" width="450" height="254" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <iframe [src]="urlDax" width="450" height="254" frameborder="0" style="border:0" allowfullscreen></iframe>
       </div>
     </div>
   </div>

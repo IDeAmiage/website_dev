@@ -6,37 +6,57 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
-  styleUrls: ['./accueil.component.css']
+  styleUrls: ['./accueil.component.scss']
 })
 export class AccueilComponent implements OnInit {
 
-  safeUrl!: SafeUrl;
+  urlDax!: SafeUrl;
+  urlMarsan!: SafeUrl;
+  urlMimizan!: SafeUrl;
+  urlBouceau!: SafeUrl
+  urlCapbreton!: SafeUrl;
+  urlHossegor!: SafeUrl
+  isExplorer!: boolean;
+  content!: string;
+  accueil = [
+    {
+      status: "entreprise",
+      title: "Entreprise"
+    },
+    {
+      status: "collectivites",
+      title: "Collectivité"
+    },
+    {
+      status: "particuliers",
+      title: "Particulier"
+    }
+  ];
 
   constructor(public firebaseService: FirebaseService, public router: Router, private _sanitizer: DomSanitizer){}
 
   ngOnInit(): void {
-    this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/teQjqnU_0nw');
+    this.urlDax = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/tZJlT948Qos');
+    this.urlMarsan = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/y18S3lp6Ox8');
+    this.urlMimizan = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/Fxvc2bKtzeE');
+    this.urlBouceau = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/NO5jRlh_N1k');
+    this.urlCapbreton = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/vCmu42nJD8M');
+    this.urlHossegor = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/fFNZFThijT4');
+    this.isExplorer = true;
+    this.content = "content";
   }
-  loginEntreprise(){
-    this.firebaseService.status = "entreprise";
-    localStorage.setItem("status","entreprise");
+
+  login(status: string): void{
+    this.firebaseService.status = status;
     this.router.navigate(['login']);
   }
 
-  loginCollectivites(){
-    this.firebaseService.status = "collectivites";
-    localStorage.setItem("status","collectivites");
-    this.router.navigate(['login']);
-  }
-
-  loginParticuliers(){
-    this.firebaseService.status = "particuliers";
-    localStorage.setItem("status","particuliers");
-    this.router.navigate(['login']);
-  }
-
-  logout(){
+  logout(): void{
     this.firebaseService.logout();
   }
 
+  onClickExplorer(): void {
+    this.isExplorer = !this.isExplorer;
+    this.content = "content-blur";
+  }
 }

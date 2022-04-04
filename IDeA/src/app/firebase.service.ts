@@ -27,8 +27,8 @@ export class FirebaseService {
             .then((result)=>{
               this.isLoggedIn = true;
               this.firestore.user._id = result.user?.uid;
-              console.log(this.firestore.user);
-              // localStorage.setItem('user',JSON.stringify(result.user))
+              console.log(localStorage.getItem('status'));
+
               this.router.navigate([this.status])
             })
             .catch((error)=>{
@@ -41,14 +41,7 @@ export class FirebaseService {
     await this.firebaseAuth.signInWithEmailAndPassword(email,password)
       .then(res=>{
         this.isLoggedIn = true;
-        // localStorage.setItem('user',JSON.stringify(res.user))
-        // var uid = res.user?.uid;
-        this.firestore.user._id = res.user?.uid;
-        // this.firestore.user._name = res.user?.email?.split('@')[0]!;
-        // console.log(this.firestore.user._name);
-        // this.firestore.getUser(uid!).subscribe(resp=>{
-        //   console.log(resp);
-        // })
+        localStorage.setItem('user_id', res.user?.uid!)
         this.notifier.showNotification('You are logged in','OK', 'success');
       })
       .catch((error)=>{
@@ -65,7 +58,7 @@ export class FirebaseService {
         this.firestore.user._name = res.user?.email?.split('@')[0]!;
         this.firestore.user._car = Object.assign({}, this.firestore.user._car)
         this.firestore.user = Object.assign({}, this.firestore.user)
-        this.firestore.insertObject(this.firestore.user, "user");
+        this.firestore.insertUser(this.firestore.user, "user", this.firestore.user._id);
         this.notifier.showNotification('Votre compte a bien été créé','OK','success');
       });
   }
@@ -73,6 +66,7 @@ export class FirebaseService {
   logout(){
     this.firebaseAuth.signOut();
     localStorage.removeItem('user');
+    localStorage.removeItem('user_id');
     this.isLoggedIn = false;
     this.notifier.showNotification('Vous avez été déconnecté','OK','success');
   }

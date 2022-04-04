@@ -1,3 +1,5 @@
+import { MonEntrepriseComponent } from './components/mon-entreprise/mon-entreprise.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { PostCovoiturageComponent } from './components/post-covoiturage/post-covoiturage.component';
 import { ConferencesComponent } from './components/conferences/conferences.component';
 import { SportComponent } from './components/sport/sport.component';
@@ -32,6 +34,8 @@ const routes: Routes = [
       {path:'foodtrucks', component: FoodTrucksComponent},
       {path:'sport', component: SportComponent},
       {path:'conferences', component: ConferencesComponent},
+      {path:'profil', component: ProfileComponent},
+      {path:'mon-entreprise', component: MonEntrepriseComponent},
 
     ],
     ...canActivate(redirectUnauthorizedToLogin)

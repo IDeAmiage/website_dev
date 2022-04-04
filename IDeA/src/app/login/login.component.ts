@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    console.log(this.firebaseService.status);
 
     if(localStorage.getItem('user')!==null)
       this.firebaseService.isLoggedIn = true;
@@ -31,7 +30,7 @@ export class LoginComponent implements OnInit {
     await this.firebaseService.signin(email, password);
     if(this.firebaseService.isLoggedIn){
       this.firebaseService.isLoggedIn = true;
-      this.router.navigate([this.firebaseService.status]);
+      this.router.navigate([localStorage.getItem('status')]);
     }
   }
 

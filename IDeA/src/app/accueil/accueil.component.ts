@@ -19,16 +19,19 @@ export class AccueilComponent implements OnInit {
   }
   loginEntreprise(){
     this.firebaseService.status = "entreprise";
+    localStorage.setItem("status","entreprise");
     this.router.navigate(['login']);
   }
 
   loginCollectivites(){
     this.firebaseService.status = "collectivites";
+    localStorage.setItem("status","collectivites");
     this.router.navigate(['login']);
   }
 
   loginParticuliers(){
     this.firebaseService.status = "particuliers";
+    localStorage.setItem("status","particuliers");
     this.router.navigate(['login']);
   }
 

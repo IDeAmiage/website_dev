@@ -11,4 +11,5 @@ export class User {
  _nbTrajects: number=0;
  _score: number=0;
  _strava_account: string="";
+ _entreprise:string="";
 }

@@ -1,3 +1,6 @@
+import { MonEntrepriseComponent } from './components/mon-entreprise/mon-entreprise.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PostCovoiturageComponent } from './components/post-covoiturage/post-covoiturage.component';
@@ -39,6 +42,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { InterceptorService } from '../interceptor.service';
+import {MatChipsModule} from '@angular/material/chips';
+
 
 
 
@@ -55,7 +60,10 @@ import { InterceptorService } from '../interceptor.service';
     ConferencesComponent,
     SportComponent,
     NavComponent,
-    PostCovoiturageComponent
+    PostCovoiturageComponent,
+    ProfileComponent,
+    EditProfileComponent,
+    MonEntrepriseComponent
   ],
   imports: [
     CommonModule,
@@ -89,7 +97,8 @@ import { InterceptorService } from '../interceptor.service';
     FlexLayoutModule,
     ReactiveFormsModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}]
 })

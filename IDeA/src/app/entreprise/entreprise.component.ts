@@ -15,15 +15,15 @@ export class EntrepriseComponent implements OnInit {
   constructor(public api: ApiService, public firestore: FirestorageService) { }
 
   ngOnInit(): void {
-    this.loadUserData();
+    // this.loadUserData();
 
   }
 
   async loadUserData(){
-    await this.firestore.getUser(this.firestore.user._id).subscribe(res=>{
+    // await this.firestore.getUser(this.firestore.user._id).subscribe(res=>{
+    await this.firestore.getUser(localStorage.getItem('user_id')!).subscribe(res=>{
       localStorage.setItem('user',JSON.stringify(res));
       this.currentUser = JSON.parse(localStorage.getItem("user")!);
-      console.log(this.currentUser);
     })
 
 

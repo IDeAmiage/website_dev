@@ -1,3 +1,58 @@
-<p>
-  profile works!
-</p>
+
+<div *ngIf="this.editactive;else view">
+  <app-edit-profile></app-edit-profile>
+</div>
+
+<ng-template #view>
+
+  <div fxLayoutAlign="end start" fxLayoutGap="180">
+    <h2>Votre profil</h2>
+
+    <button mat-icon-button color="primary" (click)="this.changeToEdit()"><mat-icon >edit</mat-icon></button>
+  </div>
+  <!-- <div *ngFor="let item of this.currentUser | keyvalue" >
+    <p>Key: {{item.key}}, Value: {{item.value}}</p>
+
+  </div> -->
+  <mat-chip-list class="mat-chip-list-stacked">
+    <div *ngFor="let item of this.currentUser | keyvalue:onCompare">
+
+      <div *ngIf="item.key == '_car' else notcar">
+        <br>
+        Ma voiture
+        <mat-divider></mat-divider>
+        <mat-chip selected color="primary">
+          <!-- <div fxLayoutAlign="end start" > -->
+            type:{{this.currentUser._car._type}}
+            <mat-icon color="warn">directions_car</mat-icon>
+          <!-- </div> -->
+        </mat-chip>
+        <mat-chip selected color="primary">
+            carburant:{{this.currentUser._car._carburant}} <mat-icon color="warn">local_gas_station</mat-icon>
+        </mat-chip>
+        <mat-divider></mat-divider>
+
+      </div>
+      <ng-template #notcar>
+        <div *ngIf="item.value=='' else notemptyvals">
+          <mat-chip selected color="accent">
+            {{item.key | slice: 1}}:{{item.value}}
+          </mat-chip>
+        </div>
+        <ng-template #notemptyvals>
+          <mat-chip selected color="primary">
+            {{item.key | slice: 1}}:{{item.value}}
+          </mat-chip>
+        </ng-template>
+      </ng-template>
+
+
+
+
+
+    </div>
+
+    <br>
+  </mat-chip-list>
+</ng-template>
+

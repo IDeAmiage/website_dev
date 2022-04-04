@@ -24,6 +24,15 @@ constructor(private firestore: AngularFirestore) { }
     });
   }
 
+  insertUser(data:any, collectionName:string, id:string) {
+    return new Promise<any>((resolve, reject) =>{
+        this.firestore
+            .collection(collectionName)
+            .doc(id)
+            .set(data)
+            .then(res => {console.log(res);}, err => reject(err));
+    });
+  }
   getObject(collectionName:string){
     return this.firestore.collection(collectionName).valueChanges();
   }
@@ -33,5 +42,19 @@ constructor(private firestore: AngularFirestore) { }
       ref.where('_id', '==',id)
     ).valueChanges();
   }
+
+  getCO2(entreprise:string){
+    return this.firestore.collection('trajet', ref=>
+      ref.where('_user._entreprise','==',entreprise)
+    ).valueChanges();
+  }
+
+  updateUser(data:any, id:string){
+    return this.firestore.collection('user', ref =>
+      ref.where('_id', '==',id)
+    ).doc(id).update(data);
+  }
+
+
 
 }

@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
     await this.firebaseService.signup(email, password);
     if(this.firebaseService.isLoggedIn){
       this.firebaseService.isLoggedIn = true;
-      this.router.navigate([this.firebaseService.status]);
+      this.router.navigate([localStorage.getItem('status')]);
     }
   }
 

@@ -1,3 +1,4 @@
+import { ProfileComponent } from './../profile/profile.component';
 import { FirestorageService } from './../../../firestorage.service';
 import { NotifierService } from './../../../notifier.service';
 import { Router } from '@angular/router';
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-nav',
@@ -23,10 +25,11 @@ export class NavComponent implements OnInit{
 
   constructor(private breakpointObserver: BreakpointObserver, public firebase: FirebaseService,
      public router: Router, public notifier: NotifierService,
-     public firestore: FirestorageService) {}
+     public firestore: FirestorageService,
+     public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.firestore.getUser(this.firestore.user._id).subscribe(res=>{
+    this.firestore.getUser(localStorage.getItem('user_id')!).subscribe(res=>{
       this.EntrepriseUser = res;
     })
   }
@@ -34,6 +37,14 @@ export class NavComponent implements OnInit{
   public logout(){
     this.firebase.logout();
     this.router.navigate(['/']);
+  }
+
+  onCreate(){
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    // dialogConfig.width = "60%";
+    this.dialog.open(ProfileComponent, dialogConfig);
   }
 
 

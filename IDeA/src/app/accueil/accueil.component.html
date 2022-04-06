@@ -4,9 +4,9 @@
     <mat-toolbar [style.background-color]="'transparent'" fxLayout="row" fxLayoutAlign="start center">
       <span>Bienvenue</span>
       <span fxFlex></span>
-      <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="login(accueil[0].status)">{{accueil[0].title}}</button>
-      <button *ngIf="!this.firebaseService.isLoggedIn"  mat-button (click)="login(accueil[1].status)">{{accueil[1].title}}</button>
-      <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="login(accueil[2].status)">{{accueil[2].title}}</button>
+      <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="loginEntreprise()">Entreprise</button>
+      <button *ngIf="!this.firebaseService.isLoggedIn"  mat-button (click)="loginCollectivites()">Collectivité</button>
+      <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="loginParticuliers()">Particulier</button>
       <button *ngIf="this.firebaseService.isLoggedIn"  mat-button (click)="logout()">logout</button>
       <button mat-icon-button><mat-icon>menu</mat-icon></button>
     </mat-toolbar>

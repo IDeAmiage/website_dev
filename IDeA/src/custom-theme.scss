@@ -30,6 +30,7 @@ $gradient-bottom-right: linear-gradient(135deg, #18534fff, #226d68ff, #ecf8f6ff,
 $gradient-top-left: linear-gradient(225deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
 $gradient-bottom-left: linear-gradient(315deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
 $gradient-radial: radial-gradient(#18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
+$gradient-list-item : linear-gradient(8deg, rgba(42,106,25,1) 0%, rgba(11,136,14,1) 27%, rgba(0,255,216,1) 100%);
 
 
 $IDeA-primary: mat.define-palette(mat.$cyan-palette, 800);
@@ -45,6 +46,7 @@ $IDeA-theme: mat.define-light-theme((
     primary: $IDeA-primary,
     accent: $IDeA-accent,
     warn: $IDeA-warn,
+    listItem:$gradient-list-item,
   )
 ));
 

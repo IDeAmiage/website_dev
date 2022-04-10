@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap");
+@import "../../../../custom-theme.scss";
+
+.grid-container {
+  background: $gradient-blue-bg;
+}
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  text-align: center;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+mat-card img {
+  object-fit: cover; /*this makes the image in src fit to the size specified below*/
+  width: 80%; /*Here you can use wherever you want to specify the width and also the height of the <img> */
+  height: 70%;
+  border-radius: 10px;
+}
+
+mat-card-content {
+  justify-content: center;
+}
+
+mat-card #voir {
+  object-fit: cover;
+  width: 100%;
+}
+
+mat-card-header {
+  justify-content: center;
+}
+
+.mat-card-header,
+.mat-card-title {
+  font-family: "Mulish", sans-serif;
+  font-size: 40px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.mat-raised-button,
+.mat-accent {
+  width: 60%;
+  background: $gradient-list-item;
+}

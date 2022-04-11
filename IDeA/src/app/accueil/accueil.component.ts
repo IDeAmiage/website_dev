@@ -18,20 +18,6 @@ export class AccueilComponent implements OnInit {
   urlHossegor!: SafeUrl
   isExplorer!: boolean;
   content!: string;
-  accueil = [
-    {
-      status: "entreprise",
-      title: "Entreprise"
-    },
-    {
-      status: "collectivites",
-      title: "Collectivité"
-    },
-    {
-      status: "particuliers",
-      title: "Particulier"
-    }
-  ];
 
   constructor(public firebaseService: FirebaseService, public router: Router, private _sanitizer: DomSanitizer){}
 
@@ -46,8 +32,21 @@ export class AccueilComponent implements OnInit {
     this.content = "content";
   }
 
-  login(status: string): void{
-    this.firebaseService.status = status;
+  loginEntreprise(){
+    this.firebaseService.status = "entreprise";
+    localStorage.setItem("status","entreprise");
+    this.router.navigate(['login']);
+  }
+
+  loginCollectivites(){
+    this.firebaseService.status = "collectivites";
+    localStorage.setItem("status","collectivites");
+    this.router.navigate(['login']);
+  }
+
+  loginParticuliers(){
+    this.firebaseService.status = "particuliers";
+    localStorage.setItem("status","particuliers");
     this.router.navigate(['login']);
   }
 

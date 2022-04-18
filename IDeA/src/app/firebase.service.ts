@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
 import firebase from 'firebase/compat';
+import * as geolib from 'geolib';
+
 
 
 @Injectable({
@@ -28,7 +30,6 @@ export class FirebaseService {
               this.isLoggedIn = true;
               this.firestore.user._id = result.user?.uid;
               console.log(localStorage.getItem('status'));
-
               this.router.navigate([this.status])
             })
             .catch((error)=>{
@@ -41,7 +42,7 @@ export class FirebaseService {
     await this.firebaseAuth.signInWithEmailAndPassword(email,password)
       .then(res=>{
         this.isLoggedIn = true;
-        localStorage.setItem('user_id', res.user?.uid!)
+        localStorage.setItem('user_id', res.user?.uid!);
         this.notifier.showNotification('You are logged in','OK', 'success');
       })
       .catch((error)=>{
@@ -54,6 +55,7 @@ export class FirebaseService {
       .then(res=>{
         this.isLoggedIn = true;
         localStorage.setItem('user',JSON.stringify(res.user));
+        localStorage.setItem('user_id', res.user?.uid!)
         this.firestore.user._id = res.user?.uid;
         this.firestore.user._name = res.user?.email?.split('@')[0]!;
         this.firestore.user._car = Object.assign({}, this.firestore.user._car)

@@ -1,6 +1,7 @@
 import { FirestorageService } from './../firestorage.service';
 import { ApiService } from './../api.service';
 import { Component, OnInit } from '@angular/core';
+import * as geolib from 'geolib';
 
 @Component({
   selector: 'app-entreprise',
@@ -16,7 +17,16 @@ export class EntrepriseComponent implements OnInit {
 
   ngOnInit(): void {
     // this.loadUserData();
-
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        console.log(position.coords.latitude);
+        localStorage.setItem('latitude',  position.coords.latitude.toString())
+        localStorage.setItem('longitude', position.coords.longitude.toString())
+      },
+      () => {
+          alert('Position could not be determined.');
+      }
+    );
   }
 
   async loadUserData(){
@@ -25,9 +35,6 @@ export class EntrepriseComponent implements OnInit {
       localStorage.setItem('user',JSON.stringify(res));
       this.currentUser = JSON.parse(localStorage.getItem("user")!);
     })
-
-
-
   }
 
 

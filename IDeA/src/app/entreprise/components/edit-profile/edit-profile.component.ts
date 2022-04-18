@@ -16,7 +16,7 @@ export class EditProfileComponent implements OnInit {
   editable : any = ["_name","_phone","_car", "_strava_account","_entreprise"]
 
   public onCompare(_left: KeyValue<any, any>, _right: KeyValue<any, any>): number {
-    return -1;
+    return 0;
   }
 
   constructor(public firestore: FirestorageService, public router: Router,
@@ -33,7 +33,6 @@ export class EditProfileComponent implements OnInit {
 
     this.firestore.updateUser(this.currentUser, this.currentUser._id);
     this.dialogRef.close();
-    // this.router.navigate(['/entreprise/']);
   }
 
 }

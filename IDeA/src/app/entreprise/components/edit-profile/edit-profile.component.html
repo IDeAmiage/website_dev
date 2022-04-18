@@ -5,9 +5,11 @@
   <!-- <mat-card-subtitle>Mettez à jour vos informations</mat-card-subtitle> -->
   <mat-card-title>{{this.currentUser._name}}</mat-card-title>
   <mat-card-content>
-    <div *ngFor="let item of this.currentUser | keyvalue:onCompare" >
-      <div *ngIf="editable.includes(item.key)">
-        <div *ngIf="item.key == '_car' else other_case">
+    <!-- <div *ngFor="let item of this.currentUser | keyvalue:onCompare" > -->
+    <div *ngFor="let item of this.editable" >
+      <!-- <div *ngIf="editable.includes(item.key)"> -->
+        <!-- <div *ngIf="item.key == '_car' else other_case"> -->
+        <div *ngIf="item == '_car' else other_case">
           <mat-form-field appearance="legacy">
             <mat-label>car type</mat-label>
             <input matInput placeholder="type" [(ngModel)]="this.currentUser._car._type">
@@ -24,17 +26,14 @@
         </div>
         <ng-template #other_case>
           <mat-form-field appearance="legacy">
-            <mat-label>{{item.key}}</mat-label>
-            <input matInput placeholder="item.key" [(ngModel)]="this.currentUser[item.key]">
+            <mat-label>{{item}}</mat-label>
+            <input matInput placeholder="item" [(ngModel)]="this.currentUser[item]">
             <mat-icon matSuffix color="primary">edit</mat-icon>
             <mat-hint>Hint</mat-hint>
           </mat-form-field>
-          <!-- <p>{{item.key}} {{item.value}}</p>
-          <p>{{this.currentUser}}</p>
-          <p>{{(this.currentUser|keyvalue)[i].value}}</p> -->
         </ng-template>
       </div>
-    </div>
+    <!-- </div> -->
   </mat-card-content>
   <mat-divider inset></mat-divider>
   <mat-card-actions align="end">

@@ -43,6 +43,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { InterceptorService } from '../interceptor.service';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 
@@ -98,7 +101,10 @@ import {MatChipsModule} from '@angular/material/chips';
     ReactiveFormsModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSlideToggleModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}]
 })

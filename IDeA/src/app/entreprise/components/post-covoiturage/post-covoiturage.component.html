@@ -36,6 +36,32 @@
   <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
     <mat-expansion-panel-header>
       <mat-panel-title>
+        datetime
+      </mat-panel-title>
+      <mat-panel-description>
+        Choose your datetime
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="this.departure_date">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Heure: </mat-label>
+        <input matInput type="time" [(ngModel)]="this.departure_time">
+      </mat-form-field>
+      <mat-action-row>
+        <button mat-button color="primary" (click)="this.saveDateTime()">Save</button>
+      </mat-action-row>
+    </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
         Traject
       </mat-panel-title>
       <mat-panel-description>
@@ -76,5 +102,6 @@
       <button mat-button color="primary" (click)="this.saveTraject()">Save</button>
     </mat-action-row>
   </mat-expansion-panel>
+
 </mat-accordion>
 <!-- <button mat-raised-button (click)="calc()"> Calculate</button> -->

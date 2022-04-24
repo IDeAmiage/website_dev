@@ -3,6 +3,7 @@
 <!-- <button (click)="testfirestore()">test firestore</button> -->
 <!-- <button (click)="readTest()">get</button> -->
 <div align="end" style="padding: 5px;">
+  <mat-slide-toggle [(ngModel)]="isChecked" (ngModelChange)="getMyTrajects()" style="margin-right:10px;">Mes annonces</mat-slide-toggle>
   <button mat-raised-button (click)="onCreate()"  color="warn"> Post an announce <mat-icon color="primary">post_add</mat-icon></button>
 </div>
 
@@ -15,13 +16,19 @@
 </div>
 
 <div fxLayout="row wrap"  fxLayoutGap="100" style="margin-left: 3%" >
-  <div *ngFor="let item of this.TrajetListe" fxFlex="30" style="margin-right: 15%;">
+  <div *ngFor="let item of this.TrajetListe; index as i" fxFlex="30" style="margin-right: 15%;">
     <mat-card class="example-card">
-      <mat-card-subtitle align="end">{{item._user._name}}</mat-card-subtitle>
+      <mat-card-subtitle align="end">{{item._user._name}}
+        <button *ngIf="this.isChecked"  mat-icon-button aria-label="Delete the traject" (click)="this.deleteTraject(i)">
+          <mat-icon color="warn">clear</mat-icon>
+        </button>
+      </mat-card-subtitle>
       <mat-card-title>{{item._depart}} -> {{item._destination}} <mat-icon color="primary">directions_car_filled</mat-icon></mat-card-title>
       <mat-card-content>
         <p>{{item._nbKms | number:'3.'}} Kms <mat-icon style="color: red;">timeline</mat-icon></p>
         <p>{{item._co2Emission}} Kg <mat-icon style="color: rgb(6, 250, 6);">co2</mat-icon></p>
+        <p>{{item._departure_time?.toDate() | date: 'yyyy-MM-dd HH:mm'}}</p>
+        <p>{{this.Userdistances[i]}} kms</p>
       </mat-card-content>
       <mat-divider inset></mat-divider>
       <mat-card-actions align="end">
@@ -34,5 +41,3 @@
     </mat-card>
   </div>
 </div>
-
-

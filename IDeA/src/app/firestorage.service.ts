@@ -55,6 +55,18 @@ constructor(private firestore: AngularFirestore) { }
     ).doc(id).update(data);
   }
 
+  async deleteTraject(traj:any, id:string){
+    await this.firestore.collection('trajet').
+      ref
+      .where('_user._nbTrajects', '==', traj._user._nbTrajects)
+      .where('_destination','==',traj._destination)
+      .where('_depart','==',traj._depart)
+      .where('_user._id', "==", id)
+      .get().then(res=>{
+        res.forEach(doc=> doc.ref.delete())
+      });
+  }
+
 
 
 }

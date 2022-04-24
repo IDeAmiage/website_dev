@@ -8,6 +8,11 @@ Some formations are available here: </br>
 [express integration](https://www.youtube.com/watch?v=dT1ID4q57fs&t=468s)
 https://hackafro.github.io/angular-epic-spinners/
 
+## Collaboration
+To collaborate on this project please request access to the owner.</br>
+Please create your branch before collaborating on this project.</br>
+It's can be done with: `git checkout -b "MyBranch"`</br>
+
 ## Installation
 
 Install node: [here](https://nodejs.org/en/download/)

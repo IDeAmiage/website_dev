@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   editactive = false;
 
   public onCompare(_left: KeyValue<any, any>, _right: KeyValue<any, any>): number {
-    return 1;
+    return 0;
   }
 
   constructor(public firestore: FirestorageService) { }
@@ -27,6 +27,6 @@ export class ProfileComponent implements OnInit {
 
   changeToEdit(){
     this.editactive = true;
-  }
+  } 
 
 }

@@ -43,10 +43,8 @@ export class NavComponent implements OnInit{
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    // dialogConfig.width = "60%";
+    dialogConfig.width = "50%";
+    //dialogConfig.height = "60%";
     this.dialog.open(ProfileComponent, dialogConfig);
   }
-
-
-
 }

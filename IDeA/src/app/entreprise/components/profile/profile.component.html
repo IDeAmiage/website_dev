@@ -1,58 +1,120 @@
 
-<div *ngIf="this.editactive;else view">
+<div *ngIf="this.editActive; else view">
   <app-edit-profile></app-edit-profile>
 </div>
 
 <ng-template #view>
+  <div fxLayout="column" fxLayoutAlign="start start" fxFill>
+  <h1 mat-dialog-title>Votre profil</h1>
 
-  <div fxLayoutAlign="end start" fxLayoutGap="180">
-    <h2>Votre profil</h2>
+  <mat-dialog-content class="mat-typography" [formGroup]="userForms">
+    <div fxLayout="row wrap" fxFill fxLayoutAlign="start start" fxLayoutGap="20px">
+      
+      <!-- Statistique -->
+      <div fxFlex="100"><h2>Statistique</h2></div>
 
-    <button mat-icon-button color="primary" (click)="this.changeToEdit()"><mat-icon >edit</mat-icon></button>
-  </div>
-  <!-- <div *ngFor="let item of this.currentUser | keyvalue" >
-    <p>Key: {{item.key}}, Value: {{item.value}}</p>
-
-  </div> -->
-  <mat-chip-list class="mat-chip-list-stacked">
-    <div *ngFor="let item of this.currentUser | keyvalue:onCompare">
-
-      <div *ngIf="item.key == '_car' else notcar">
-        <br>
-        Ma voiture
-        <mat-divider></mat-divider>
-        <mat-chip selected color="primary">
-          <!-- <div fxLayoutAlign="end start" > -->
-            type:{{this.currentUser._car._type}}
-            <mat-icon color="warn">directions_car</mat-icon>
-          <!-- </div> -->
-        </mat-chip>
-        <mat-chip selected color="primary">
-            carburant:{{this.currentUser._car._carburant}} <mat-icon color="warn">local_gas_station</mat-icon>
-        </mat-chip>
-        <mat-divider></mat-divider>
-
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Score CO2</mat-label>
+          <input matInput type="number" formControlName="_co2">
+        </mat-form-field>
       </div>
-      <ng-template #notcar>
-        <div *ngIf="item.value=='' else notemptyvals">
-          <mat-chip selected color="accent">
-            {{item.key | slice: 1}}:{{item.value}}
-          </mat-chip>
-        </div>
-        <ng-template #notemptyvals>
-          <mat-chip selected color="primary">
-            {{item.key | slice: 1}}:{{item.value}}
-          </mat-chip>
-        </ng-template>
-      </ng-template>
 
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Nombre de trajets</mat-label>
+          <input matInput type="number" formControlName="_nbTrajects">
+        </mat-form-field>
+      </div>
 
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Score</mat-label>
+          <input matInput type="number" formControlName="_score">
+        </mat-form-field>
+      </div>
 
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Niveau utilisateur</mat-label>
+          <input matInput type="number" formControlName="_level">
+        </mat-form-field>
+      </div>
 
+      <div fxFlex="calc(67% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Note</mat-label>
+          <input matInput type="number" formControlName="_note">
+        </mat-form-field>
+      </div>
 
+      <!--- Informations -->
+      <div fxFlex="100"><h2>Information utilisateur</h2></div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Prenom</mat-label>
+          <input matInput type="text" formControlName="_name">
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Entreprise</mat-label>
+          <input matInput type="text" formControlName="_entreprise">
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Téléphone</mat-label>
+          <input type="tel" matInput placeholder="Ex. +33601010101" formControlName="_phone">
+          <mat-error *ngIf="userForms.get('_phone')?.hasError('pattern') && !userForms.get('_phone')?.hasError('required')">
+            Veuillez entrer un numéro de téléphone valide
+          </mat-error>
+          <mat-error *ngIf="userForms.get('_phone')?.hasError('required')">
+            Le numéro de téléphone est requis
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy" style="width: 30%">
+          <mat-label>Identifiant</mat-label>
+          <input type="text" matInput formControlName="_id">
+        </mat-form-field>
+      </div>
+      
+      <!--
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Strava account</mat-label>
+          <input matInput type="text" formControlName="_strava_account">
+        </mat-form-field>
+      </div>-->
+
+      <!--- Voiture -->
+      <div fxFlex="100"><h2>Voiture</h2></div>
+
+      <div fxFlex="calc(35% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Type de voiture</mat-label>
+          <mat-select placeholder="Type de voiture" formControlName="_type">
+            <mat-option *ngFor="let voiture of this.sizeList" [value]="voiture">{{voiture}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="calc(65% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Carburant</mat-label>
+          <mat-select placeholder="Carburant" formControlName="_carburant">
+            <mat-option *ngFor="let carburant of this.fuelList" [value]="carburant">{{carburant.charAt(0).toUpperCase() + carburant.slice(1)}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
-
-    <br>
-  </mat-chip-list>
+  </mat-dialog-content>
+</div>
 </ng-template>
 

@@ -2,19 +2,29 @@
 <button routerLink="opendata" mat-raised-button>Open data</button> -->
 <div class="grid-container">
   <mat-grid-list cols="2" rowHeight="500px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+    <mat-grid-tile
+      *ngFor="let card of cards | async"
+      [colspan]="card.cols"
+      [rowspan]="card.rows"
+    >
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            {{card.title}}
+            {{ card.title }}
           </mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="{{card.imageSrc}}" alt="test">
+        <img mat-card-image src="{{ card.imageSrc }}" alt="test" />
         <mat-card-content class="dashboard-card-content">
-          <button mat-raised-button color="accent" routerLink="{{card.rlink}}" #voir>voir <mat-icon>visibility</mat-icon></button>
+          <button
+            mat-raised-button
+            color="accent"
+            routerLink="{{ card.rlink }}"
+            #voir
+          >
+            voir <mat-icon>visibility</mat-icon>
+          </button>
         </mat-card-content>
-        <mat-card-actions>
-        </mat-card-actions>
+        <mat-card-actions> </mat-card-actions>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>

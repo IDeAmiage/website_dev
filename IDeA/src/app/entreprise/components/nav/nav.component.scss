@@ -1,0 +1,68 @@
+@import "../../../../custom-theme.scss";
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  text-align: center;
+
+  &__active-link {
+    color: $azure-x-11-web-color !important;
+    width: 180px !important;
+    background: $gradient-list-item;
+    border-radius: 0 25px 25px 0;
+  }
+
+  &__hover-link:hover {
+    background: $gradient-list-item;
+  }
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.navbar {
+  background: $blue-bg-nav;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-nav-list .mat-list-item:focus,
+.mat-action-list .mat-list-item:focus,
+.mat-list-option:focus {
+  background: $gradient-list-item !important;
+  width: 180px !important;
+  border-radius: 0 25px 25px 0;
+}
+
+.mat-nav-list .mat-list-item:hover,
+.mat-action-list .mat-list-item:hover,
+.mat-list-option:hover {
+  background: $azure-x-11-web-color !important;
+  width: 180px !important;
+  border-radius: 0 25px 25px 0;
+}
+
+.mat-icon {
+  padding-right: 10px;
+}
+
+.logo {
+  width: 70%;
+  margin-left: 10%;
+}
+
+.mat-card-image {
+  padding: 10%;
+}

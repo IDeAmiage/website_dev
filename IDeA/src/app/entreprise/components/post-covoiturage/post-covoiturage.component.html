@@ -28,6 +28,15 @@
           <mat-option *ngFor="let fuel of this.fuelList" [value]="fuel">{{fuel}}</mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field>
+        <mat-label>Number of passangers</mat-label>
+        <mat-select [formControl]="people">
+          <mat-select-trigger>
+            {{people.value}}
+          </mat-select-trigger>
+          <mat-option *ngFor="let item of this.capacity" [value]="item">{{item}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <mat-action-row>
       <button mat-button color="primary" (click)="this.saveCar()">Save</button>

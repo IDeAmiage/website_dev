@@ -32,7 +32,9 @@ export class PostCovoiturageComponent implements OnInit {
   panelOpenState = false;
   size = new FormControl();
   fuel = new FormControl();
+  people = new FormControl();
   sizeList: string[] = ['Little', 'Medium', 'Big'];
+  capacity: number[] = [1,2,3,4];
 
   step = 0;
 
@@ -66,6 +68,7 @@ export class PostCovoiturageComponent implements OnInit {
   saveCar(){
     this.userCar._carburant = this.fuel.value;
     this.userCar._type = this.size.value;
+    this.userCar._capacite = this.people.value;
     this.trajet._user = this.currentUser[0];
     this.trajet._user._car = this.userCar;
     this.nextStep();

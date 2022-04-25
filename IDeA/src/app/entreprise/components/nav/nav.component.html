@@ -26,6 +26,7 @@
       </button>
       <span #entreprise><mat-icon color="accent">maps_home_work</mat-icon> Entreprise</span>
       <div class="spacer"></div>
+      <p>{{this.AirQuality}} µg/m³ <mat-icon>eco</mat-icon></p>
       <div *ngFor="let item of this.EntrepriseUser" >
         <button mat-raised-button (click)="onCreate()">{{item._name}} <mat-icon>account_circle</mat-icon></button>
       </div>

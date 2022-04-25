@@ -1,9 +1,12 @@
+import { Trajet } from './Trajet';
 import { FirebaseService } from './firebase.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Injectable } from '@angular/core';
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { User } from './User';
+import { setDoc, arrayUnion } from "firebase/firestore";
+
 
 
 
@@ -12,6 +15,8 @@ import { User } from './User';
 })
 export class FirestorageService {
   public user = new User();
+
+  public traj_ref:any;
 
 constructor(private firestore: AngularFirestore) { }
 
@@ -64,6 +69,18 @@ constructor(private firestore: AngularFirestore) { }
       .where('_user._id', "==", id)
       .get().then(res=>{
         res.forEach(doc=> doc.ref.delete())
+      });
+  }
+
+  async updateTraject(traj:Trajet){
+    await this.firestore.collection('trajet').
+      ref
+      .where('_user._nbTrajects', '==', traj._user._nbTrajects)
+      .where('_destination','==',traj._destination)
+      .where('_depart','==',traj._depart)
+      .where('_user._id', "==", traj._user._id)
+      .get().then(res=>{
+        res.forEach(doc=> doc.ref.update({_passagers: arrayUnion(traj._user)}))
       });
   }
 

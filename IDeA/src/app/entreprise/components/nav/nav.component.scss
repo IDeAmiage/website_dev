@@ -41,7 +41,7 @@
 .mat-nav-list .mat-list-item:focus,
 .mat-action-list .mat-list-item:focus,
 .mat-list-option:focus {
-  background: $gradient-list-item !important;
+  background: $gradient-list-item;
   width: 180px !important;
   border-radius: 0 25px 25px 0;
 }
@@ -49,9 +49,10 @@
 .mat-nav-list .mat-list-item:hover,
 .mat-action-list .mat-list-item:hover,
 .mat-list-option:hover {
-  background: $azure-x-11-web-color !important;
+  background: $azure-x-11-web-color ;
   width: 180px !important;
   border-radius: 0 25px 25px 0;
+  color:black !important;
 }
 
 .mat-icon {

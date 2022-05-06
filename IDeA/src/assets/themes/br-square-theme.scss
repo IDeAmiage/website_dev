@@ -1,0 +1,42 @@
+.br-square {
+  --br-active-color: #4278F5;
+
+  .br-units {
+    counter-reset: counter;
+  }
+
+  .br-unit-inner {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--br-active-color);
+    background-color: white;
+    margin: 2px;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 2;
+    text-align: center;
+    color: var(--br-active-color);
+    font-weight: 600;
+    opacity: 0.25;
+
+    &.br-active {
+      opacity: 1;
+    }
+
+    &:after {
+      content: counter(counter);
+      counter-increment: counter;
+    }
+  }
+
+  &.br-readonly {
+
+    .br-active {
+      opacity: 0.1;
+    }
+
+    .br-theme {
+      //color: lighten($orange-color, 10%);
+    }
+  }
+}

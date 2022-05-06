@@ -1,0 +1,36 @@
+$star-utf8: '\2605';
+
+.br-default {
+  --br-font-size: 26px;
+
+  .br-units {
+    align-items: center;
+  }
+
+  .br-unit-inner {
+
+    &:before {
+      content: $star-utf8;
+      color: var(--br-inactive-color);
+      width: 100%;
+    }
+  }
+
+  .br-active:before {
+    color: var(--br-active-color);
+  }
+
+  .br-fraction {
+    &:after {
+      color: var(--br-active-color);
+      content: $star-utf8;
+      width: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+    }
+  }
+
+}
+

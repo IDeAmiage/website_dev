@@ -1,0 +1,41 @@
+.br-horizontal {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .br-units {
+  }
+
+  .br-unit-inner {
+    display: block;
+    width: 12px;
+    height: 32px;
+    float: left;
+    background-color: var(--br-active-color);
+    margin: 1px;
+    text-align: center;
+    opacity: 0.25;
+
+    &.br-active {
+      opacity: 1;
+    }
+  }
+
+  &.br-readonly {
+    .br-unit-inner {
+      cursor: default;
+
+      &.br-active {
+        opacity: 0.1;
+      }
+    }
+  }
+
+  .br-text {
+    width: 20px;
+    margin-left: 20px;
+    font-size: 18px;
+    color: var(--br-active-color);
+  }
+}

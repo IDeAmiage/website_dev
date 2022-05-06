@@ -16,12 +16,7 @@ export class ProfileComponent implements OnInit {
   fuelList: string[] = ["diesel", "essence", "gpl", "cng"];
   sizeList: string[] = ['Little', 'Medium', 'Big'];
   userForms: FormGroup;
-
-
-
-  public onCompare(_left: KeyValue<any, any>, _right: KeyValue<any, any>): number {
-    return 0;
-  }
+  squareRate = 3;
 
   constructor(public firestore: FirestorageService) {
 

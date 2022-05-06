@@ -1,8 +1,24 @@
-mat-label {
-    font-size: 1.2em;
-    color: black;
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+
+.divider-stats {
+    height:60px;
 }
 
-mat-form-field {
-    font-size: 1.3em;
+.divider-panel {
+    height:120px;
 }
+
+#name {
+    font-size:1.6em;
+    font-weight: bold;
+    font-family: 'Mulish', sans-serif;
+}
+
+.car {
+    background-image: url(/assets/Entreprise/car-service.svg);
+}
+
+mat-divider.mat-divider-vertical {
+    border-right-width: 2px;
+    border-color: #6C6C6C;;
+} // #E6E6E6

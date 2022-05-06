@@ -9,6 +9,7 @@ import { SportComponent } from './components/sport/sport.component';
 import { ConferencesComponent } from './components/conferences/conferences.component';
 import { FoodTrucksComponent } from './components/food-trucks/food-trucks.component';
 import { TableViewComponent } from './components/table-view/table-view.component';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -46,10 +47,9 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
-
-
-
+import { ActiveRating, FractionRating, InactiveRating } from './components/rating/custom-rating';
+import { RatingComponent } from './components/rating/rating.component';
+import { RatingPipe } from './components/rating/rating.pipe';
 
 
 @NgModule({
@@ -66,7 +66,12 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     PostCovoiturageComponent,
     ProfileComponent,
     EditProfileComponent,
-    MonEntrepriseComponent
+    MonEntrepriseComponent,
+    RatingComponent,
+    ActiveRating, 
+    InactiveRating, 
+    FractionRating,
+    RatingPipe
   ],
   imports: [
     CommonModule,

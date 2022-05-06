@@ -48,8 +48,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     // NavComponent,
     SignupComponent,
     LoginComponent,
-      AccueilComponent,
-      NotifierComponent
+    AccueilComponent,
+    NotifierComponent,
    ],
   imports: [
     BrowserModule,

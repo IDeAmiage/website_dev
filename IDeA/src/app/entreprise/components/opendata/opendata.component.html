@@ -4,6 +4,14 @@
 
 <div class="grid-container">
   <h1 class="mat-h1">Opendata</h1>
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Rechercher un jeu de données</mat-label>
+      <input type="search" matInput [(ngModel)]= "search">
+      <button matSuffix mat-button><mat-icon >search</mat-icon></button>
+      {{search}}
+    </mat-form-field>
+  </form>
   <mat-grid-list cols="4" >
     <mat-grid-tile *ngFor="let card of this.liste" [colspan]=1 [rowspan]=1>
       <mat-card class="dashboard-card">

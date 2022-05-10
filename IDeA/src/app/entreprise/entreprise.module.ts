@@ -46,6 +46,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { SearchFilterPipe } from '../search-filter.pipe';
 
 
 
@@ -66,7 +67,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     PostCovoiturageComponent,
     ProfileComponent,
     EditProfileComponent,
-    MonEntrepriseComponent
+    MonEntrepriseComponent,
+    SearchFilterPipe
   ],
   imports: [
     CommonModule,

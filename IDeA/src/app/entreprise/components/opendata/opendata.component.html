@@ -4,16 +4,14 @@
 
 <div class="grid-container">
   <h1 class="mat-h1">Opendata</h1>
-  <form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Rechercher un jeu de données</mat-label>
-      <input type="search" matInput [(ngModel)]= "search">
-      <button matSuffix mat-button><mat-icon >search</mat-icon></button>
-      {{search}}
-    </mat-form-field>
-  </form>
+  <!-- Search form -->
+<form class="form-inline waves-light" mdbWavesEffect>
+  <div class="form-group">
+    <input type="text" class="form-control mb-4" placeholder="Search" [(ngModel)]="query" id="listSearch" name="query">
+  </div>
+</form>
   <mat-grid-list cols="4" >
-    <mat-grid-tile *ngFor="let card of this.liste" [colspan]=1 [rowspan]=1>
+    <mat-grid-tile *ngFor="let card of this.liste | searchFilter: query" [colspan]=1 [rowspan]=1>
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>

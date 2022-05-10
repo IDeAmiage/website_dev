@@ -16,6 +16,8 @@ export class OpendataComponent implements OnInit {
 
   public liste:any;
   public test:any;
+  public searchFilter:any = '';
+  public query:any;
 
 
   constructor(private opendata: OpendatasoftV1Service,

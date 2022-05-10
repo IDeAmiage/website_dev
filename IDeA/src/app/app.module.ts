@@ -37,6 +37,7 @@ import {MatInputModule} from '@angular/material/input';
 import { AccueilComponent } from './accueil/accueil.component';
 import { NotifierComponent } from './notifier/notifier.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 // import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 // import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -80,6 +81,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatPaginatorModule,
     MatSortModule,
     MatTableExporterModule,
+    MatAutocompleteModule,
     FlexLayoutModule,
     EntrepriseRoutingModule,
     AppRoutingModule,

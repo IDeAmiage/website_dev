@@ -30,8 +30,6 @@ export class CovoiturageComponent implements OnInit {
      public notifier: NotifierService,
      public opendatasoft: OpendatasoftV1Service) { }
 
-  data = {name:'test'};
-
   ngOnInit(): void {
     this.loadTrajects();
   }
@@ -40,10 +38,6 @@ export class CovoiturageComponent implements OnInit {
     this.firebase.logout();
     this.router.navigate(['/']);
   }
-
-  // testfirestore(){
-  //   this.firestore.insertObject(this.data,"test");
-  // }
 
   loadTrajects(){
     const obj = this.firestore.getObject("trajet");
@@ -62,19 +56,16 @@ export class CovoiturageComponent implements OnInit {
                 longitude: parseFloat(element._start_longitude),
             })/1000
         )
-
       })
       this.TrajetListe.sort((a:any, b:any) =>
         this.Userdistances[this.TrajetListe.indexOf(a)] - this.Userdistances[this.TrajetListe.indexOf(b)]
       );
       this.Userdistances.sort((a:any, b:any) => a - b);
     })
-
   }
 
   onCreate(){
     const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     this.dialog.open(PostCovoiturageComponent, dialogConfig);

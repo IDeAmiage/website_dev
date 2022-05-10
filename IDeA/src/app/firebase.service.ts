@@ -50,13 +50,14 @@ export class FirebaseService {
         this.notifier.showNotification('Error when login', 'OK','error');
       });
   }
-  async signup(email: string, password:string){
+  async signup(email: string, password:string, entreprise:string){
     await this.firebaseAuth.createUserWithEmailAndPassword(email,password)
       .then(res=>{
         this.isLoggedIn = true;
         localStorage.setItem('user',JSON.stringify(res.user));
         localStorage.setItem('user_id', res.user?.uid!)
         this.firestore.user._id = res.user?.uid;
+        this.firestore.user._entreprise = entreprise;
         this.firestore.user._name = res.user?.email?.split('@')[0]!;
         this.firestore.user._car = Object.assign({}, this.firestore.user._car)
         this.firestore.user = Object.assign({}, this.firestore.user)

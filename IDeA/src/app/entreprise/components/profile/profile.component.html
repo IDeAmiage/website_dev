@@ -3,65 +3,59 @@
   <app-edit-profile></app-edit-profile>
 </div>
 
-<!--
-  { "_phone": "0622954244", "_entreprise": "Domolandes", "_name": "alexis", "_note": 0, "_avis": [], 
-  "_co2": 0, "_strava_account": "", "_id": "6d6bASiafigb0d9gBJamP5yh05x1", 
-  "_car": { "_type": "Medium", "_carburant": "essence", "_capacite": 4 }, 
-  "_nbTrajects": 10, "_level": 1, "_score": 0 }
--->
-
 
 <ng-template #view>
-  <div fxLayout="row" fxLayoutAlign="center center" fxFill fxLayoutGap="50px">
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center" fxFill fxLayoutGap.lt-sm="20px" fxLayoutGap="50px">
 
     <!-- Name and statistique -->
     <div fxLayout="column" fxLayoutAlign="center center">
-      <p id="name">{{this.currentUser['_name'] | titlecase}}</p>
-      <p id="entreprise">{{this.currentUser['_entreprise'] | titlecase}}</p>
-      <p id="niveau">Niveau {{this.currentUser['_level']}}</p>
-
-      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="25px" fxFlexOffset="25px">
+      <div id="name">{{this.currentUser['_name'] | titlecase}}</div>
+      <div id="entreprise">{{this.currentUser['_entreprise'] | titlecase}}</div>
+      <div id="niveau">Niveau {{this.currentUser['_level']}}</div>
+      <div *ngIf="(this.currentUser['_avis'] && this.currentUser['_avis'].length)">
+        <rating [rate]="3.5" [max]="5"></rating>
+        <!--{{this.currentUser['_note'] | number:"0.0-1"}}-->
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="25px">
         <div fxLayout="column" fxLayoutAlign="center center">
-          <p class="number">{{this.currentUser['_nbTrajects']}}</p>
-          <p class="title">Trajets</p>
+          <div>{{this.currentUser['_nbTrajects'] | number:"0.0-0"}}</div>
+          <div>Trajets</div>
         </div>
         <mat-divider class="divider-stats" vertical></mat-divider>
         <div fxLayout="column" fxLayoutAlign="center center">
-          <p class="number">{{this.currentUser['_co2']}}</p>
-          <p class="title">Co2</p>
-        </div>
-        <mat-divider class="divider-stats" vertical></mat-divider>
-        <div fxLayout="column" fxLayoutAlign="center center">
-          <p class="number">{{this.currentUser['_note']}}</p>
-          <p class="title">Note</p>
+          <div>{{this.currentUser['_co2'] | number:"0.0-0"}}</div>
+          <div>Co2</div>
         </div>
       </div>
     </div>
-    <mat-divider class="divider-panel" vertical></mat-divider>
+
+    <mat-divider [ngStyle]="!this.isPhonePortrait?{'height':'120px'}:{'width':'120px'}" [vertical]="!this.isPhonePortrait"></mat-divider>
 
     <!-- Voiture -->
-    <div class="car" fxLayout="column" fxLayoutAlign="center center">
-      <p>Voiture</p>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <div>Voiture</div>
       <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
         <div fxLayout="column" fxLayoutAlign="center center">
-          <p>{{this.currentUser['_car']['_type']}}</p>
-          <p>Type</p>
+          <div>{{this.currentUser['_car']['_type'] | titlecase}}</div>
+          <div>Type</div>
         </div>
-        <!--<mat-divider class="divider-stats" vertical></mat-divider>-->
         <div fxLayout="column" fxLayoutAlign="center center">
-          <p>{{this.currentUser['_car']['_carburant'] | titlecase}}</p>
-          <p>Carburant</p>
+          <div>{{this.currentUser['_car']['_carburant'] | titlecase}}</div>
+          <div>Carburant</div>
         </div>
-        <!--<mat-divider class="divider-stats" vertical></mat-divider>-->
-        <div fxLayout="column" fxLayoutAlign="center center">
-          <p>{{this.currentUser['_car']['_capacite']}}</p>
-          <p>Places</p>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-icon>person</mat-icon>
+          <div>x {{this.currentUser['_car']['_capacite']}}</div>
         </div>
+        <div class="car-service-svg"></div>
       </div>
+      <!--TODO-->
+      <!--Gerer les 3 derniers avis de l'utilisateur-->
       <div *ngIf="(this.currentUser['_avis'] && this.currentUser['_avis'].length)">
-        <p>Derniers avis:</p>
-        <rating theme="square" [(rate)]="squareRate" [max]="5"></rating>
+        <div>Derniers avis:</div>
+        <rating [rate]="5" [max]="5"></rating>
       </div>
+      
     </div>
   </div>
 </ng-template>

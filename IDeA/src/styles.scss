@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import './assets/themes/br-default-theme.scss';
-@import './assets/themes/br-square-theme.scss';
 @import './assets/themes/br-stars-theme.scss';
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap');
+
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Mulish', sans-serif; }
 
 
 .error.mat-snack-bar-container{

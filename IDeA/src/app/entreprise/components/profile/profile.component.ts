@@ -3,6 +3,7 @@ import { User } from './../../../User';
 import { Component, OnInit } from '@angular/core';
 import { KeyValue } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-profile',
@@ -17,8 +18,9 @@ export class ProfileComponent implements OnInit {
   sizeList: string[] = ['Little', 'Medium', 'Big'];
   userForms: FormGroup;
   squareRate = 3;
+  isPhonePortrait = false;
 
-  constructor(public firestore: FirestorageService) {
+  constructor(public firestore: FirestorageService, private responsive: BreakpointObserver) {
 
     let defaultInputText = {value: '', disabled: true};
     let defaultInputNumber = {value: 0, disabled: true};
@@ -46,6 +48,13 @@ export class ProfileComponent implements OnInit {
       this.currentUser = res[0];
       this.userForms.patchValue(this.currentUser._car);
       this.userForms.patchValue(this.currentUser);
+    });
+
+    this.responsive.observe(Breakpoints.XSmall).subscribe(result => {
+        this.isPhonePortrait = false; 
+        if (result.matches) {
+          this.isPhonePortrait = true;
+        }
     });
   }
 

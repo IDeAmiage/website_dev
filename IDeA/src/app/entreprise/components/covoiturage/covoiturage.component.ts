@@ -1,3 +1,5 @@
+import { OpendatasoftV1Service } from './../../../opendatasoftV1.service';
+import { NotifierService } from './../../../notifier.service';
 import { LoaderService } from './../../../loader.service';
 import { Trajet } from './../../../Trajet';
 import { PostCovoiturageComponent } from './../post-covoiturage/post-covoiturage.component';
@@ -24,24 +26,18 @@ export class CovoiturageComponent implements OnInit {
 
   constructor(public firebase: FirebaseService, public router: Router,
      public firestore: FirestorageService, public dialog: MatDialog,
-     public loader: LoaderService) { }
-
-  data = {name:'test'};
+     public loader: LoaderService,
+     public notifier: NotifierService,
+     public opendatasoft: OpendatasoftV1Service) { }
 
   ngOnInit(): void {
     this.loadTrajects();
-    console.log(parseFloat(localStorage.getItem('latitude')!));
-    console.log(parseFloat(localStorage.getItem('longitude')!));
   }
 
   logout(){
     this.firebase.logout();
     this.router.navigate(['/']);
   }
-
-  // testfirestore(){
-  //   this.firestore.insertObject(this.data,"test");
-  // }
 
   loadTrajects(){
     const obj = this.firestore.getObject("trajet");
@@ -60,19 +56,16 @@ export class CovoiturageComponent implements OnInit {
                 longitude: parseFloat(element._start_longitude),
             })/1000
         )
-
       })
       this.TrajetListe.sort((a:any, b:any) =>
         this.Userdistances[this.TrajetListe.indexOf(a)] - this.Userdistances[this.TrajetListe.indexOf(b)]
       );
       this.Userdistances.sort((a:any, b:any) => a - b);
     })
-
   }
 
   onCreate(){
     const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     this.dialog.open(PostCovoiturageComponent, dialogConfig);
@@ -93,6 +86,19 @@ export class CovoiturageComponent implements OnInit {
     this.isChecked = false;
   }
 
+  addPassenger(i:number){
+    this.firestore.getUser(localStorage.getItem('user_id')!).subscribe(res=>{
+      localStorage.setItem('user',JSON.stringify(res));
+      const user = JSON.parse(localStorage.getItem("user")!);
+      if (this.TrajetListe[i]._passagers.length == this.TrajetListe[i]._user._car._capacite){
+        this.notifier.showNotification("This traject is full","OK", "error");
+      } else if (this.TrajetListe[i]._passagers.some((item:any) => item._id === user[0]._id)){
+        this.notifier.showNotification("You are already register","OK","error");
+      }
+      this.TrajetListe[i]._passagers.push(user[0]);
+      this.firestore.updateTraject(this.TrajetListe[i]);
+    })
+  }
 
 
 

@@ -1,7 +1,3 @@
-<!-- <button (click)="logout()" mat-raised-button>Logout</button> -->
-
-<!-- <button (click)="testfirestore()">test firestore</button> -->
-<!-- <button (click)="readTest()">get</button> -->
 <div align="end" style="padding: 5px;">
   <mat-slide-toggle [(ngModel)]="isChecked" (ngModelChange)="getMyTrajects()" style="margin-right:10px;">Mes annonces</mat-slide-toggle>
   <button mat-raised-button (click)="onCreate()"  color="warn"> Post an announce <mat-icon color="primary">post_add</mat-icon></button>
@@ -11,7 +7,6 @@
   <mat-spinner style="top: 50%; left: 50%;"></mat-spinner>
 </div>
 
-<!-- <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="100"> -->
 <div id="back">
 </div>
 
@@ -29,15 +24,14 @@
         <p>{{item._co2Emission}} Kg <mat-icon style="color: rgb(6, 250, 6);">co2</mat-icon></p>
         <p>{{item._departure_time?.toDate() | date: 'yyyy-MM-dd HH:mm'}}</p>
         <p>{{this.Userdistances[i]}} kms</p>
+        <p>{{item._passagers.length}}/{{item._user._car._capacite}}</p>
       </mat-card-content>
       <mat-divider inset></mat-divider>
       <mat-card-actions align="end">
         <a href="tel:{{item._user._phone}}" mat-button>MESSAGE <mat-icon color="primary">chat</mat-icon></a>
         <a href="https://www.google.fr/maps/dir/{{item._depart}}/{{item._destination}}/" mat-button>MAP <mat-icon color="primary">map</mat-icon></a>
+        <a mat-button (click)="addPassenger(i)">ADD <mat-icon color="primary">add</mat-icon></a>
       </mat-card-actions>
-      <!-- <mat-card-footer>
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-      </mat-card-footer> -->
     </mat-card>
   </div>
 </div>

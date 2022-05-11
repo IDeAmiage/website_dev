@@ -1,3 +1,4 @@
+import { OpendatasoftV1Service } from './../opendatasoftV1.service';
 import { FirestorageService } from './../firestorage.service';
 import { ApiService } from './../api.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,11 +12,15 @@ import * as geolib from 'geolib';
 export class EntrepriseComponent implements OnInit {
   public text: any;
   public currentUser: any;
+  public listEntreprises:any = new Array();
 
-  constructor(public api: ApiService, public firestore: FirestorageService) {}
+  constructor(public api: ApiService, public firestore: FirestorageService,
+        public opendatasoft: OpendatasoftV1Service
+    ) { }
 
   ngOnInit(): void {
     // this.loadUserData();
+    this.loadEntreprises();
     navigator.geolocation.getCurrentPosition(
       (position) => {
         console.log(position.coords.latitude);
@@ -35,4 +40,19 @@ export class EntrepriseComponent implements OnInit {
       this.currentUser = JSON.parse(localStorage.getItem("user")!);
     })
   }
+
+  loadEntreprises(){
+    this.opendatasoft.getListEntreprises().subscribe(
+      response=>{
+        response.records.forEach((element:any) => {
+          if(element.fields.denominationunitelegale!= undefined){
+            this.listEntreprises.push(element.fields.denominationunitelegale)
+          }
+        });
+      }
+    )
+  }
+
+
+
 }

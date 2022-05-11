@@ -5,6 +5,10 @@
   <button (click)="onSignup(emailSignup.value,passwordSignup.value)">Sign up</button>
 </div> -->
 
+<div *ngIf="this.loader.isLoading | async" class="loader-container">
+  <mat-spinner style="top: 50%; left: 50%;"></mat-spinner>
+</div>
+
 <div *ngIf="!this.firebaseService.isLoggedIn" >
     <mat-card>
       <mat-card-title>Signup</mat-card-title>
@@ -20,6 +24,17 @@
             <mat-form-field>
               <input matInput placeholder="Password" formControlName="password" type="password" />
               <mat-error *ngIf="password?.errors?.['required']" >Password is required</mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <input matInput placeholder="Entreprise" [matAutocomplete]="auto" formControlName="entreprise" type="text"  />
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="entreprise?.errors?.['required']" >Entreprise is required</mat-error>
             </mat-form-field>
           </p>
           <div class="button">

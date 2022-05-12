@@ -14,8 +14,8 @@ export class HomeComponent implements OnInit {
   cols : number | undefined;
 
   gridByBreakpoint = {
-    xl: 4,
-    lg: 4,
+    xl: 2,
+    lg: 2,
     md: 2,
     sm: 2,
     xs: 1

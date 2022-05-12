@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap");
+@import "../../../../custom-theme.scss";
+
+// mat-card:hover{
+//   -ms-transform: scale(1.5); /* IE 9 */
+//   -webkit-transform: scale(1.5); /* Safari 3-8 */
+//   transform: scale(1.1);
+// }
+.grid-container {
+  height: 100%;
+}
+
+.mat-card-title{
+  font-family: "Mulish", sans-serif;
+  font-weight: bold;
+}
+.mat-card{
+  margin: 2rem;
+  border-radius: 20px;
+  width: 300px;
+  height: 400px;
+  background-image: url(/assets/Entreprise/dottedLine.svg);
+  background-position: center;
+  background-size: 120%;
+  background-repeat: no-repeat;
+  background-position: 30px;
+  z-index: 2;
+
+}
+
+.jeep{
+  width: 10%;
+  margin: 2px;
+}
+
+.clean_air{
+  width: 20%;
+  margin-left: 20px;
+}
+
+.departure_hour{
+  font-weight: bold;
+  font-size: large;
+}
+
+.departure_date{
+  font-weight:lighter;
+  font-size:medium;
+  font-style: italic;
+}
+
+#back{
+  position: absolute;
+  background-image: url(/assets/Entreprise/covoiturage.svg);
+  height: 50%;
+  width: 40%;
+  z-index: -1;
+  top: 50%;
+  left: 60%;
+  background-repeat: no-repeat;
+  /* background-position: right; */
+  /* width: 500px; */
+}
+
+.loader-container{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: black;
+  opacity: 0.8;
+  z-index: 99;
+}

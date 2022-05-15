@@ -30,8 +30,7 @@
         [routerLinkActiveOptions]="{ exact: true }"
         ><mat-icon aria-hidden="false" aria-label="direction car">
           directions_car</mat-icon
-        >Covoiturage</a
-      >
+        >Covoiturage</a>
       <a
         mat-list-item
         routerLink="/entreprise/foodtrucks"
@@ -39,63 +38,55 @@
         [routerLinkActiveOptions]="{ exact: true }"
         ><mat-icon aria-hidden="false" aria-label="food Truck">
           fastfood</mat-icon
-        >Food-trucks</a
-      >
+        >Food-trucks</a>
       <a
         mat-list-item
         routerLink="/entreprise/sport"
         routerLinkActive="sidenav__active-link sidenav__hover-link"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
+        [routerLinkActiveOptions]="{ exact: true }">
         <mat-icon aria-hidden="false" aria-label="Sports"
           >directions_run</mat-icon
-        >Sport</a
-      >
+        >Sport</a>
       <a
         mat-list-item
         routerLink="/entreprise/conferences"
         routerLinkActive="sidenav__active-link sidenav__hover-link"
         [routerLinkActiveOptions]="{ exact: true }"
         ><mat-icon aria-hidden="false" aria-label="Conference">mic</mat-icon
-        >Conferences</a
-      >
+        >Conferences</a>
       <a
         mat-list-item
         routerLink="/entreprise/opendata"
         routerLinkActive="sidenav__active-link sidenav__hover-link"
         [routerLinkActiveOptions]="{ exact: true }"
         ><mat-icon aria-hidden="false" aria-label="OpenData">folder</mat-icon
-        >Opendata</a
-      >
+        >Opendata</a>
       <a
         mat-list-item
         routerLink="/entreprise/mon-entreprise"
         routerLinkActive="sidenav__active-link sidenav__hover-link"
         [routerLinkActiveOptions]="{ exact: true }"
         ><mat-icon aria-hidden="false" aria-label="MonEntreprise">face</mat-icon
-        >mon entreprise</a
-      >
+        >mon entreprise</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="navbar">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-      >
+      <button type="button"
+              aria-label="Toggle sidenav"
+              mat-icon-button
+              (click)="drawer.toggle()"
+              *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span #entreprise
-        ><mat-icon color="accent">maps_home_work</mat-icon> Entreprise</span
-      >
+      <div #entreprise>
+        <mat-icon>maps_home_work</mat-icon> Entreprise
+      </div>
       <div class="spacer"></div>
-      <p>{{this.AirQuality}} µg/m³ <mat-icon>eco</mat-icon></p>
+      <div>{{this.AirQuality}} µg/m³ <mat-icon>eco</mat-icon></div>
       <div *ngFor="let item of this.EntrepriseUser" >
         <button mat-raised-button [matMenuTriggerFor]="menu">
-          <mat-icon>account_circle</mat-icon> {{ item._name | titlecase}}
+          <mat-icon>account_circle</mat-icon> {{item._name | titlecase}}
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="onCreate()"><mat-icon>settings</mat-icon>Profile</button>

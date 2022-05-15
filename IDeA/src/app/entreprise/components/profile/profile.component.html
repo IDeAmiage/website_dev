@@ -5,7 +5,7 @@
 
 <ng-template #view>
   <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center" fxFill fxLayoutGap.lt-sm="20px" fxLayoutGap="50px">
-
+    {{this.currentUser | json}}
     <!-- Name and statistique -->
     <div fxLayout="column" fxLayoutAlign="center center">
       <div id="name">{{this.currentUser['_name'] | titlecase}}</div>

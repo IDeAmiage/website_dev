@@ -9,12 +9,13 @@ import { FirebaseService } from './../../../firebase.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import * as geolib from 'geolib';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 
 @Component({
   selector: 'app-covoiturage',
   templateUrl: './covoiturage.component.html',
-  styleUrls: ['./covoiturage.component.css']
+  styleUrls: ['./covoiturage.component.scss']
 })
 export class CovoiturageComponent implements OnInit {
 
@@ -23,12 +24,52 @@ export class CovoiturageComponent implements OnInit {
   public TrajetListe : any = new Array();
   public Userdistances : any = new Array();
 
+  cols : number | undefined;
+
+  gridByBreakpoint = {
+    xl: 4,
+    lg: 4,
+    md: 2,
+    sm: 2,
+    xs: 1
+  }
+
 
   constructor(public firebase: FirebaseService, public router: Router,
      public firestore: FirestorageService, public dialog: MatDialog,
      public loader: LoaderService,
      public notifier: NotifierService,
      public opendatasoft: OpendatasoftV1Service) { }
+
+     private breakpointObserver: BreakpointObserver) {
+      this.breakpointObserver.observe([
+        Breakpoints.XSmall,
+        Breakpoints.Small,
+        Breakpoints.Medium,
+        Breakpoints.Large,
+        Breakpoints.XLarge,
+      ]).subscribe(result => {
+        if (result.matches) {
+          if (result.breakpoints[Breakpoints.XSmall]) {
+            this.cols = this.gridByBreakpoint.xs;
+          }
+          if (result.breakpoints[Breakpoints.Small]) {
+            this.cols = this.gridByBreakpoint.sm;
+          }
+          if (result.breakpoints[Breakpoints.Medium]) {
+            this.cols = this.gridByBreakpoint.md;
+          }
+          if (result.breakpoints[Breakpoints.Large]) {
+            this.cols = this.gridByBreakpoint.lg;
+          }
+          if (result.breakpoints[Breakpoints.XLarge]) {
+            this.cols = this.gridByBreakpoint.xl;
+          }
+        }
+      });
+  }
+
+  data = {name:'test'};
 
   ngOnInit(): void {
     this.loadTrajects();

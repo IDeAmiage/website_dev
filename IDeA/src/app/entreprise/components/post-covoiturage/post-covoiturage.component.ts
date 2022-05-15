@@ -121,8 +121,10 @@ export class PostCovoiturageComponent implements OnInit {
       this.trajet._co2Emission = parseFloat(res.toString());
     })
     this.firestore.insertObject(this.trajet,"trajet");
-    this.firestore.updateUser(this.trajet._user, this.trajet._user._id)
-    this.dialogRef.close();
+    this.firestore.updateUser(this.trajet._user, this.trajet._user._id).then((item:any)=>{
+      location.reload();
+      this.dialogRef.close();
+    })
   }
 
 

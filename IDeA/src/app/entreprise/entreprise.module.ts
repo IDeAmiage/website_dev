@@ -50,6 +50,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ActiveRating, FractionRating, InactiveRating } from './components/rating/custom-rating';
 import { RatingComponent } from './components/rating/rating.component';
 import { RatingPipe } from './components/rating/rating.pipe';
+import { AtomSpinnerModule } from 'angular-epic-spinners';
+
+
 
 
 @NgModule({
@@ -109,7 +112,8 @@ import { RatingPipe } from './components/rating/rating.pipe';
     MatChipsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    AtomSpinnerModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}]
 })

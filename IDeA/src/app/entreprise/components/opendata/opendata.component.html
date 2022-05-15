@@ -1,15 +1,24 @@
 <div *ngIf="this.loader.isLoading | async" class="loader-container">
-  <mat-spinner style="top: 50%; left: 50%;"></mat-spinner>
+  <!-- <mat-spinner style="top: 50%; left: 50%;"></mat-spinner> -->
+  <div class="loader-item">
+    <div class="loader loader-1">
+      <app-atom-spinner
+      [animationDuration]="1000"
+      [size]="100"
+      [color]="'#ff1d5e'"
+     ></app-atom-spinner>
+    </div>
+  </div>
 </div>
 
 <div class="grid-container">
   <h1 class="mat-h1">Opendata</h1>
-  <mat-grid-list cols="4" >
+  <mat-grid-list #grid [cols]="cols" rowHeight="10:10" gutterSize="20px" >
     <mat-grid-tile *ngFor="let card of this.liste" [colspan]=1 [rowspan]=1>
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            {{card.fields.dataset_id}}
+            <span class="title">{{card.fields.dataset_id}}</span>
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
             </button>
@@ -20,11 +29,26 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>Number of records: {{card.fields.records_count}}</div>
-          <div>Size of records: {{card.fields.records_size}}</div>
-          <div>Last measure: {{card.fields.data_processed}}</div>
+          <div class="info">
+            <span class="info_title">
+              <mat-icon class="icon">save</mat-icon>Nombre d'enregistrement : <br />
+            </span>
+            <span class="info_data">{{card.fields.records_count}}</span>
+          </div>
+          <div class="info">
+            <span class="info_title">
+              <mat-icon class="icon">save_alt</mat-icon>Poids du dataset : <br />
+            </span>
+            <span class="info_data"> {{card.fields.records_size}} octets</span>
+          </div>
+          <div class="info">
+            <span class="info_title">
+              <mat-icon class="icon">update</mat-icon>Mis à jour le : <br />
+            </span>
+            <span class="info_data">{{card.fields.data_processed | slice:0:10}}</span>
+          </div>
           <button mat-icon-button class="data-button" (click)="this.showTable(this.card.fields.dataset_id)" routerLink="table">
-            <mat-icon>description</mat-icon>
+            <img src="/assets/Entreprise/download.gif" alt="Download Gif" class="gif_download">
           </button>
         </mat-card-content>
       </mat-card>

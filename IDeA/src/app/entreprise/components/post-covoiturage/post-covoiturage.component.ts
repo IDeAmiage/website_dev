@@ -124,7 +124,4 @@ export class PostCovoiturageComponent implements OnInit {
     this.firestore.updateUser(this.trajet._user, this.trajet._user._id)
     this.dialogRef.close();
   }
-
-
-
 }

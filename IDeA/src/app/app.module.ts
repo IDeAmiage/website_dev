@@ -49,8 +49,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     // NavComponent,
     SignupComponent,
     LoginComponent,
-      AccueilComponent,
-      NotifierComponent
+    AccueilComponent,
+    NotifierComponent,
    ],
   imports: [
     BrowserModule,

@@ -7,11 +7,10 @@ import * as geolib from 'geolib';
 @Component({
   selector: 'app-entreprise',
   templateUrl: './entreprise.component.html',
-  styleUrls: ['./entreprise.component.css']
+  styleUrls: ['./entreprise.component.scss'],
 })
 export class EntrepriseComponent implements OnInit {
-
-  public text:any;
+  public text: any;
   public currentUser: any;
   public listEntreprises:any = new Array();
 
@@ -34,7 +33,7 @@ export class EntrepriseComponent implements OnInit {
     );
   }
 
-  async loadUserData(){
+  async loadUserData() {
     // await this.firestore.getUser(this.firestore.user._id).subscribe(res=>{
     await this.firestore.getUser(localStorage.getItem('user_id')!).subscribe(res=>{
       localStorage.setItem('user',JSON.stringify(res));

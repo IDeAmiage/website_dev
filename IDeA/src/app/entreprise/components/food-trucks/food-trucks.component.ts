@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-food-trucks',
   templateUrl: './food-trucks.component.html',
-  styleUrls: ['./food-trucks.component.css']
+  styleUrls: ['./food-trucks.component.scss']
 })
 export class FoodTrucksComponent implements OnInit {
 

@@ -1,39 +1,100 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <!--TODO-->
+    <!--Changer le padding au niveau du logo-->
+    <mat-toolbar class="logo"
+      ><img
+        src="../../../../assets/Entreprise/logo_domolandes.png"
+        class="logo"
+    /></mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/entreprise">Home</a>
-      <a mat-list-item routerLink="covoiturage">covoiturage</a>
-      <a mat-list-item routerLink="foodtrucks">food-trucks</a>
-      <a mat-list-item routerLink="sport">sport</a>
-      <a mat-list-item routerLink="conferences">conferences</a>
-      <a mat-list-item routerLink="opendata">opendata</a>
-      <a mat-list-item routerLink="mon-entreprise">mon entreprise</a>
+      <a
+        mat-list-item
+        routerLink="/entreprise"
+        routerLinkActive="sidenav__active-link sidenav__hover-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ><mat-icon aria-hidden="false" aria-label="Home icon">home</mat-icon
+        >Home</a
+      >
+      <a
+        mat-list-item
+        routerLink="/entreprise/covoiturage"
+        routerLinkActive="sidenav__active-link sidenav__hover-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ><mat-icon aria-hidden="false" aria-label="direction car">
+          directions_car</mat-icon
+        >Covoiturage</a>
+      <a
+        mat-list-item
+        routerLink="/entreprise/foodtrucks"
+        routerLinkActive="sidenav__active-link sidenav__hover-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ><mat-icon aria-hidden="false" aria-label="food Truck">
+          fastfood</mat-icon
+        >Food-trucks</a>
+      <a
+        mat-list-item
+        routerLink="/entreprise/sport"
+        routerLinkActive="sidenav__active-link sidenav__hover-link"
+        [routerLinkActiveOptions]="{ exact: true }">
+        <mat-icon aria-hidden="false" aria-label="Sports"
+          >directions_run</mat-icon
+        >Sport</a>
+      <a
+        mat-list-item
+        routerLink="/entreprise/conferences"
+        routerLinkActive="sidenav__active-link sidenav__hover-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ><mat-icon aria-hidden="false" aria-label="Conference">mic</mat-icon
+        >Conferences</a>
+      <a
+        mat-list-item
+        routerLink="/entreprise/opendata"
+        routerLinkActive="sidenav__active-link sidenav__hover-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ><mat-icon aria-hidden="false" aria-label="OpenData">folder</mat-icon
+        >Opendata</a>
+      <a
+        mat-list-item
+        routerLink="/entreprise/mon-entreprise"
+        routerLinkActive="sidenav__active-link sidenav__hover-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ><mat-icon aria-hidden="false" aria-label="MonEntreprise">face</mat-icon
+        >Mon entreprise</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+    <mat-toolbar class="navbar">
+      <button type="button"
+              aria-label="Toggle sidenav"
+              mat-icon-button
+              (click)="drawer.toggle()"
+              *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span #entreprise><mat-icon color="accent">maps_home_work</mat-icon> Entreprise</span>
-      <div class="spacer"></div>
-      <p>{{this.AirQuality}} µg/m³ <mat-icon>eco</mat-icon></p>
-      <div *ngFor="let item of this.EntrepriseUser" >
-        <button mat-raised-button (click)="onCreate()">{{item._name}} <mat-icon>account_circle</mat-icon></button>
+      <div #entreprise>
+        <mat-icon>maps_home_work</mat-icon> Entreprise
       </div>
-      <button mat-raised-button (click)="logout()" color="accent">Logout<mat-icon>logout</mat-icon></button>
+      <div class="spacer"></div>
+      <div>{{this.AirQuality}} µg/m³ <mat-icon>eco</mat-icon></div>
+      <div *ngFor="let item of this.EntrepriseUser" >
+        <button mat-raised-button [matMenuTriggerFor]="menu">
+          <mat-icon>account_circle</mat-icon> {{item._name | titlecase}}
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onCreate()"><mat-icon>settings</mat-icon>Profile</button>
+          <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>Déconnexion</button>
+        </mat-menu>
+      </div>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
-
   </mat-sidenav-content>
 </mat-sidenav-container>

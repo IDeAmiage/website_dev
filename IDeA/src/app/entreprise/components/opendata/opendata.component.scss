@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap");
+@import "../../../../custom-theme.scss";
+
+
+.mat-h1{
+  font-family: "Mulish", sans-serif;
+  font-size: 40px;
+}
+
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border-radius: 1.5rem;
+  font-family: "Mulish", sans-serif;
+}
+
+.title{
+  text-align: left;
+  @media (max-width: 1280px){
+    font-size: smaller;
+  }
+}
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: left;
+  font-weight: bold;
+  @media (max-width: 1280px){
+    margin-top: -20px;
+  }
+}
+
+.info{
+  margin-left: -0.5rem;
+  @media (max-width: 1280px){
+    font-size:small;
+  }
+}
+
+.info_title{
+  font-weight:bolder;
+  font-size:medium;
+  @media (max-width: 1280px){
+    font-size:small;
+  }
+}
+
+.info_data{
+  font-weight: lighter;
+}
+
+.data-button {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+
+.loader-container{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: black;
+  opacity: 0.8;
+  z-index: 99;
+}
+
+.loader {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.gif_download{
+  width: 70%;
+}
+
+.icon{
+  transform: scale(0.7);
+  margin-right: 0.1rem;
+  top: 5px;
+  position: relative;
+  @media (max-width: 1280px){
+    transform: scale(0.5);
+  }
+}

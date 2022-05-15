@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '~@angular/material' as mat;
+@use "~@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -14,23 +13,98 @@
 // hue. Available color palettes: https://material.io/design/color/
 
 /* SCSS HEX */
-$deep-jungle-green: #18534fff;
-$skobeloff: #226d68ff;
-$azure-x-11-web-color: #ecf8f6ff;
-$medium-champagne: #feeaa1ff;
-$persian-orange: #d6955bff;
+$deep-jungle-green: #18534f;
+$skobeloff: #226d68;
+$azure-x-11-web-color: #ecf8f6;
+$medium-champagne: #feeaa1;
+$persian-orange: #d6955b;
 
 /* SCSS Gradient */
-$gradient-top: linear-gradient(0deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
-$gradient-right: linear-gradient(90deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
-$gradient-bottom: linear-gradient(180deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
-$gradient-left: linear-gradient(270deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
-$gradient-top-right: linear-gradient(45deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
-$gradient-bottom-right: linear-gradient(135deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
-$gradient-top-left: linear-gradient(225deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
-$gradient-bottom-left: linear-gradient(315deg, #18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
-$gradient-radial: radial-gradient(#18534fff, #226d68ff, #ecf8f6ff, #feeaa1ff, #d6955bff);
+$gradient-top: linear-gradient(
+  0deg,
+  #18534fff,
+  #226d68ff,
+  #ecf8f6ff,
+  #feeaa1ff,
+  #d6955bff
+);
+$gradient-right: linear-gradient(
+  90deg,
+  #18534fff,
+  #226d68ff,
+  #ecf8f6ff,
+  #feeaa1ff,
+  #d6955bff
+);
+$gradient-bottom: linear-gradient(
+  180deg,
+  #18534fff,
+  #226d68ff,
+  #ecf8f6ff,
+  #feeaa1ff,
+  #d6955bff
+);
+$gradient-left: linear-gradient(
+  270deg,
+  #18534fff,
+  #226d68ff,
+  #ecf8f6ff,
+  #feeaa1ff,
+  #d6955bff
+);
+$gradient-top-right: linear-gradient(
+  45deg,
+  #18534fff,
+  #226d68ff,
+  #ecf8f6ff,
+  #feeaa1ff,
+  #d6955bff
+);
+$gradient-bottom-right: linear-gradient(
+  135deg,
+  #18534fff,
+  #226d68ff,
+  #ecf8f6ff,
+  #feeaa1ff,
+  #d6955bff
+);
+$gradient-top-left: linear-gradient(
+  225deg,
+  #18534fff,
+  #226d68ff,
+  #ecf8f6ff,
+  #feeaa1ff,
+  #d6955bff
+);
+$gradient-bottom-left: linear-gradient(
+  315deg,
+  #18534fff,
+  #226d68ff,
+  #ecf8f6ff,
+  #feeaa1ff,
+  #d6955bff
+);
+$gradient-radial: radial-gradient(
+  #18534fff,
+  #226d68ff,
+  #ecf8f6ff,
+  #feeaa1ff,
+  #d6955bff
+);
+$gradient-list-item: linear-gradient(
+  8deg,
+  rgba(42, 106, 25, 1) 0%,
+  rgba(11, 136, 14, 1) 27%,
+  rgba(0, 255, 216, 1) 100%
+);
+$gradient-blue-bg: linear-gradient(
+  29deg,
+  rgba(2, 0, 36, 1) 0%,
+  rgba(238, 251, 255, 1) 0%,
+  rgba(202, 237, 244, 1) 93%
+);
 
+$blue-bg-nav: #daf4f8;
 
 $IDeA-primary: mat.define-palette(mat.$cyan-palette, 800);
 $IDeA-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
@@ -40,16 +114,19 @@ $IDeA-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$IDeA-theme: mat.define-light-theme((
-  color: (
-    primary: $IDeA-primary,
-    accent: $IDeA-accent,
-    warn: $IDeA-warn,
+$IDeA-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $IDeA-primary,
+      accent: $IDeA-accent,
+      warn: $IDeA-warn,
+      listItem: $gradient-list-item,
+      navbar: $blue-bg-nav,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($IDeA-theme);
-

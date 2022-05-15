@@ -13,7 +13,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit{
   public EntrepriseUser : any = new Array();
@@ -53,10 +53,8 @@ export class NavComponent implements OnInit{
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    // dialogConfig.width = "60%";
+    //dialogConfig.width = "50%";
+    //dialogConfig.height = "60%";
     this.dialog.open(ProfileComponent, dialogConfig);
   }
-
-
-
 }

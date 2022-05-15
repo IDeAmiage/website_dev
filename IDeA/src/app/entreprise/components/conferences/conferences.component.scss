@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap");
+@import "../../../../custom-theme.scss";
+
+#back{
+  position: absolute;
+  background-image: url(/assets/Entreprise/building.gif);
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: center;
+  margin-top: -251px;
+}
+
+p{
+  margin-top: 30px;
+  text-align: center;
+  font-family: "Mulish", sans-serif;
+  font-weight:lighter;
+  font-size:x-large;
+}

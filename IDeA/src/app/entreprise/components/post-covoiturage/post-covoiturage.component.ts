@@ -126,7 +126,4 @@ export class PostCovoiturageComponent implements OnInit {
       this.dialogRef.close();
     })
   }
-
-
-
 }

@@ -4,9 +4,12 @@
 </div>
 
 <ng-template #view>
-  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center" fxFill fxLayoutGap.lt-sm="20px" fxLayoutGap="50px">
+  <div style="float:right;">
+    <button mat-button color="primary" (click)="changeToEdit()"><mat-icon>edit</mat-icon> Edit</button>
+  </div>
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center" fxFill fxLayoutGap.lt-sm="20px" fxLayoutGap="100px">
     <!-- Name and statistique -->
-    <div fxLayout="column" fxLayoutAlign="center center">
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
       <div id="name">{{this.currentUser['_name'] | titlecase}}</div>
       <div id="entreprise">{{this.currentUser['_entreprise'] | titlecase}}</div>
       <div id="niveau">Niveau {{this.currentUser['_level']}}</div>
@@ -30,7 +33,7 @@
     <mat-divider [ngStyle]="!this.isPhonePortrait?{'height':'120px'}:{'width':'120px'}" [vertical]="!this.isPhonePortrait"></mat-divider>
 
     <!-- Voiture -->
-    <div fxLayout="column" fxLayoutAlign="center center">
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
       <div>Voiture</div>
       <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
         <div fxLayout="column" fxLayoutAlign="center center">

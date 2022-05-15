@@ -20,10 +20,6 @@ export class EditProfileComponent implements OnInit {
   sizeList: string[] = ['Little', 'Medium', 'Big'];
   userForms: FormGroup;
 
-  public onCompare(_left: KeyValue<any, any>, _right: KeyValue<any, any>): number {
-    return 0;
-  }
-
   constructor(public firestore: FirestorageService, public router: Router,
     public dialogRef: MatDialogRef<NavComponent>) {
       let defaultInputText = {value: '', disabled: true};

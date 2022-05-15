@@ -157,7 +157,6 @@
   </div>
 
   <div *ngIf="selected==='all'">
-    <mat-grid-list cols="4">
       <mat-grid-list #grid [cols]="cols" rowHeight="10:10" gutterSize="20px" >
         <mat-grid-tile *ngFor="let card of this.liste" [colspan]=1 [rowspan]=1>
           <mat-card class="dashboard-card">

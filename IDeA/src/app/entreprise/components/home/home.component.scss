@@ -209,12 +209,12 @@ button {
       // padding: 0.7rem 0;
       margin: 0 0 0 1.8rem;
       color: $black;
-      font-weight: 700;
+      font-weight: 600;
       line-height: 1.6;
       text-align: center;
       text-transform: uppercase;
       @media (max-width: 1920px) {
-        padding: 1rem 0;
+        padding: 0.5rem 0;
       }
       @media(max-width: 912px) {
         top: -12px;

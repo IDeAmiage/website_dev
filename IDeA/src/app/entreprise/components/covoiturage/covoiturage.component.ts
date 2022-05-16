@@ -128,7 +128,7 @@ export class CovoiturageComponent implements OnInit {
   deleteTraject(i:number){
     this.firestore.deleteTraject(this.TrajetListe[i], localStorage.getItem('user_id')!).then((item:any)=> {
       this.isChecked = false;
-      location.reload();
+      // location.reload();
     });
     // location.reload()
   }

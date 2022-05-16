@@ -33,7 +33,8 @@ export class OpendataComponent implements OnInit {
   public listeEnvironment: any;
   public listeSante: any;
   public listeTransport: any;
-
+  public searchFilter:any = '';
+  public query:any;
 
   constructor(private opendata: OpendatasoftV1Service,
               private router: Router,

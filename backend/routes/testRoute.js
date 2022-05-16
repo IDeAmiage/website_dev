@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
-  res.json('ceci est un test')
+  res.json('respond with a resource');
 });
 
 router.get('/restid/:id', function(req, res, next) {

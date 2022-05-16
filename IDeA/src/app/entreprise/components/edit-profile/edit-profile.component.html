@@ -1,11 +1,12 @@
-<h2>Modifiez vos informations</h2>
-
 <div fxLayout="column" fxLayoutAlign="start start" fxFill>
-  <h1 mat-dialog-title>Votre profil</h1>
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
+
+    <h1><button mat-icon-button color="primary" (click)="openProfile()" title="Retourner au profil"><mat-icon>arrow_back</mat-icon></button> Modifiez vos informations</h1>
+  </div>
 
   <mat-dialog-content class="mat-typography" [formGroup]="userForms">
     <div fxLayout="row wrap" fxFill fxLayoutAlign="start start" fxLayoutGap="20px">
-      
+
       <!-- Statistique -->
       <div fxFlex="100"><h2>Statistique</h2></div>
 
@@ -80,7 +81,7 @@
           <input type="text" matInput formControlName="_id">
         </mat-form-field>
       </div>
-      
+
       <!--
       <div fxFlex="calc(33% - 20px)">
         <mat-form-field appearance="legacy">
@@ -92,7 +93,7 @@
       <!--- Voiture -->
       <div fxFlex="100"><h2>Voiture</h2></div>
 
-      <div fxFlex="calc(35% - 20px)">
+      <div fxFlex="calc(33% - 20px)">
         <mat-form-field appearance="legacy">
           <mat-label>Type de voiture</mat-label>
           <mat-select placeholder="Type de voiture" formControlName="_type">
@@ -101,13 +102,26 @@
         </mat-form-field>
       </div>
 
-      <div fxFlex="calc(65% - 20px)">
+      <div fxFlex="calc(33% - 20px)">
         <mat-form-field appearance="legacy">
           <mat-label>Carburant</mat-label>
           <mat-select placeholder="Carburant" formControlName="_carburant">
             <mat-option *ngFor="let carburant of this.fuelList" [value]="carburant">{{carburant.charAt(0).toUpperCase() + carburant.slice(1)}}</mat-option>
           </mat-select>
         </mat-form-field>
+      </div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Capacite</mat-label>
+          <mat-select placeholder="Capacite" formControlName="_capacite">
+            <mat-option *ngFor="let i of this.capacity" [value]="i">{{i}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Enregistrer</button>
       </div>
     </div>
   </mat-dialog-content>

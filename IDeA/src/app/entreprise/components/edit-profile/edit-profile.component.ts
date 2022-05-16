@@ -69,7 +69,7 @@ export class EditProfileComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "25%";
+    dialogConfig.width = "50%";
     //dialogConfig.height = "60%";
     this.dialog.open(ProfileComponent, dialogConfig);
   }

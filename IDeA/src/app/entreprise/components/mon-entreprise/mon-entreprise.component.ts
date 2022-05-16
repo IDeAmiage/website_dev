@@ -1,6 +1,7 @@
 import { OpendatasoftV1Service } from './../../../opendatasoftV1.service';
 import { FirestorageService } from 'src/app/firestorage.service';
 import { Component, OnInit } from '@angular/core';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-mon-entreprise',
@@ -23,7 +24,9 @@ export class MonEntrepriseComponent implements OnInit {
 
       this.loadEntrepriseInfos(this.currentUser._entreprise.toUpperCase());
 
-      this.getEntrepriseCO2conso()
+      this.getEntrepriseCO2conso();
+
+      this.getClassementEntreprise();
      });
   }
 
@@ -46,6 +49,12 @@ export class MonEntrepriseComponent implements OnInit {
           this.consoEntreprise += element._co2Emission;
         }
       })
+    })
+  }
+
+  getClassementEntreprise(){
+    this.firestore.getObject("trajet").subscribe((res:any)=>{
+      console.log(_.groupBy(res._depart, "length"))
     })
   }
 

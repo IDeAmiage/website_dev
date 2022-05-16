@@ -9,6 +9,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-nav',
@@ -18,6 +19,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 export class NavComponent implements OnInit{
   public EntrepriseUser : any = new Array();
   public AirQuality: number = 0;
+  public publicListcity : any = new Array();
+  public test: string="";
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -42,6 +45,26 @@ export class NavComponent implements OnInit{
         }
       });
     });
+    this.opendatasoft.getOtherAirQuality().subscribe(response=>{
+      response.records.forEach((element:any) => {
+        if (element.fields.measurements_parameter === "PM10"){
+          if (element.fields.city != element.fields.city.toUpperCase()){
+            if (["Hautes-Pyrénées", "Haute-Garonne", "Pyrénées-Atlantiques","Gironde"].includes(element.fields.city)){
+              this.publicListcity.push(element)
+            }
+          }
+        }
+      });
+      this.publicListcity = _.uniqBy(this.publicListcity, function (e:any) {
+        return e.fields.city
+      });
+      this.publicListcity.forEach((element:any) => {
+        this.test += element.fields.city +": "+element.fields.measurements_value + "\n"
+      });
+      console.log(this.test);
+
+
+    })
   }
 
   public logout(){

@@ -43,5 +43,9 @@ export class OpendatasoftV1Service {
     "&facet=classeunitelegale&facet=naturejuridiqueunitelegale&refine.codepostaletablissement=40230&rows=5000&refine.denominationunitelegale="+denomination);
   }
 
+  public getOtherAirQuality(): Observable<any>{
+    return this.httpclient.get(this.url + "?dataset=qualite-de-lair-france&sort=measurements_lastupdated&facet=country&facet=city&facet=location&facet=measurements_parameter&facet=measurements_sourcename&facet=measurements_lastupdated&facet=country_name_en&rows=2000")
+  }
+
 
 }

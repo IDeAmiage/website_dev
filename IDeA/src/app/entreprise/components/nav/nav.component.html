@@ -83,7 +83,7 @@
         <mat-icon>maps_home_work</mat-icon> Entreprise
       </div>
       <div class="spacer"></div>
-      <div>{{this.AirQuality}} µg/m³ <mat-icon>eco</mat-icon></div>
+      <div>{{this.AirQuality}} µg/m³ <mat-icon [matTooltip]="this.test">eco</mat-icon></div>
       <div *ngFor="let item of this.EntrepriseUser" >
         <button mat-raised-button [matMenuTriggerFor]="menu">
           <mat-icon>account_circle</mat-icon> {{item._name | titlecase}}

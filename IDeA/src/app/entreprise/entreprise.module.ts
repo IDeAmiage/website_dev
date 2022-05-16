@@ -51,6 +51,7 @@ import { ActiveRating, FractionRating, InactiveRating } from './components/ratin
 import { RatingComponent } from './components/rating/rating.component';
 import { RatingPipe } from './components/rating/rating.pipe';
 import { AtomSpinnerModule } from 'angular-epic-spinners';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -71,8 +72,8 @@ import { AtomSpinnerModule } from 'angular-epic-spinners';
     EditProfileComponent,
     MonEntrepriseComponent,
     RatingComponent,
-    ActiveRating, 
-    InactiveRating, 
+    ActiveRating,
+    InactiveRating,
     FractionRating,
     RatingPipe
   ],
@@ -113,7 +114,8 @@ import { AtomSpinnerModule } from 'angular-epic-spinners';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSlideToggleModule,
-    AtomSpinnerModule
+    AtomSpinnerModule,
+    MatTooltipModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}]
 })

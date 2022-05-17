@@ -38,7 +38,8 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { NotifierComponent } from './notifier/notifier.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
+import { AtomSpinnerModule } from 'angular-epic-spinners';
+import {MatTooltipModule} from '@angular/material/tooltip';
 // import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 // import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
@@ -85,6 +86,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     FlexLayoutModule,
     EntrepriseRoutingModule,
     AppRoutingModule,
+    AtomSpinnerModule,
+    MatTooltipModule
 
   ],
   providers: [FirebaseService, {provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}],

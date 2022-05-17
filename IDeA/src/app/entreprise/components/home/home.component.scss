@@ -26,11 +26,484 @@
   margin: 2rem;
   border-radius: 20px;
 }
+$bg: #f3f8fa;
+$white: #fff;
+$black: #282936;
+// Responsive
 
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
+@media (max-width:2560px){
+
+  mat-card-content {
+    justify-content: center;
+    margin-top: -40px;
+  }
+
+  mat-card-header {
+    justify-content: center;
+  }
+
+  .mat-card-header,
+  .mat-card-title {
+    font-family: "Mulish", sans-serif;
+    font-size: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .mat-raised-button,
+  .mat-accent {
+    width: 60%;
+    background: $gradient-list-item;
+  }
+
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    top:4rem;
+    &.learn-more {
+      width: 12rem;
+      height: auto;
+      .circle {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: relative;
+        display: block;
+        margin: 0;
+        width: 3rem;
+        height: 3rem;
+        background: $black;
+        border-radius: 1.625rem;
+        .icon {
+          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          background: $white;
+          &.arrow {
+            @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+            left: 0.625rem;
+            width: 1.125rem;
+            height: 0.125rem;
+            background: none;
+            &::before {
+              position: absolute;
+              content: '';
+              top: -0.25rem;
+              right: 0.0625rem;
+              width: 0.625rem;
+              height: 0.625rem;
+              border-top: 0.125rem solid #fff;
+              border-right: 0.125rem solid #fff;
+              transform: rotate(45deg);
+            }
+          }
+        }
+      }
+      .button-text {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.75rem 0;
+        margin: 0 0 0 1.85rem;
+        color: $black;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+    &:hover {
+      .circle {
+        width: 100%;
+        .icon {
+          &.arrow {
+          background: $white;
+          transform: translate(1rem, 0);
+          }
+        }
+      }
+      .button-text {
+        color: $white;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 1920px) {
+  mat-card-content {
+    justify-content: center;
+    margin-top: -40px;
+  }
+
+  mat-card-header {
+    justify-content: center;
+  }
+
+  .mat-card-header,
+  .mat-card-title {
+    font-family: "Mulish", sans-serif;
+    font-size: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .mat-raised-button,
+  .mat-accent {
+    width: 60%;
+    background: $gradient-list-item;
+  }
+
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    top:4rem;
+    &.learn-more {
+      width: 12rem;
+      height: auto;
+      .circle {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: relative;
+        display: block;
+        margin: 0;
+        width: 3rem;
+        height: 3rem;
+        background: $black;
+        border-radius: 1.625rem;
+        .icon {
+          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          background: $white;
+          &.arrow {
+            @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+            left: 0.625rem;
+            width: 1.125rem;
+            height: 0.125rem;
+            background: none;
+            &::before {
+              position: absolute;
+              content: '';
+              top: -0.25rem;
+              right: 0.0625rem;
+              width: 0.625rem;
+              height: 0.625rem;
+              border-top: 0.125rem solid #fff;
+              border-right: 0.125rem solid #fff;
+              transform: rotate(45deg);
+            }
+          }
+        }
+      }
+      .button-text {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.75rem 0;
+        margin: 0 0 0 1.85rem;
+        color: $black;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+    &:hover {
+      .circle {
+        width: 100%;
+        .icon {
+          &.arrow {
+          background: $white;
+          transform: translate(1rem, 0);
+          }
+        }
+      }
+      .button-text {
+        color: $white;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 1280px) {
+
+  mat-card-header {
+    justify-content: center;
+  }
+
+  .mat-card-header,
+  .mat-card-title {
+    font-family: "Mulish", sans-serif;
+    font-size: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .mat-raised-button,
+  .mat-accent {
+    width: 60%;
+    background: $gradient-list-item;
+  }
+
+  .dashboard-card-content{
+    justify-content: center;
+  }
+
+  button {
+
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    top:2rem;
+    &.learn-more {
+      width: 12rem;
+      height: auto;
+      .circle {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: relative;
+        display: block;
+        margin: 0;
+        width: 3rem;
+        height: 3rem;
+        background: $black;
+        border-radius: 1.625rem;
+        .icon {
+          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          background: $white;
+          &.arrow {
+            @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+            left: 0.625rem;
+            width: 1.125rem;
+            height: 0.125rem;
+            background: none;
+            &::before {
+              position: absolute;
+              content: '';
+              top: -0.25rem;
+              right: 0.0625rem;
+              width: 0.625rem;
+              height: 0.625rem;
+              border-top: 0.125rem solid #fff;
+              border-right: 0.125rem solid #fff;
+              transform: rotate(45deg);
+            }
+          }
+        }
+      }
+      .button-text {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.75rem 0;
+        margin: 0 0 0 1.85rem;
+        color: $black;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+    &:hover {
+      .circle {
+        width: 100%;
+        .icon {
+          &.arrow {
+          background: $white;
+          transform: translate(1rem, 0);
+          }
+        }
+      }
+      .button-text {
+        color: $white;
+      }
+    }
+  }
+
+
+
+
+
+}
+
+@media (max-width: 1128px) {
+  mat-card-content {
+    justify-content: center;
+    margin-top: -10px;
+  }
+
+  mat-card-header {
+    justify-content: center;
+  }
+
+  .mat-card-header,
+  .mat-card-title {
+    font-family: "Mulish", sans-serif;
+    font-size: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .mat-raised-button,
+  .mat-accent {
+    width: 60%;
+    background: $gradient-list-item;
+  }
+
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    top:0.4rem;
+    &.learn-more {
+      width: 9rem;
+      height: auto;
+      .circle {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: relative;
+        display: block;
+        margin: 0;
+        width: 2rem;
+        height: 2rem;
+        background: $black;
+        border-radius: 1.625rem;
+        .icon {
+          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          background: $white;
+          &.arrow {
+            @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+            left: 0.225rem;
+            width: 1.125rem;
+            height: 0.125rem;
+            background: none;
+            &::before {
+              position: absolute;
+              content: '';
+              top: -0.25rem;
+              right: 0.0625rem;
+              width: 0.625rem;
+              height: 0.625rem;
+              border-top: 0.125rem solid #fff;
+              border-right: 0.125rem solid #fff;
+              transform: rotate(45deg);
+            }
+          }
+        }
+      }
+      .button-text {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.45rem 0;
+        margin: 0 0 0 1.85rem;
+        color: $black;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+    &:hover {
+      .circle {
+        width: 100%;
+        .icon {
+          &.arrow {
+          background: $white;
+          transform: translate(1rem, 0);
+          }
+        }
+      }
+      .button-text {
+        color: $white;
+      }
+    }
+  }
+
+
+
+
+
+}
+
+
+@media (max-width: 912px){
+  mat-card-content {
+    visibility: hidden;
+  }
+
+  mat-card-header {
+    justify-content: center;
+  }
+
+  .mat-card-header,
+  .mat-card-title {
+    font-family: "Mulish", sans-serif;
+    font-size: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .mat-raised-button,
+  .mat-accent {
+    width: 60%;
+    background: $gradient-list-item;
+  }
 }
 
 mat-card img {
@@ -40,202 +513,8 @@ mat-card img {
   border-radius: 10px;
 }
 
-mat-card-content {
-  justify-content: center;
-  @media (max-width: 1920px) {
-    margin-top: -40px;
-  }
-  @media (max-width: 1368px) {
-    margin-top: -10px;
-  }
-  @media (max-width: 912px){
-    margin-top: -1px;
-  }
-}
 
 
-mat-card-header {
-  justify-content: center;
-}
 
-.mat-card-header,
-.mat-card-title {
-  font-family: "Mulish", sans-serif;
-  font-size: 40px;
-  margin-top: 2%;
-  margin-bottom: 2%;
-}
-
-.mat-raised-button,
-.mat-accent {
-  width: 60%;
-  background: $gradient-list-item;
-}
-
-$bg: #f3f8fa;
-$white: #fff;
-$black: #282936;
-
-button {
-  @media (max-width: 1920px){
-    top: 50px;
-  }
-  @media (max-width: 1368px) {
-    top: 2px;
-  }
-  @media (max-width: 912px){
-    top: 0.001rem;
-  }
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  outline: none;
-  border: 0;
-  vertical-align: middle;
-  text-decoration: none;
-  background: transparent;
-  padding: 0;
-  font-size: inherit;
-  font-family: inherit;
-  &.learn-more {
-    width: 10rem;
-    height: auto;
-    @media (max-width: 1920px){
-      width: 10rem;
-    }
-    @media (max-width: 1368px){
-      width: 7rem;
-    }
-    @media (max-width: 912px)  {
-      width: 7rem;
-    }
-    .circle {
-      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
-      position: relative;
-      display: block;
-      margin: 0;
-      // width: 2.5rem;
-      // height: 2.5rem;
-      background: $black;
-      border-radius: 1.625rem;
-      @media (max-width: 1920px) {
-        top: 10px;
-        width: 2rem;
-        height: 2rem;
-        background: $black;
-        border-radius: 1rem;
-       }
-       @media (max-width: 1368px){
-        top: 10px;
-        width: 1.1rem;
-        height: 1.1rem;
-        background: $black;
-        border-radius: 1rem;
-       }
-      @media (max-width: 912px){
-        top: -15px;
-        width: 1.6rem;
-        height: 1.6rem;
-        background: $black;
-        border-radius: 1rem;
-      }
-      .icon {
-        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        background: $white;
-        &.arrow {
-          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
-          background: none;
-          &::before {
-            position: absolute;
-            content: '';
-            top: -0.25rem;
-            right: 0.0625rem;
-            width: 0.625rem;
-            height: 0.625rem;
-            border-top: 0.125rem solid #fff;
-            border-right: 0.125rem solid #fff;
-            transform: rotate(45deg);
-          }
-          @media (max-width: 1920px) {
-            left: 0.4rem;
-            width: 0.9rem;
-            height: 0.1rem;
-            &::before {
-              top: -0.35rem;
-            }
-          }
-          @media (max-width: 1180px) {
-            left: 0.24rem;
-            width: 0.8rem;
-            height: 0.1rem;
-            // &::before {
-            //   top: -0.25rem;
-            //   right: 0.0625rem;
-            //   width: 0.625rem;
-            //   height: 0.625rem;
-            //   border-top: 0.125rem solid #fff;
-            //   border-right: 0.125rem solid #fff;
-            //   transform: rotate(45deg);
-            // }
-          }
-          @media (max-width: 912px) {
-            left: 0.6rem;
-            width: 0.5rem;
-            height: 0.2rem;
-            // &::before {
-            //   top: -0.25rem;
-            //   right: -0.2rem;
-            //   width: 0.62rem;
-            //   height: 0.62rem;
-            //   border-top: 0.125rem solid #fff;
-            //   border-right: 0.125rem solid #fff;
-            //   transform: rotate(45deg);
-            // }
-          }
-        }
-      }
-    }
-    .button-text {
-      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      // padding: 0.7rem 0;
-      margin: 0 0 0 1.8rem;
-      color: $black;
-      font-weight: 700;
-      line-height: 1.6;
-      text-align: center;
-      text-transform: uppercase;
-      @media (max-width: 1920px) {
-        padding: 1rem 0;
-      }
-      @media(max-width: 912px) {
-        top: -12px;
-        padding: 0rem 0;
-      }
-    }
-  }
-  &:hover {
-    .circle {
-      width: 100%;
-      .icon {
-        &.arrow {
-        background: $white;
-        transform: translate(0.5rem, 0);
-        }
-      }
-    }
-    .button-text {
-      color: $white;
-    }
-  }
-}
 
 

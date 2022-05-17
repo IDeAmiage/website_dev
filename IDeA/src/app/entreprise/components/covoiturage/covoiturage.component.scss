@@ -1,11 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap");
 @import "../../../../custom-theme.scss";
 
-// mat-card:hover{
-//   -ms-transform: scale(1.5); /* IE 9 */
-//   -webkit-transform: scale(1.5); /* Safari 3-8 */
-//   transform: scale(1.1);
-// }
 .grid-container {
   height: 100%;
 }
@@ -18,12 +13,12 @@
   margin: 2rem;
   border-radius: 20px;
   width: 300px;
-  height: 400px;
+  height: 420px;
   background-image: url(/assets/Entreprise/dottedLine.svg);
   background-position: center;
   background-size: 120%;
   background-repeat: no-repeat;
-  background-position: 30px;
+  background-position: 70px;
   z-index: 2;
 
 }
@@ -69,4 +64,7 @@
   background: black;
   opacity: 0.8;
   z-index: 99;
+}
+
+.mat-card>:first-child{
 }

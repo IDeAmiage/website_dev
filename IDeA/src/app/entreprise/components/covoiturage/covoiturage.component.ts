@@ -26,6 +26,9 @@ export class CovoiturageComponent implements OnInit {
   public TrajetListe : any = new Array();
   public Userdistances : any = new Array();
 
+  public searchFilter:any = '';
+  public query:any;
+
   cols : number | undefined;
 
   gridByBreakpoint = {

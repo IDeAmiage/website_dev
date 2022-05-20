@@ -28,6 +28,7 @@ export class PostCovoiturageComponent implements OnInit {
   departure_time:any;
 
   currentUser:any;
+  freq: string="";
 
   panelOpenState = false;
   size = new FormControl();
@@ -82,6 +83,10 @@ export class PostCovoiturageComponent implements OnInit {
      parseInt(this.departure_time.split(':')[0]),
      parseInt(this.departure_time.split(':')[1])
     );
+    this.nextStep();
+  }
+
+  saveRecurrent(){
     this.nextStep();
   }
 

@@ -38,6 +38,12 @@ export class FirebaseService {
             });
   }
 
+  resetPasswordInit(email: any) {
+    return this.firebaseAuth.sendPasswordResetEmail(
+      email,
+      { url: 'http://localhost:4200/forgotpasswd' });
+    }
+
   async signin(email: string, password:string){
     await this.firebaseAuth.signInWithEmailAndPassword(email,password)
       .then(res=>{
@@ -72,5 +78,13 @@ export class FirebaseService {
     localStorage.removeItem('user_id');
     this.isLoggedIn = false;
     this.notifier.showNotification('Vous avez été déconnecté','OK','success');
+  }
+
+  sendEmailForVerification(user:any){
+    user.sendEmailForVerification().then((res:any)=>{
+      this.router.navigate(['/verify-email']);
+    }, (err:any)=>{
+      alert('Something went wrong. Not able to send to your email.')
+    })
   }
 }

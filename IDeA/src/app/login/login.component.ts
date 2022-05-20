@@ -47,4 +47,15 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
+  resetPassword() {
+    if (!this.email) {
+      alert('Type in your email first');
+    }
+    this.firebaseService.resetPasswordInit(this.email)
+    .then(
+      () => alert('A password reset link has been sent to your email address'),
+      (rejectionReason) => alert(rejectionReason))
+    .catch(e => alert('An error occurred while attempting to reset your password'));
+  }
+
 }

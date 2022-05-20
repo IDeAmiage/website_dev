@@ -28,6 +28,10 @@
             <button mat-raised-button color="primary" type="submit">Login</button>
           </div>
           <span>New user? <a routerLink="/signup">Sign Up!</a></span>
+          <button (click)="this.resetPassword()" mat-raised-button color="primary">Forget password?</button>
+          <!-- <div class="col-md-6">
+            <a href="/forgot-password" class="text-dark" style="text-decoration: none;"> Forgot Password ? </a>
+          </div> -->
         </form>
       </mat-card-content>
     </mat-card>

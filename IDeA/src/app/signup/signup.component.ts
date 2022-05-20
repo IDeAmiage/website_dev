@@ -51,6 +51,7 @@ export class SignupComponent implements OnInit {
   }
   async submit(){
     if(!this.SignUpForm.valid){
+      this.notifier.showNotification("Merci de saisir un email et un mot de passe valides","OK", "error");
       return;
     }
     const { email, password , entreprise} = this.SignUpForm.value;

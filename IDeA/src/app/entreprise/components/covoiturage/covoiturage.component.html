@@ -1,5 +1,5 @@
 <div align="end" style="padding: 5px;">
-  <button mat-raised-button (click)="onCreate()"  color="warn"> <mat-icon color="primary">post_add</mat-icon> Post an announce </button>
+  <button mat-raised-button (click)="onCreate()"  color="warn"> <mat-icon color="primary">post_add</mat-icon> Poster une annonce </button>
   <br>
   <mat-slide-toggle [(ngModel)]="isChecked" (ngModelChange)="getMyTrajects()" style="margin-right:10px;">Mes annonces</mat-slide-toggle>
 </div>
@@ -55,9 +55,9 @@
     </div>
       <mat-divider inset></mat-divider>
       <mat-card-actions align="end">
-        <a href="tel:{{item._user._phone}}" mat-button><mat-icon color="primary">chat</mat-icon> MESSAGE </a>
-        <a href="https://www.google.fr/maps/dir/{{item._depart}}/{{item._destination}}/" target="_blank" mat-button><mat-icon color="primary">map</mat-icon> MAP </a>
-        <a mat-button (click)="addPassenger(i)">ADD <mat-icon color="primary">add</mat-icon></a>
+        <a href="tel:{{item._user._phone}}" mat-button><mat-icon color="primary">chat</mat-icon> Contacter </a>
+        <a href="https://www.google.fr/maps/dir/{{item._depart}}/{{item._destination}}/" target="_blank" mat-button><mat-icon color="primary">map</mat-icon> Carte </a>
+        <a mat-button (click)="addPassenger(i)"><mat-icon color="primary">add</mat-icon> S'ajouter</a>
       </mat-card-actions>
     </mat-card>
   </mat-grid-list>

@@ -21,7 +21,7 @@
         routerLinkActive="sidenav__active-link sidenav__hover-link"
         [routerLinkActiveOptions]="{ exact: true }"
         ><mat-icon aria-hidden="false" aria-label="Home icon">home</mat-icon
-        >Home</a
+        >Accueil</a
       >
       <a
         mat-list-item
@@ -53,7 +53,7 @@
         routerLinkActive="sidenav__active-link sidenav__hover-link"
         [routerLinkActiveOptions]="{ exact: true }"
         ><mat-icon aria-hidden="false" aria-label="Conference">mic</mat-icon
-        >Conferences</a>
+        >Conférences</a>
       <a
         mat-list-item
         routerLink="/entreprise/opendata"
@@ -77,7 +77,7 @@
               mat-icon-button
               (click)="drawer.toggle()"
               *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon aria-label="Side nav toggle icon">Menu</mat-icon>
       </button>
       <div #entreprise>
         <mat-icon>maps_home_work</mat-icon> Entreprise

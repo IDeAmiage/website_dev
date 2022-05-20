@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap");
+@import "../../../../custom-theme.scss";
+
+
+::ng-deep .mat-select-trigger{
+  font-size: 1.2em;
+}
+
+::ng-deep mat-dialog-container {
+  border-radius: 20px !important;
+  align-content: center;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+mat-expansion-panel{
+  border-radius: 0.5rem;
+}
+
+.suivant{
+  border-radius: 0.5rem;
+  background-color:green;
+  color: white !important;
+}
+
+mat-label{
+  text-align: center;
+}
+
+

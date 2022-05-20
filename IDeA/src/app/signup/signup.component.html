@@ -20,19 +20,19 @@
 
 <div *ngIf="!this.firebaseService.isLoggedIn" >
     <mat-card>
-      <mat-card-title>Signup</mat-card-title>
+      <mat-card-title>Iscrivez vous.</mat-card-title>
       <mat-card-content>
         <form [formGroup]="SignUpForm" (ngSubmit)="submit()" >
           <p>
             <mat-form-field>
               <input matInput placeholder="Email address" formControlName="email" />
-              <mat-error *ngIf="email?.errors?.['required']" >Email is required</mat-error>
+              <mat-error *ngIf="email?.errors?.['required']" >Un e-mail est requis.</mat-error>
             </mat-form-field>
           </p>
           <p>
             <mat-form-field>
               <input matInput placeholder="Password" formControlName="password" type="password" />
-              <mat-error *ngIf="password?.errors?.['required']" >Password is required</mat-error>
+              <mat-error *ngIf="password?.errors?.['required']" >un mot de passe est requis.</mat-error>
             </mat-form-field>
           </p>
           <p>
@@ -43,11 +43,11 @@
                   {{option}}
                 </mat-option>
               </mat-autocomplete>
-              <mat-error *ngIf="entreprise?.errors?.['required']" >Entreprise is required</mat-error>
+              <mat-error *ngIf="entreprise?.errors?.['required']" >Votre entreprise est requise.</mat-error>
             </mat-form-field>
           </p>
           <div class="button">
-            <button mat-raised-button color="primary" type="submit">Signup</button>
+            <button mat-raised-button color="primary" type="submit">Inscrivez vous.</button>
           </div>
         </form>
       </mat-card-content>

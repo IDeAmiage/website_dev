@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   }
   async submit(){
     if(!this.loginForm.valid){
+      this.notifier.showNotification("Merci de saisir des identifiants valides","OK", "error");
       return;
     }
     const { email, password } = this.loginForm.value;

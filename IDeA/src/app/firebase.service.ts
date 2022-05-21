@@ -40,7 +40,7 @@ export class FirebaseService {
 
   resetPasswordInit(email: any) {
     return this.firebaseAuth.sendPasswordResetEmail(
-      email,
+      email.value,
       { url: 'http://localhost:4200/forgotpasswd' });
     }
 

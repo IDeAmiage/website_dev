@@ -127,6 +127,22 @@ export class PostCovoiturageComponent implements OnInit {
     await this.api.getCo2Calculation(this.trajet).toPromise().then((res)=>{
       this.trajet._co2Emission = parseFloat(res.toString());
     })
+    switch (this.freq) {
+      case "Tous les jours":
+        console.log(this.trajet._departure_time);
+        break;
+      case "Toutes les semaines":
+        console.log("every week");
+        break;
+      case "Tous les mois":
+        console.log("every month");
+        break;
+      case "Aucun":
+        console.log("Aucun");
+        break;
+      default:
+        break;
+    }
     this.firestore.insertObject(this.trajet,"trajet");
     this.firestore.updateUser(this.trajet._user, this.trajet._user._id).then((item:any)=>{
       location.reload();

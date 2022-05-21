@@ -1,11 +1,3 @@
-<!-- <div *ngIf="!this.firebaseService.isLoggedIn">
-  <div *ngIf="this.firebaseService.status=='entreprise'">
-    <h2>Sign in</h2>
-    <input type="text" #email>
-    <input type="text" #password>
-    <button (click)="onSignin(email.value,password.value)">Sign up</button>
-  </div>
-</div> -->
 <div *ngIf="!this.firebaseService.isLoggedIn" >
   <div *ngIf="this.firebaseService.status=='entreprise' || this.firebaseService.status=='collectivites'">
     <mat-card>

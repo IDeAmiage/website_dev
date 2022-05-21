@@ -14,12 +14,24 @@ export class EntrepriseComponent implements OnInit {
   public currentUser: any;
   public listEntreprises:any = new Array();
 
-  constructor(public api: ApiService, public firestore: FirestorageService,
+/**
+ * Creates an instance of EntrepriseComponent.
+ * @param {ApiService} api
+ * @param {FirestorageService} firestore
+ * @param {OpendatasoftV1Service} opendatasoft
+ * @memberof EntrepriseComponent
+ */
+constructor(public api: ApiService,
+        public firestore: FirestorageService,
         public opendatasoft: OpendatasoftV1Service
     ) { }
 
-  ngOnInit(): void {
-    // this.loadUserData();
+/**
+ * On init this component load the geolocation of the user
+ * It will be use in the covoiturage component to show how far is the traject
+ * @memberof EntrepriseComponent
+ */
+ngOnInit(): void {
     this.loadEntreprises();
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -32,16 +44,24 @@ export class EntrepriseComponent implements OnInit {
       }
     );
   }
-
-  async loadUserData() {
-    // await this.firestore.getUser(this.firestore.user._id).subscribe(res=>{
+/**
+ * Load user data, not used after some changes
+ *
+ * @memberof EntrepriseComponent
+ */
+async loadUserData() {
     await this.firestore.getUser(localStorage.getItem('user_id')!).subscribe(res=>{
       localStorage.setItem('user',JSON.stringify(res));
       this.currentUser = JSON.parse(localStorage.getItem("user")!);
     })
   }
 
-  loadEntreprises(){
+/**
+ * This function use our opendatasoft service to get the list of entreprises provided in
+ * the current postcode we have defined.
+ * @memberof EntrepriseComponent
+ */
+loadEntreprises(){
     this.opendatasoft.getListEntreprises().subscribe(
       response=>{
         response.records.forEach((element:any) => {
@@ -52,7 +72,4 @@ export class EntrepriseComponent implements OnInit {
       }
     )
   }
-
-
-
 }

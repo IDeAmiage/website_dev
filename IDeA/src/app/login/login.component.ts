@@ -53,9 +53,9 @@ export class LoginComponent implements OnInit {
     }
     this.firebaseService.resetPasswordInit(this.email)
     .then(
-      () => alert('A password reset link has been sent to your email address'),
+      () => this.notifier.showNotification("Un email de verification a été envoyé à votre adresse mail","OK","success"),
       (rejectionReason) => alert(rejectionReason))
-    .catch(e => alert('An error occurred while attempting to reset your password'));
+    .catch(e => this.notifier.showNotification("Une erreur s'est produite lors de la tentative de changement de mdp", "OK","error"));
   }
 
 }

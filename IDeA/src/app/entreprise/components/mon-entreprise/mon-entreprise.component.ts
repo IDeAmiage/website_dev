@@ -14,6 +14,10 @@ export class MonEntrepriseComponent implements OnInit {
   userEntreprise:any;
   consoEntreprise:number=0;
 
+  classement = new Map<string, number>();
+  classementnbTrajets = new Map<string, number>();
+  classementUser = new Map<string, number>();
+
   constructor(public firestore: FirestorageService, public opendatasoft:OpendatasoftV1Service) { }
 
   ngOnInit() {
@@ -27,6 +31,8 @@ export class MonEntrepriseComponent implements OnInit {
       this.getEntrepriseCO2conso();
 
       this.getClassementEntreprise();
+
+      this.getClassementUser();
      });
   }
 
@@ -54,8 +60,37 @@ export class MonEntrepriseComponent implements OnInit {
 
   getClassementEntreprise(){
     this.firestore.getObject("trajet").subscribe((res:any)=>{
-      console.log(_.groupBy(res._depart, "length"))
+      res.forEach((element:any) => {
+        if(this.classement.get(element._user._entreprise) == undefined){
+          this.classement.set(element._user._entreprise, element._co2Emission)
+          this.classementnbTrajets.set(element._user._entreprise, 1)
+        }else {
+          let temp = this.classement.get(element._user._entreprise);
+          let temptraj = this.classementnbTrajets.get(element._user._entreprise);
+          this.classement.set(element._user._entreprise, element._co2Emission + temp)
+          this.classementnbTrajets.set(element._user._entreprise, 1 + temptraj!)
+        }
+      });
+      this.classement = new Map([...this.classement].sort((a, b) => b[1] - a[1]));
+      this.classementnbTrajets = new Map([...this.classementnbTrajets].sort((a, b) => b[1] - a[1]));
     })
   }
+
+  getClassementUser(){
+    this.firestore.getObject("trajet").subscribe((res:any)=>{
+      res.forEach((element:any) => {
+        if (this.classementUser.get(element._user._name)==undefined){
+          this.classementUser.set(element._user._name, element._co2Emission)
+        }else {
+          let temp = this.classementUser.get(element._user._name);
+          this.classementUser.set(element._user._name, element._co2Emission + temp)
+        }
+      });
+      this.classementUser = new Map([...this.classementUser].sort((a,b)=>b[1]-a[1]))
+    })
+  }
+  originalOrder(a:any, b:any) {
+    return 1;
+ }
 
 }

@@ -63,6 +63,7 @@ export class FirebaseService {
         localStorage.setItem('user',JSON.stringify(res.user));
         localStorage.setItem('user_id', res.user?.uid!)
         this.firestore.user._id = res.user?.uid;
+        this.firestore.user._email = res.user?.email;
         this.firestore.user._entreprise = entreprise;
         this.firestore.user._name = res.user?.email?.split('@')[0]!;
         this.firestore.user._car = Object.assign({}, this.firestore.user._car)

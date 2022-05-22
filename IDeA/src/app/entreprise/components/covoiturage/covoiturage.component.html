@@ -11,12 +11,15 @@
 <div id="back">
 </div>
 
-<div>
+<div  fxLayout="row" fxLayoutAlign="start center" >
   <mat-form-field>
     <mat-label>Search</mat-label>
     <input matInput type="text" [(ngModel)]="query" name="query">
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
+  <button mat-icon-button color="primary" (click)="refreshByTime()">
+    <mat-icon>schedule</mat-icon>
+  </button>
 </div>
 
 
@@ -32,7 +35,6 @@
         <mat-card-title>{{item._depart}}</mat-card-title>
 
         <img src="../../../../assets/Entreprise/jeep.gif" class="jeep" alt="Jeep Car"/>
-      <!-- <a href="https://iconscout.com/lotties/jeep" target="_blank">Jeep Lottie Animation</a> by <a href="https://iconscout.com/contributors/zolute">Zolute Technology and Consulting Pvt Ltd</a> on <a href="https://iconscout.com">Iconscout</a> -->
       <mat-card-content>
         <p class="departure_hour">{{item._departure_time?.toDate() | date: 'HH:mm'}}</p>
         <p class="departure_date">{{item._departure_time?.toDate() | date: 'dd/MM/yyyy'}}</p>

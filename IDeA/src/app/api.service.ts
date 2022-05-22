@@ -1,6 +1,7 @@
+import { environment } from './../environments/environment';
 import { Trajet } from './Trajet';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Car } from './Car';
 
@@ -39,4 +40,39 @@ constructor(private httpclient: HttpClient) { }
   public getCo2Calculation(trajet : Trajet){
     return this.httpclient.get(this.url+'car/carbonemission/'+trajet._nbKms+'/'+trajet._user._car._type+'/'+ trajet._user._car._carburant);
   }
+
+  public sendNewPassengerEmail(user: any){
+    this.httpclient.post("http://localhost:3000/users/sendmail", user).subscribe(
+      data => {
+        let res:any = data;
+        console.log(
+          `👏 > 👏 > 👏 > 👏 ${user.name} is successfully added to the traject and the message id is ${res.messageId}`
+        );
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  public sendNotificationNewPassenger(user:any){
+    const headers = new HttpHeaders({
+      'Content-Type':'application/json; charset=utf-8',
+      'Authorization':"key="+environment.firebase.serverKey
+    });
+    console.log('ici',localStorage.getItem("notifToken"));
+
+    const bod = {
+      "notification": {
+        "title": "Nouveau passager",
+        "body": user._name
+     },
+     "to" : localStorage.getItem("notifToken")
+    }
+    this.httpclient.post("https://fcm.googleapis.com/fcm/send",bod,{headers:headers}).subscribe(
+      res=> {console.log(res);},
+      err => {console.log(err);}
+    )
+  }
+
 }

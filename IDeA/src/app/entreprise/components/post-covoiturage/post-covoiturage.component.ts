@@ -9,6 +9,7 @@ import { Car } from 'src/app/Car';
 import * as geolib from 'geolib';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CovoiturageComponent } from '../covoiturage/covoiturage.component';
+import { NotifierService } from 'src/app/notifier.service';
 
 
 @Component({
@@ -54,7 +55,7 @@ export class PostCovoiturageComponent implements OnInit {
   fuelList: string[] = ["diesel","essence","gpl","cng"]
 
   constructor(public firebase:FirebaseService, public api: ApiService, public firestore: FirestorageService,
-    public dialogRef: MatDialogRef<CovoiturageComponent>, public router: Router
+    public dialogRef: MatDialogRef<CovoiturageComponent>, public router: Router, private notifier: NotifierService
     ) {
   }
 
@@ -84,6 +85,7 @@ export class PostCovoiturageComponent implements OnInit {
      parseInt(this.departure_time.split(':')[1])
     );
     this.nextStep();
+    
   }
 
   saveRecurrent(){

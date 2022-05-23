@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -57,5 +57,4 @@ export class LoginComponent implements OnInit {
       (rejectionReason) => alert(rejectionReason))
     .catch(e => this.notifier.showNotification("Une erreur s'est produite lors de la tentative de changement de mdp", "OK","error"));
   }
-
 }

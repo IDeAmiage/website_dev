@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { AnimationItem } from 'lottie-web';
+import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  options: AnimationOptions = {
+    path: '/assets/animation.json',
+  };
 
   constructor(public firebaseService: FirebaseService, public router: Router, private notifier: NotifierService){
 
@@ -36,7 +40,7 @@ export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required)
+    password: new FormControl('', [Validators.required, Validators.minLength(6)])
   })
 
   get email(){
@@ -45,6 +49,10 @@ export class LoginComponent implements OnInit {
 
   get password(){
     return this.loginForm.get('password');
+  }
+
+  animationCreated(animationItem: AnimationItem): void {
+    console.log(animationItem);
   }
 
   resetPassword() {

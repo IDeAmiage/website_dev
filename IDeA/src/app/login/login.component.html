@@ -1,24 +1,36 @@
 <div *ngIf="!this.firebaseService.isLoggedIn" fxFill>
   <div fxFill *ngIf="this.firebaseService.status=='entreprise' || this.firebaseService.status=='collectivites'">
-    <div class="container" fxLayout="row" fxFill fxLayoutAlign="space-around center">
+    <div class="container" fxLayout="row" fxLayout.lt-lg="column" fxFill fxLayoutAlign="space-around center">
       <div fxFlex="80">
         <form class="login" [formGroup]="loginForm" (ngSubmit)="submit()">
           <div fxLayout="column">
           <mat-form-field>
             <input matInput placeholder="Email address" formControlName="email" />
-            <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required')">
+              Veuillez entrer un email valide
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+              L'email est requis
+            </mat-error>
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Password" formControlName="password" type="password" />
-            <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
+            <input matInput placeholder="Mot de passe" formControlName="password" type="password" />
+            <mat-error *ngIf="loginForm.get('password')?.hasError('minlength') && !loginForm.get('password')?.hasError('required')">
+              Veuillez entrer un mot de passe valide (au moins 6 caractères)
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+              Le mot de passe est requis
+            </mat-error>
           </mat-form-field>
           </div>
           <button>Login</button>
           <a (click)="this.resetPassword()">Forget password?</a>
         </form>
       </div>
-      <div fxFlex="20">
-        <button routerLink="/signup">Sign Up!</button>
+      <div class="signup" fxFlex="20" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="15px">
+        <p>Vous souhaitez nous </p><p> rejoindre ?</p>
+        <p>C'est par là !</p>
+        <a routerLink="/signup"><ng-lottie width="250px" height="200px"[options]="options" (animationCreated)="animationCreated($event)"></ng-lottie></a>
       </div>
     </div>
   </div>

@@ -5,44 +5,50 @@
   <button (click)="onSignup(emailSignup.value,passwordSignup.value)">Sign up</button>
 </div> -->
 
-<div *ngIf="this.loader.isLoading | async" class="loader-container">
-  <mat-spinner style="top: 50%; left: 50%;"></mat-spinner>
+<div *ngIf="this.loader.isLoading | async" class="loader-container" fxFill fxLayoutAlign="center center">
+  <mat-spinner></mat-spinner>
 </div>
 
-<div *ngIf="!this.firebaseService.isLoggedIn" >
-    <mat-card>
-      <mat-card-title>Signup</mat-card-title>
-      <mat-card-content>
-        <form [formGroup]="SignUpForm" (ngSubmit)="submit()" >
-          <p>
-            <mat-form-field>
-              <input matInput placeholder="Email address" formControlName="email" />
-              <mat-error *ngIf="email?.errors?.['required']" >Email is required</mat-error>
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-form-field>
-              <input matInput placeholder="Password" formControlName="password" type="password" />
-              <mat-error *ngIf="password?.errors?.['required']" >Password is required</mat-error>
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-form-field>
-              <input matInput placeholder="Entreprise" [matAutocomplete]="auto" formControlName="entreprise" type="text"  />
-              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                  {{option}}
-                </mat-option>
-              </mat-autocomplete>
-              <mat-error *ngIf="entreprise?.errors?.['required']" >Entreprise is required</mat-error>
-            </mat-form-field>
-          </p>
-          <div class="button">
-            <button mat-raised-button color="primary" type="submit">Signup</button>
-          </div>
-        </form>
-      </mat-card-content>
-    </mat-card>
+<div *ngIf="!this.firebaseService.isLoggedIn" class="container" fxFill>
+  <div class="container" fxLayout="row" fxFill fxLayoutAlign="space-around center">
+    <div>
+      <form class="login" [formGroup]="SignUpForm" (ngSubmit)="submit()">
+        <div fxLayout="column">
+          <h1>Bienvenue parmi nous</h1>
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="email"/>
+          <mat-error *ngIf="SignUpForm.get('email')?.hasError('email') && !SignUpForm.get('email')?.hasError('required')">
+            Veuillez entrer un email valide
+          </mat-error>
+          <mat-error *ngIf="SignUpForm.get('email')?.hasError('required')">
+            L'email est requis
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Mot de passe" formControlName="password" type="password"/>
+          <mat-error *ngIf="SignUpForm.get('password')?.hasError('minlength') && !SignUpForm.get('password')?.hasError('required')">
+            Veuillez entrer un mot de passe valide (au moins 6 caractères)
+          </mat-error>
+          <mat-error *ngIf="SignUpForm.get('password')?.hasError('required')">
+            Le mot de passe est requis
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Entreprise" [matAutocomplete]="auto" formControlName="entreprise" type="text"  />
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+          <mat-error *ngIf="SignUpForm.get('entreprise')?.hasError('required')">
+            Veuillez choisir une entreprise
+          </mat-error>
+        </mat-form-field>
+        </div>
+        <button>S'enregistrer</button>
+      </form>
+    </div>
+  </div>
 </div>
 
 

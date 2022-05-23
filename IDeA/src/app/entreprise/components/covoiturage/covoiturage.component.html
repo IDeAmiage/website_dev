@@ -1,7 +1,7 @@
 <div align="end" style="padding: 5px;">
   <button mat-raised-button (click)="onCreate()"  color="warn"> <mat-icon color="primary">post_add</mat-icon> Post an announce </button>
   <br>
-  <mat-slide-toggle [(ngModel)]="isChecked" (ngModelChange)="getMyTrajects()" style="margin-right:10px;">Mes annonces</mat-slide-toggle>
+  <mat-slide-toggle [(ngModel)]="isChecked" (ngModelChange)="getMyTrajects()" style="margin-right:10px;" matTooltip="Voir mes annonces">Mes annonces</mat-slide-toggle>
 </div>
 
 <div *ngIf="this.loader.isLoading | async" class="loader-container">
@@ -14,11 +14,11 @@
 <div  fxLayout="row" fxLayoutAlign="start center" >
   <mat-form-field>
     <mat-label>Search</mat-label>
-    <input matInput type="text" [(ngModel)]="query" name="query">
+    <input matInput type="text" [(ngModel)]="query" name="query" matTooltip="Filtrer par destination">
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
   <button mat-icon-button color="primary" (click)="refreshByTime()">
-    <mat-icon>schedule</mat-icon>
+    <mat-icon matTooltip="Filter par date">schedule</mat-icon>
   </button>
 </div>
 

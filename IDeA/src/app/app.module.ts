@@ -1,3 +1,4 @@
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { InterceptorService } from './interceptor.service';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from './../environments/environment';
@@ -52,6 +53,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     LoginComponent,
     AccueilComponent,
     NotifierComponent,
+    ForgotPasswordComponent
    ],
   imports: [
     BrowserModule,

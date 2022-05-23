@@ -13,20 +13,28 @@
 
 <div class="grid-container">
   <h1 class="mat-h1">Opendata</h1>
-  <mat-form-field appearance="fill" class="select">
-    <mat-label>Sélectionner une catégorie</mat-label>
-    <mat-select [(value)]="selected">
-      <mat-option value="all">Aucune</mat-option>
-      <mat-option value="sante">Santé</mat-option>
-      <mat-option value="transport">Transport</mat-option>
-      <mat-option value="environnement">Environnement</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field appearance="fill">
+      <mat-label>Choisissez une catégorie</mat-label>
+      <mat-select [(value)]="selected">
+        <mat-option value="all">Aucune</mat-option>
+        <mat-option value="sante">Santé</mat-option>
+        <mat-option value="transport">Transport</mat-option>
+        <mat-option value="environnement">Environnement</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input matInput type="text" [(ngModel)]="query" name="query">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
 
   <div *ngIf="selected==='environnement'">
     <h2>Trie par catégorie environnement</h2>
     <mat-grid-list #grid [cols]="cols" rowHeight="10:10" gutterSize="20px" >
-      <mat-grid-tile *ngFor="let card of this.listeEnvironment" [colspan]=1 [rowspan]=1>
+      <mat-grid-tile *ngFor="let card of this.listeEnvironment | searchFilter: query" [colspan]=1 [rowspan]=1>
         <mat-card class="dashboard-card">
           <mat-card-header>
             <mat-card-title>
@@ -63,7 +71,7 @@
   <div *ngIf="selected==='sante'">
     <h2>Trie par catégorie Santé</h2>
     <mat-grid-list #grid [cols]="cols" rowHeight="10:10" gutterSize="20px" >
-      <mat-grid-tile *ngFor="let card of this.listeSante" [colspan]=1 [rowspan]=1>
+      <mat-grid-tile *ngFor="let card of this.listeSante | searchFilter: query" [colspan]=1 [rowspan]=1>
         <mat-card class="dashboard-card">
           <mat-card-header>
             <mat-card-title>
@@ -100,7 +108,7 @@
   <div *ngIf="selected==='transport'">
     <h2>Trie par catégorie transport</h2>
     <mat-grid-list #grid [cols]="cols" rowHeight="10:10" gutterSize="20px" >
-      <mat-grid-tile *ngFor="let card of this.listeTransport" [colspan]=1 [rowspan]=1>
+      <mat-grid-tile *ngFor="let card of this.listeTransport | searchFilter: query" [colspan]=1 [rowspan]=1>
         <mat-card class="dashboard-card">
           <mat-card-header>
             <mat-card-title>
@@ -137,7 +145,7 @@
 
   <div *ngIf="selected==='all'">
       <mat-grid-list #grid [cols]="cols" rowHeight="10:10" gutterSize="20px" >
-        <mat-grid-tile *ngFor="let card of this.liste" [colspan]=1 [rowspan]=1>
+        <mat-grid-tile *ngFor="let card of this.liste | searchFilter: query" [colspan]=1 [rowspan]=1>
           <mat-card class="dashboard-card">
             <mat-card-header>
               <mat-card-title>

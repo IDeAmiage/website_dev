@@ -345,18 +345,26 @@ $black: #282936;
         text-transform: uppercase;
       }
     }
-    &:hover {
-      .circle {
-        width: 100%;
-        .icon {
-          &.arrow {
-          background: $white;
-          transform: translate(1rem, 0);
-          }
-        }
+    .button-text {
+      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      // padding: 0.7rem 0;
+      margin: 0 0 0 1.8rem;
+      color: $black;
+      font-weight: 600;
+      line-height: 1.6;
+      text-align: center;
+      text-transform: uppercase;
+      @media (max-width: 1920px) {
+        padding: 0.5rem 0;
       }
-      .button-text {
-        color: $white;
+      @media(max-width: 912px) {
+        top: -12px;
+        padding: 0rem 0;
       }
     }
   }

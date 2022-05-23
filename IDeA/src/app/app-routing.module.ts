@@ -6,11 +6,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { OpendataComponent } from './entreprise/components/opendata/opendata.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {path:'', component: AccueilComponent},
   {path:'login', component: LoginComponent},
   {path:'signup', component: SignupComponent},
+  {path:'forgotpasswd', component: ForgotPasswordComponent},
 ]
 
 @NgModule({

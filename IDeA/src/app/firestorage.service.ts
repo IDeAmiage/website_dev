@@ -63,16 +63,17 @@ constructor(private firestore: AngularFirestore) { }
   async deleteTraject(traj:any, id:string){
     await this.firestore.collection('trajet').
       ref
-      .where('_user._nbTrajects', '==', traj._user._nbTrajects)
+      // .where('_user._nbTrajects', '==', traj._user._nbTrajects)
       .where('_destination','==',traj._destination)
       .where('_depart','==',traj._depart)
+      .where('_departure_time','==',traj._departure_time)
       .where('_user._id', "==", id)
       .get().then(res=>{
         res.forEach(doc=> doc.ref.delete())
       });
   }
 
-  async updateTraject(traj:Trajet){
+  async updateTraject(traj:Trajet, user:User){
     await this.firestore.collection('trajet').
       ref
       .where('_user._nbTrajects', '==', traj._user._nbTrajects)
@@ -80,7 +81,7 @@ constructor(private firestore: AngularFirestore) { }
       .where('_depart','==',traj._depart)
       .where('_user._id', "==", traj._user._id)
       .get().then(res=>{
-        res.forEach(doc=> doc.ref.update({_passagers: arrayUnion(traj._user)}))
+        res.forEach(doc=> doc.ref.update({_passagers: arrayUnion(user)}))
       });
   }
 

@@ -1,11 +1,3 @@
-<!-- <div *ngIf="!this.firebaseService.isLoggedIn">
-  <div *ngIf="this.firebaseService.status=='entreprise'">
-    <h2>Sign in</h2>
-    <input type="text" #email>
-    <input type="text" #password>
-    <button (click)="onSignin(email.value,password.value)">Sign up</button>
-  </div>
-</div> -->
 <div *ngIf="!this.firebaseService.isLoggedIn" >
   <div *ngIf="this.firebaseService.status=='entreprise' || this.firebaseService.status=='collectivites'">
     <mat-card>
@@ -27,7 +19,9 @@
           <div class="button">
             <button mat-raised-button color="primary" type="submit">Login</button>
           </div>
-          <span>Nouvel(le) utilisateur ?<a routerLink="/signup">Inscrivez vous !</a></span>
+          <span>Nouvel utilisateur ? <a routerLink="/signup">Inscrivez vous !</a></span>
+          <br>
+          <span><a (click)="this.resetPassword()" mat-raised-button color="primary">Forget password?</a></span>
         </form>
       </mat-card-content>
     </mat-card>

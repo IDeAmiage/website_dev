@@ -71,7 +71,31 @@
   <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Votre trajet
+        Récurrence
+      </mat-panel-title>
+      <mat-panel-description>
+        Choisissez votre récurrence
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <section fxLayout="row" fxLayoutAlign="space-around center">
+        <label>Fréquence :</label>
+        <mat-radio-group [(ngModel)]="freq">
+          <mat-radio-button value="day">Tous les jours</mat-radio-button>
+          <mat-radio-button value="week">Toutes les semaines</mat-radio-button>
+          <mat-radio-button value="month">Tous les mois</mat-radio-button>
+          <mat-radio-button value="aucun">Aucun</mat-radio-button>
+        </mat-radio-group>
+      </section>
+    </div>
+    <mat-action-row>
+      <button mat-button color="primary" (click)="this.saveRecurrent()">Save</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+  <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Traject
       </mat-panel-title>
       <mat-panel-description>
         Choisissez votre trajet

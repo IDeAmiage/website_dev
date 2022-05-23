@@ -52,6 +52,9 @@ import { RatingComponent } from './components/rating/rating.component';
 import { RatingPipe } from './components/rating/rating.pipe';
 import { AtomSpinnerModule } from 'angular-epic-spinners';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { SearchFilterPipe } from '../search-filter.pipe';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -75,7 +78,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ActiveRating,
     InactiveRating,
     FractionRating,
-    RatingPipe
+    RatingPipe,
+    SearchFilterPipe,
+
   ],
   imports: [
     CommonModule,
@@ -115,7 +120,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatNativeDateModule,
     MatSlideToggleModule,
     AtomSpinnerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}]
 })

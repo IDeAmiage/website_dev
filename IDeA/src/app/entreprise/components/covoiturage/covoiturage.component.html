@@ -1,7 +1,7 @@
 <div align="end" style="padding: 5px;">
   <button mat-raised-button (click)="onCreate()"  color="warn"> <mat-icon color="primary">post_add</mat-icon> Poster une annonce </button>
   <br>
-  <mat-slide-toggle [(ngModel)]="isChecked" (ngModelChange)="getMyTrajects()" style="margin-right:10px;">Mes annonces</mat-slide-toggle>
+  <mat-slide-toggle [(ngModel)]="isChecked" (ngModelChange)="getMyTrajects()" style="margin-right:10px;" matTooltip="Voir mes annonces">Mes annonces</mat-slide-toggle>
 </div>
 
 <div *ngIf="this.loader.isLoading | async" class="loader-container">
@@ -20,8 +20,20 @@
 <div id="back">
 </div>
 
+<div  fxLayout="row" fxLayoutAlign="start center" >
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput type="text" [(ngModel)]="query" name="query" matTooltip="Filtrer par destination">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  <button mat-icon-button color="primary" (click)="refreshByTime()">
+    <mat-icon matTooltip="Filter par date">schedule</mat-icon>
+  </button>
+</div>
+
+
 <div fxLayout="row wrap"  fxLayoutGap="100" style="margin-left: 3%" >
-  <mat-grid-list *ngFor="let item of this.TrajetListe; index as i" #grid [cols]="cols" rowHeight="10:10" gutterSize="10px" >
+  <mat-grid-list *ngFor="let item of this.TrajetListe | searchFilter: query; index as i" #grid [cols]="cols" rowHeight="10:10" gutterSize="10px" >
     <mat-card class="example-card">
       <mat-card-subtitle align="end">{{item._user._name}}
         <button *ngIf="this.isChecked"  mat-icon-button aria-label="Delete the traject" (click)="this.deleteTraject(i)">
@@ -32,7 +44,6 @@
         <mat-card-title>{{item._depart}}</mat-card-title>
 
         <img src="../../../../assets/Entreprise/jeep.gif" class="jeep" alt="Jeep Car"/>
-      <!-- <a href="https://iconscout.com/lotties/jeep" target="_blank">Jeep Lottie Animation</a> by <a href="https://iconscout.com/contributors/zolute">Zolute Technology and Consulting Pvt Ltd</a> on <a href="https://iconscout.com">Iconscout</a> -->
       <mat-card-content>
         <p class="departure_hour">{{item._departure_time?.toDate() | date: 'HH:mm'}}</p>
         <p class="departure_date">{{item._departure_time?.toDate() | date: 'dd/MM/yyyy'}}</p>

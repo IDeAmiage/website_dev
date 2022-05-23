@@ -1,8 +1,7 @@
 <div class="exporters" fxLayout="row" fxLayoutGap="20px">
-  <button mat-raised-button (click)="exporter.exportTable('csv', {fileName:'mon_fichier'})">CSV</button>
-  <button mat-raised-button (click)="exporter.exportTable('xlsx', {fileName:'mon_fichier'})">Excel</button>
-  <button mat-raised-button (click)="exporter.exportTable('json', {fileName:'mon_fichier'})">JSON</button>
-  <button mat-raised-button (click)="exporter.exportTable('txt', {fileName:'mon_fichier'})">TXT</button>
+  <button mat-raised-button (click)="CSV_Export()">CSV</button>
+  <button mat-raised-button (click)="Excel_Export()">Excel</button>
+  <button mat-raised-button (click)="JSON_Export()">JSON</button>
 </div>
 
 

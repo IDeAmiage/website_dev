@@ -15,6 +15,7 @@ export class TableViewComponent implements OnInit, AfterViewInit {
   public table: any;
   public displayedColumns: any[] = [];
   public columnsToDisplay: any[] = [];
+  public name: any;
 
   constructor(public opendata: OpendatasoftV1Service) { }
 
@@ -42,5 +43,20 @@ export class TableViewComponent implements OnInit, AfterViewInit {
     let start = page.pageIndex * page.pageSize;
     let end = page.pageIndex * page.pageSize + page.pageSize;
     this.columnsToDisplay = this.displayedColumns.slice(start, end);
+  }
+
+  CSV_Export(){
+    window.open("https://public.opendatasoft.com/explore/dataset/"+this.opendata.current_dataset+
+    "/download/?format=csv&timezone=Europe/Berlin&lang=fr&use_labels_for_header=true&csv_separator=%3B")
+  }
+
+  JSON_Export(){
+    window.open("https://public.opendatasoft.com/explore/dataset/"+this.opendata.current_dataset+
+    "/download/?format=json&timezone=Europe/Berlin&lang=fr");
+  }
+
+  Excel_Export(){
+    window.open("https://public.opendatasoft.com/explore/dataset/"+this.opendata.current_dataset+
+    "/download/?format=xls&timezone=Europe/Berlin&lang=fr&use_labels_for_header=true")
   }
 }

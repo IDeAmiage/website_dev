@@ -29,6 +29,7 @@ export class PostCovoiturageComponent implements OnInit {
   departure_time:any;
 
   currentUser:any;
+  freq: string="";
 
   panelOpenState = false;
   size = new FormControl();
@@ -87,6 +88,36 @@ export class PostCovoiturageComponent implements OnInit {
     
   }
 
+  saveRecurrent(){
+    console.log(this.freq);
+
+    // switch (this.freq) {
+    //   case "day":
+    //     for (let i = 0; i < 7; i++) {
+    //       // this.trajet._departure_time = this.trajet._departure_time.setDate(this.trajet._departure_time.getDate() +i);
+    //       console.log(new Date(this.trajet._departure_time.setDate(this.trajet._departure_time.getDate() +1)));
+
+    //     }
+    //     break;
+    //   case "week":
+    //     for (let i = 0; i < 8; i++) {
+    //       this.trajet._departure_time = new Date(this.trajet._departure_time.setDate(this.trajet._departure_time.getDate() +i+7*i));
+    //     }
+    //     break;
+    //   case "month":
+    //     for (let i = 0; i < 12; i++) {
+    //       this.trajet._departure_time = new Date(this.trajet._departure_time.setDate(this.trajet._departure_time.getMonth() +i));
+    //     }
+    //     break;
+    //   case "aucun":
+    //     console.log("Aucun");
+    //     break;
+    //   default:
+    //     break;
+    // }
+    this.nextStep();
+  }
+
   async getLatLong(adresse: Adress){
 
     await this.api.getPositionFromAdress(adresse._num, adresse._addresse, adresse._city).toPromise().then(response=>{
@@ -122,10 +153,55 @@ export class PostCovoiturageComponent implements OnInit {
     await this.api.getCo2Calculation(this.trajet).toPromise().then((res)=>{
       this.trajet._co2Emission = parseFloat(res.toString());
     })
-    this.firestore.insertObject(this.trajet,"trajet");
-    this.firestore.updateUser(this.trajet._user, this.trajet._user._id).then((item:any)=>{
-      location.reload();
-      this.dialogRef.close();
-    })
+    console.log(this.freq);
+
+    switch (this.freq) {
+      case "day":
+        this.firestore.insertObject(this.trajet,"trajet");
+        for (let i = 1; i < 7; i++) {
+          this.trajet._departure_time = new Date(this.trajet._departure_time.setDate(this.trajet._departure_time.getDate() +1));
+          this.firestore.insertObject(this.trajet,"trajet");
+        }
+        this.firestore.updateUser(this.trajet._user, this.trajet._user._id).then((item:any)=>{
+          location.reload();
+          this.dialogRef.close();
+        })
+        break;
+      case "week":
+        this.firestore.insertObject(this.trajet,"trajet");
+        for (let i = 1; i < 8; i++) {
+          this.trajet._departure_time = new Date(this.trajet._departure_time.setDate(this.trajet._departure_time.getDate() +7*1));
+          this.firestore.insertObject(this.trajet,"trajet");
+        }
+        this.firestore.updateUser(this.trajet._user, this.trajet._user._id).then((item:any)=>{
+          location.reload();
+          this.dialogRef.close();
+        })
+        break;
+      case "month":
+        this.firestore.insertObject(this.trajet,"trajet");
+        for (let i = 1; i < 12; i++) {
+          this.trajet._departure_time = new Date(this.trajet._departure_time.setDate(this.trajet._departure_time.getMonth() +1));
+          this.firestore.insertObject(this.trajet,"trajet");
+        }
+        this.firestore.updateUser(this.trajet._user, this.trajet._user._id).then((item:any)=>{
+          location.reload();
+          this.dialogRef.close();
+        })
+        break;
+      case "aucun":
+        this.firestore.insertObject(this.trajet,"trajet");
+        this.firestore.updateUser(this.trajet._user, this.trajet._user._id).then((item:any)=>{
+          location.reload();
+          this.dialogRef.close();
+        })
+        break;
+      default:
+        break;
+    }
   }
+}
+
+function delay(ms: number) {
+  return new Promise( resolve => setTimeout(resolve, ms));
 }

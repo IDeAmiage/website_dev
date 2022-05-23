@@ -12,7 +12,10 @@ export class SearchFilterPipe implements PipeTransform {
     args = args.toLowerCase();
 
     return value.filter(function(data:any){
-        return JSON.stringify(data.fields.dataset_id).toLowerCase().includes(args);
+        if (JSON.stringify(data).includes("fields")){
+          return JSON.stringify(data.fields.dataset_id).toLowerCase().includes(args);
+        }
+        return JSON.stringify(data._destination).toLowerCase().includes(args)
     });
 }
 

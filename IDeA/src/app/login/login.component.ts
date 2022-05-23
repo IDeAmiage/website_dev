@@ -48,4 +48,15 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
+  resetPassword() {
+    if (!this.email) {
+      alert('Type in your email first');
+    }
+    this.firebaseService.resetPasswordInit(this.email)
+    .then(
+      () => this.notifier.showNotification("Un email de verification a été envoyé à votre adresse mail","OK","success"),
+      (rejectionReason) => alert(rejectionReason))
+    .catch(e => this.notifier.showNotification("Une erreur s'est produite lors de la tentative de changement de mdp", "OK","error"));
+  }
+
 }

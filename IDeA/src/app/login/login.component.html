@@ -42,25 +42,25 @@
           <p>
             <mat-form-field>
               <input matInput placeholder="Email address" formControlName="email" />
-              <mat-error *ngIf="email?.errors?.['required']" >Email is required</mat-error>
+              <mat-error *ngIf="email?.errors?.['required']" >Un e-mail est requis</mat-error>
             </mat-form-field>
           </p>
           <p>
             <mat-form-field>
               <input matInput placeholder="Password" formControlName="password" type="password" />
-              <mat-error *ngIf="password?.errors?.['required']" >Password is required</mat-error>
+              <mat-error *ngIf="password?.errors?.['required']" >Un mot de passe est requis</mat-error>
             </mat-form-field>
           </p>
           <div class="button">
             <button mat-raised-button color="primary" type="submit">Login</button>
           </div>
-          <span>New user? <a routerLink="/signup">Sign Up!</a></span>
+          <span>Nouvel(le) utilisateur ? <a routerLink="/signup">Inscrivez vous !</a></span>
         </form>
       </mat-card-content>
       <mat-card-actions>
         <div class="button">
           <button mat-raised-button class="google-login-btn" (click)="this.firebaseService.googleSignin()">
-            Log in with Google
+            Connexion avec Google
           </button>
         </div>
       </mat-card-actions>

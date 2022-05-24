@@ -45,6 +45,8 @@ import player from 'lottie-web';
 export function playerFactory() {
   return player;
 }
+import { AtomSpinnerModule } from 'angular-epic-spinners';
+import {MatTooltipModule} from '@angular/material/tooltip';
 // import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 // import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
@@ -93,6 +95,9 @@ export function playerFactory() {
     EntrepriseRoutingModule,
     AppRoutingModule,
     LottieModule.forRoot({ player: playerFactory }),
+    AtomSpinnerModule,
+    MatTooltipModule
+
   ],
   providers: [FirebaseService, {provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}],
   bootstrap: [AppComponent]

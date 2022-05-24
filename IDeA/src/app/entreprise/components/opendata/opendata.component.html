@@ -39,13 +39,6 @@
           <mat-card-header>
             <mat-card-title>
               <span class="title">{{card.fields.dataset_id}}</span>
-              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu" xPosition="before">
-                <button mat-menu-item>Expand</button>
-                <button mat-menu-item>Remove</button>
-              </mat-menu>
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
@@ -83,13 +76,6 @@
           <mat-card-header>
             <mat-card-title>
               <span class="title">{{card.fields.dataset_id}}</span>
-              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu" xPosition="before">
-                <button mat-menu-item>Expand</button>
-                <button mat-menu-item>Remove</button>
-              </mat-menu>
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
@@ -127,13 +113,6 @@
           <mat-card-header>
             <mat-card-title>
               <span class="title">{{card.fields.dataset_id}}</span>
-              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu" xPosition="before">
-                <button mat-menu-item>Expand</button>
-                <button mat-menu-item>Remove</button>
-              </mat-menu>
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
@@ -171,13 +150,6 @@
             <mat-card-header>
               <mat-card-title>
                 <span class="title">{{card.fields.dataset_id}}</span>
-                <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu" xPosition="before">
-                  <button mat-menu-item>Expand</button>
-                  <button mat-menu-item>Remove</button>
-                </mat-menu>
               </mat-card-title>
             </mat-card-header>
             <mat-card-content class="dashboard-card-content">
@@ -191,7 +163,12 @@
                 <span class="info_title">
                   <mat-icon class="icon">save_alt</mat-icon>Poids du dataset : <br />
                 </span>
-                <span class="info_data"> {{card.fields.records_size}} octets</span>
+                <span class="info_data" *ngIf="card.fields.records_size / 1048576 < 1">
+                  {{card.fields.records_size / 1024 | number: '1.0-0' }} ko
+                </span>
+                <span class="info_data" *ngIf="card.fields.records_size / 1048576 >=1">
+                  {{card.fields.records_size / 1048576 | number: '1.0-0' }} Mo
+                </span>
               </div>
               <div class="info">
                 <span class="info_title">

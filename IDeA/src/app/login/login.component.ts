@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AnimationItem } from 'lottie-web';
+import { AnimationOptions } from 'ngx-lottie';
 
 /**
  * Component used for Login to the app
@@ -14,9 +16,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  options: AnimationOptions = {
+    path: '/assets/animation.json',
+  };
 
 /**
  * Creates an instance of LoginComponent.
@@ -66,7 +71,7 @@ constructor(public firebaseService: FirebaseService, public router: Router, priv
  */
 loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required)
+    password: new FormControl('', [Validators.required, Validators.minLength(8)])
   })
 /**
  * Get the email
@@ -103,5 +108,4 @@ resetPassword() {
       (rejectionReason) => alert(rejectionReason))
     .catch(e => this.notifier.showNotification("Une erreur s'est produite lors de la tentative de changement de mdp", "OK","error"));
   }
-
 }

@@ -150,8 +150,9 @@ export class CovoiturageComponent implements OnInit {
    */
   onCreate() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
+    dialogConfig.autoFocus = false;
+    dialogConfig.width = "200%";
+    dialogConfig.height = "70%";
     this.dialog.open(PostCovoiturageComponent, dialogConfig);
   }
 

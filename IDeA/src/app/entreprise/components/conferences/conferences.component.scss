@@ -12,6 +12,18 @@
   margin-top: -251px;
 }
 
+@media (max-width:2500px){
+  #back{
+    margin-top: 4rem;
+  }
+}
+
+@media (max-width:1920px){
+  #back{
+    margin-top: 1rem;
+  }
+}
+
 p{
   margin-top: 30px;
   text-align: center;

@@ -20,7 +20,7 @@ export class MonEntrepriseComponent implements OnInit {
   userEntreprise: any;
   consoEntreprise: number = 0;
 
-  classement = new Map<string, number>();
+  classementCo2 = new Map<string, number>();
   classementnbTrajets = new Map<string, number>();
   classementUser = new Map<string, number>();
   /**
@@ -80,23 +80,21 @@ export class MonEntrepriseComponent implements OnInit {
     });
   }
 
-  /**
-   * Create different classement for the entreprise like the CO2 classement and the number of trajects
-   *
-   * @memberof MonEntrepriseComponent
-   */
   getClassementEntreprise() {
     this.firestore.getObject('trajet').subscribe((res: any) => {
       res.forEach((element: any) => {
-        if (this.classement.get(element._user._entreprise) == undefined) {
-          this.classement.set(element._user._entreprise, element._co2Emission);
+        if (this.classementCo2.get(element._user._entreprise) == undefined) {
+          this.classementCo2.set(
+            element._user._entreprise,
+            element._co2Emission
+          );
           this.classementnbTrajets.set(element._user._entreprise, 1);
         } else {
-          let temp = this.classement.get(element._user._entreprise);
+          let temp = this.classementCo2.get(element._user._entreprise);
           let temptraj = this.classementnbTrajets.get(
             element._user._entreprise
           );
-          this.classement.set(
+          this.classementCo2.set(
             element._user._entreprise,
             element._co2Emission + temp
           );
@@ -106,8 +104,8 @@ export class MonEntrepriseComponent implements OnInit {
           );
         }
       });
-      this.classement = new Map(
-        [...this.classement].sort((a, b) => b[1] - a[1])
+      this.classementCo2 = new Map(
+        [...this.classementCo2].sort((a, b) => b[1] - a[1])
       );
       this.classementnbTrajets = new Map(
         [...this.classementnbTrajets].sort((a, b) => b[1] - a[1])
@@ -138,6 +136,7 @@ export class MonEntrepriseComponent implements OnInit {
       );
     });
   }
+
   originalOrder(a: any, b: any) {
     return 1;
   }

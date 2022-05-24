@@ -46,11 +46,11 @@
       </div>
 
       <!--- Informations -->
-      <div fxFlex="100"><h2>Information utilisateur</h2></div>
+      <div fxFlex="100"><h2>Informations utilisateur</h2></div>
 
       <div fxFlex="calc(33% - 20px)">
         <mat-form-field appearance="legacy">
-          <mat-label>Prenom</mat-label>
+          <mat-label>Prénom</mat-label>
           <input matInput type="text" formControlName="_name">
         </mat-form-field>
       </div>
@@ -113,7 +113,7 @@
 
       <div fxFlex="calc(33% - 20px)">
         <mat-form-field appearance="legacy">
-          <mat-label>Capacite</mat-label>
+          <mat-label>Capacité</mat-label>
           <mat-select placeholder="Capacite" formControlName="_capacite">
             <mat-option *ngFor="let i of this.capacity" [value]="i">{{i}}</mat-option>
           </mat-select>

@@ -119,7 +119,7 @@ import {MatRadioModule} from '@angular/material/radio';
     AtomSpinnerModule,
     MatTooltipModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}]
 })

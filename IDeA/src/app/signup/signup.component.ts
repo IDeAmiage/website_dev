@@ -18,7 +18,7 @@ import { map, startWith } from 'rxjs/operators';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
 
@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
 
   SignUpForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     entreprise: new FormControl('', Validators.required)
   })
 

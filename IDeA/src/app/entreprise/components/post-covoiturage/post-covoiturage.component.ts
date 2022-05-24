@@ -3,7 +3,7 @@ import { FirestorageService } from './../../../firestorage.service';
 import { Adress, Trajet } from './../../../Trajet';
 import { ApiService } from './../../../api.service';
 import { FirebaseService } from './../../../firebase.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators,FormBuilder} from '@angular/forms';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Car } from 'src/app/Car';
 import * as geolib from 'geolib';
@@ -20,7 +20,7 @@ import { CovoiturageComponent } from '../covoiturage/covoiturage.component';
 @Component({
   selector: 'app-post-covoiturage',
   templateUrl: './post-covoiturage.component.html',
-  styleUrls: ['./post-covoiturage.component.css']
+  styleUrls: ['./post-covoiturage.component.scss']
 })
 export class PostCovoiturageComponent implements OnInit {
   userCar = new Car();
@@ -41,7 +41,11 @@ export class PostCovoiturageComponent implements OnInit {
   fuel = new FormControl();
   people = new FormControl();
   sizeList: string[] = ['Little', 'Medium', 'Big'];
-  capacity: number[] = [1,2,3,4];
+  capacity: number[] = [1,2,3,4,5,6,7];
+
+  isLinear = false;
+  firstFormGroup!: FormGroup;
+  secondFormGroup!: FormGroup;
 
   step = 0;
 
@@ -63,7 +67,9 @@ setStep(index: number) {
     this.step--;
   }
 
-  fuelList: string[] = ["diesel","essence","gpl","cng"]
+
+
+  fuelList: string[] = ["Diesel","Essence","GPL","CNG"]
 
 /**
  * Creates an instance of PostCovoiturageComponent.
@@ -77,7 +83,8 @@ setStep(index: number) {
 constructor(public firebase:FirebaseService, public api: ApiService,
     public firestore: FirestorageService,
     public dialogRef: MatDialogRef<CovoiturageComponent>,
-    public router: Router
+    public router: Router,
+    private _formBuilder: FormBuilder
     ) {
   }
 

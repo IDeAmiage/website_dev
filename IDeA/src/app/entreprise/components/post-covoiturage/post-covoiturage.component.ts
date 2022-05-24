@@ -11,7 +11,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { CovoiturageComponent } from '../covoiturage/covoiturage.component';
 
 
-
 @Component({
   selector: 'app-post-covoiturage',
   templateUrl: './post-covoiturage.component.html',
@@ -38,6 +37,10 @@ export class PostCovoiturageComponent implements OnInit {
   sizeList: string[] = ['Little', 'Medium', 'Big'];
   capacity: number[] = [1,2,3,4,5,6,7];
 
+  isLinear = false;
+  firstFormGroup!: FormGroup;
+  secondFormGroup!: FormGroup;
+
   step = 0;
 
   setStep(index: number) {
@@ -57,7 +60,7 @@ export class PostCovoiturageComponent implements OnInit {
   fuelList: string[] = ["Diesel","Essence","GPL","CNG"]
 
   constructor(public firebase:FirebaseService, public api: ApiService, public firestore: FirestorageService,
-    public dialogRef: MatDialogRef<CovoiturageComponent>, public router: Router
+    public dialogRef: MatDialogRef<CovoiturageComponent>, public router: Router, private _formBuilder: FormBuilder
     ) {
   }
 

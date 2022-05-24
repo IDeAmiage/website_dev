@@ -1,141 +1,162 @@
-<h2>Entrez les détails de votre annonce</h2>
+<h2>CONFIGUREZ VOTRE ANNONCE</h2>
 <mat-accordion class="example-headers-align">
-  <!-- <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-         Configurez votre véhicule
-      </mat-panel-title>
-      <mat-panel-description>
-        Quel est votre véhicule ?
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <div fxLayout="row" fxLayoutAlign="space-around center">
-      <mat-form-field>
-        <mat-label>Type de véhicule</mat-label>
-        <mat-select [formControl]="size">
-          <mat-select-trigger>
-            {{size.value}}
-          </mat-select-trigger>
-          <mat-option *ngFor="let size of this.sizeList" [value]="size">{{size}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Type de carburant</mat-label>
-        <mat-select [formControl]="fuel">
-          <mat-select-trigger>
-            {{fuel.value}}
-          </mat-select-trigger>
-          <mat-option *ngFor="let fuel of this.fuelList" [value]="fuel">{{fuel}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Nombre de place disponible</mat-label>
-        <mat-select [formControl]="people">
-          <mat-select-trigger>
-            {{people.value}}
-          </mat-select-trigger>
-          <mat-option *ngFor="let item of this.capacity" [value]="item">{{item}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+  <section fxLayout = "row" fxFill>
+    <div fxFlex="100" class="gif">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+             Configurez votre véhicule
+          </mat-panel-title>
+          <mat-panel-description>
+            Quel est votre véhicule ?
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-around center">
+          <mat-form-field>
+            <mat-label>Type de véhicule</mat-label>
+            <mat-select [formControl]="size">
+              <mat-select-trigger>
+                {{size.value}}
+              </mat-select-trigger>
+              <mat-option *ngFor="let size of this.sizeList" [value]="size">{{size}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Type de carburant</mat-label>
+            <mat-select [formControl]="fuel">
+              <mat-select-trigger>
+                {{fuel.value}}
+              </mat-select-trigger>
+              <mat-option *ngFor="let fuel of this.fuelList" [value]="fuel">{{fuel}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field >
+            <mat-label>Nombre de place disponible</mat-label>
+            <mat-select [formControl]="people">
+              <mat-select-trigger>
+                {{people.value}}
+              </mat-select-trigger>
+              <mat-option *ngFor="let item of this.capacity" [value]="item">{{item}}</mat-option>
+            </mat-select>
+            <!-- <mat-error *ngIf="people.hasError('required')">
+              Il n'y a plus de place dispo
+            </mat-error> -->
+          </mat-form-field>
+        </div>
+        <mat-action-row>
+          <div class="btn-bg bg-2">
+            <div class="btn btn-2">
+              <button mat-button  (click)="this.saveCar()">Suivant</button>
+            </div>
+          </div>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Date de votre trajet
+          </mat-panel-title>
+          <mat-panel-description>
+            Choisir votre date
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-around center">
+          <mat-form-field appearance="fill">
+            <mat-label>Choisissez une date</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="this.departure_date">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Heure: </mat-label>
+            <input matInput type="time" [(ngModel)]="this.departure_time">
+          </mat-form-field>
+          <mat-action-row>
+            <div class="btn-bg bg-2">
+              <div class="btn btn-2">
+                <button mat-button (click)="this.saveDateTime()" class="suivant">Suivant</button>
+              </div>
+            </div>
+          </mat-action-row>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Récurrence
+          </mat-panel-title>
+          <mat-panel-description>
+            Choisissez votre récurrence
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <section fxLayout="row" fxLayoutAlign="space-around center">
+            <label class="frequence">Fréquence</label>
+            <mat-radio-group [(ngModel)]="freq">
+              <mat-radio-button value="day" class="radio_button">Tous les jours</mat-radio-button>
+              <mat-radio-button value="week" class="radio_button">Toutes les semaines</mat-radio-button>
+              <mat-radio-button value="month" class="radio_button">Tous les mois</mat-radio-button>
+              <mat-radio-button value="aucun" class="radio_button">Aucun</mat-radio-button>
+            </mat-radio-group>
+          </section>
+        </div>
+        <mat-action-row>
+          <div class="btn-bg bg-2">
+            <div class="btn btn-2">
+              <button mat-button (click)="this.saveRecurrent()" class="suivant">Suivant</button>
+            </div>
+          </div>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Traject
+          </mat-panel-title>
+          <mat-panel-description>
+            Choisissez votre trajet
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-around center">
+          <span class="start_end">Départ</span>
+          <mat-form-field>
+            <mat-label>Numéro de Rue</mat-label>
+            <input type="number" matInput [(ngModel)]="this.depart._num" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Adresse</mat-label>
+            <input type="text" matInput [(ngModel)]="this.depart._addresse" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Ville</mat-label>
+            <input type="text" matInput [(ngModel)]="this.depart._city" />
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-around center">
+          <span class="start_end">Arrivée</span>
+          <mat-form-field>
+            <mat-label>Numéro de rue</mat-label>
+            <input type="number" matInput [(ngModel)]="this.arrivee._num" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Adresse</mat-label>
+            <input type="text" matInput [(ngModel)]="this.arrivee._addresse" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Ville</mat-label>
+            <input type="text" matInput [(ngModel)]="this.arrivee._city" />
+          </mat-form-field>
+        </div>
+        <mat-action-row>
+          <div class="btn-bg bg-2">
+            <div class="btn btn-2">
+              <button mat-button  (click)="this.saveTraject()" class="suivant">Valider votre trajet</button>
+            </div>
+          </div>
+        </mat-action-row>
+      </mat-expansion-panel>
     </div>
-    <mat-action-row>
-      <button mat-button color="primary" (click)="this.saveCar()" class="suivant">Suivant</button>
-    </mat-action-row>
-  </mat-expansion-panel>
-  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Date de votre trajet
-      </mat-panel-title>
-      <mat-panel-description>
-        Choisir votre date
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <div fxLayout="row" fxLayoutAlign="space-around center">
-      <mat-form-field appearance="fill">
-        <mat-label>Choisissez une date</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="this.departure_date">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Heure: </mat-label>
-        <input matInput type="time" [(ngModel)]="this.departure_time">
-      </mat-form-field>
-      <mat-action-row>
-        <button mat-button color="primary" (click)="this.saveDateTime()" class="suivant">Suivant</button>
-      </mat-action-row>
-    </div>
-  </mat-expansion-panel>
-  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Récurrence
-      </mat-panel-title>
-      <mat-panel-description>
-        Choisissez votre récurrence
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <div>
-      <section fxLayout="row" fxLayoutAlign="space-around center">
-        <label>Fréquence :</label>
-        <mat-radio-group [(ngModel)]="freq">
-          <mat-radio-button value="day">Tous les jours</mat-radio-button>
-          <mat-radio-button value="week">Toutes les semaines</mat-radio-button>
-          <mat-radio-button value="month">Tous les mois</mat-radio-button>
-          <mat-radio-button value="aucun">Aucun</mat-radio-button>
-        </mat-radio-group>
-      </section>
-    </div>
-    <mat-action-row>
-      <button mat-button color="primary" (click)="this.saveRecurrent()">Save</button>
-    </mat-action-row>
-  </mat-expansion-panel>
-  <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Traject
-      </mat-panel-title>
-      <mat-panel-description>
-        Choisissez votre trajet
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <div fxLayout="row" fxLayoutAlign="space-around center">
-      Départ
-      <mat-form-field>
-        <mat-label>Numéro de Rue</mat-label>
-        <input type="number" matInput [(ngModel)]="this.depart._num" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label >Adresse</mat-label>
-        <input type="text" matInput [(ngModel)]="this.depart._addresse" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label >Ville</mat-label>
-        <input type="text" matInput [(ngModel)]="this.depart._city" />
-      </mat-form-field>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="space-around center">
-      Arrivée
-      <mat-form-field>
-        <mat-label>Numéro de rue</mat-label>
-        <input type="number" matInput [(ngModel)]="this.arrivee._num" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label >Adresse</mat-label>
-        <input type="text" matInput [(ngModel)]="this.arrivee._addresse" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label >Ville</mat-label>
-        <input type="text" matInput [(ngModel)]="this.arrivee._city" />
-      </mat-form-field>
-    </div>
-    <mat-action-row>
-      <button mat-button color="primary" (click)="this.saveTraject()" class="suivant">Valider votre trajet</button>
-    </mat-action-row>
-  </mat-expansion-panel> -->
-
-
+  </section>
 </mat-accordion>
 <!-- <button mat-raised-button (click)="calc()"> Calculate</button> -->

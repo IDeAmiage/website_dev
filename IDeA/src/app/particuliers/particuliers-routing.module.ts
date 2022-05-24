@@ -11,7 +11,12 @@ const routes: Routes = [
     ]
   }
 ];
-
+/**
+ * Submodule of routing for Particuliers user group
+ *
+ * @export
+ * @class ParticuliersRoutingModule
+ */
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

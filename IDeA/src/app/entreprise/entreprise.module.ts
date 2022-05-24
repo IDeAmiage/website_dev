@@ -56,9 +56,6 @@ import { SearchFilterPipe } from '../search-filter.pipe';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 
-
-
-
 @NgModule({
   declarations: [
     HomeComponent,

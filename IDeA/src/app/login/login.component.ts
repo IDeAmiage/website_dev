@@ -4,7 +4,13 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-
+/**
+ * Component used for Login to the app
+ *
+ * @export
+ * @class LoginComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,9 +18,22 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public firebaseService: FirebaseService, public router: Router, private notifier: NotifierService){
+/**
+ * Creates an instance of LoginComponent.
+ * @param {FirebaseService} firebaseService
+ * @param {Router} router
+ * @param {NotifierService} notifier
+ * @memberof LoginComponent
+ */
+constructor(public firebaseService: FirebaseService, public router: Router, private notifier: NotifierService){
 
   }
+
+  /**
+   * On init check if the user is logged in
+   *
+   * @memberof LoginComponent
+   */
   ngOnInit(): void {
 
     if(localStorage.getItem('user')!==null)
@@ -22,6 +41,13 @@ export class LoginComponent implements OnInit {
     else
       this.firebaseService.isLoggedIn = false;
   }
+
+  /**
+   * On submit we call our firebase service function to validate the login
+   *
+   * @return {*}
+   * @memberof LoginComponent
+   */
   async submit(){
     if(!this.loginForm.valid){
       return;
@@ -33,21 +59,41 @@ export class LoginComponent implements OnInit {
       this.router.navigate([localStorage.getItem('status')]);
     }
   }
-
-  loginForm = new FormGroup({
+/**
+ * Form that contain our email and password values
+ *
+ * @memberof LoginComponent
+ */
+loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required)
   })
-
-  get email(){
+/**
+ * Get the email
+ *
+ * @readonly
+ * @memberof LoginComponent
+ */
+get email(){
     return this.loginForm.get('email');
   }
 
-  get password(){
+/**
+ * Get the password
+ *
+ * @readonly
+ * @memberof LoginComponent
+ */
+get password(){
     return this.loginForm.get('password');
   }
 
-  resetPassword() {
+/**
+ * This method send an email to reset the password
+ *
+ * @memberof LoginComponent
+ */
+resetPassword() {
     if (!this.email) {
       alert('Type in your email first');
     }

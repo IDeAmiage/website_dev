@@ -9,7 +9,8 @@
     "test": "ng test",
     "compodoc:build": "compodoc -p tsconfig.doc.json",
     "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
-    "compodoc:serve": "compodoc -s"
+    "compodoc:serve": "compodoc -s",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -38,12 +39,20 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.12",
+    "@angular-eslint/builder": "12.7.0",
+    "@angular-eslint/eslint-plugin": "12.7.0",
+    "@angular-eslint/eslint-plugin-template": "12.7.0",
+    "@angular-eslint/schematics": "12.7.0",
+    "@angular-eslint/template-parser": "12.7.0",
     "@angular/cli": "~12.2.12",
     "@angular/compiler-cli": "~12.2.0",
     "@types/jasmine": "~3.8.0",
     "@types/lodash": "^4.14.182",
     "@types/node": "^12.11.1",
     "@types/three": "^0.138.0",
+    "@typescript-eslint/eslint-plugin": "4.28.2",
+    "@typescript-eslint/parser": "4.28.2",
+    "eslint": "^7.26.0",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",

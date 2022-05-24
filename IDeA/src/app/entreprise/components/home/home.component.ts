@@ -4,6 +4,13 @@ import { Component, OnInit} from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
+/**
+ * Home component is exposing cards from different pages
+ *
+ * @export
+ * @class HomeComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -89,12 +96,18 @@ export class HomeComponent implements OnInit {
     })
   );
 
-
-  constructor(
+/**
+ * Creates an instance of HomeComponent.
+ * @param {FirebaseService} firebase
+ * @param {Router} router
+ * @param {BreakpointObserver} breakpointObserver
+ * @memberof HomeComponent
+ */
+constructor(
     public firebase: FirebaseService,
     public router: Router,
     private breakpointObserver: BreakpointObserver) {
-      this.breakpointObserver.observe([
+      this.breakpointObserver.observe([ // responsive part
         Breakpoints.XSmall,
         Breakpoints.Small,
         Breakpoints.Medium,

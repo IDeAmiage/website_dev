@@ -19,9 +19,20 @@ export class AccueilComponent implements OnInit {
   isExplorer!: boolean;
   content!: string;
 
-  constructor(public firebaseService: FirebaseService, public router: Router, private _sanitizer: DomSanitizer){}
-
-  ngOnInit(): void {
+/**
+ * Creates an instance of AccueilComponent.
+ * @param {FirebaseService} firebaseService
+ * @param {Router} router
+ * @param {DomSanitizer} _sanitizer
+ * @memberof AccueilComponent
+ */
+constructor(public firebaseService: FirebaseService, public router: Router, private _sanitizer: DomSanitizer){}
+/**
+ * On init this component load all the videos
+ *
+ * @memberof AccueilComponent
+ */
+ngOnInit(): void {
     this.urlDax = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/tZJlT948Qos');
     this.urlMarsan = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/y18S3lp6Ox8');
     this.urlMimizan = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/Fxvc2bKtzeE');
@@ -32,29 +43,54 @@ export class AccueilComponent implements OnInit {
     this.content = "content";
   }
 
-  loginEntreprise(){
+/**
+ * Method to login with and entreprise status
+ *
+ * @memberof AccueilComponent
+ */
+loginEntreprise(){
     this.firebaseService.status = "entreprise";
     localStorage.setItem("status","entreprise");
     this.router.navigate(['login']);
   }
 
-  loginCollectivites(){
+/**
+ * Method to login with collectivities status
+ *
+ * @memberof AccueilComponent
+ */
+loginCollectivites(){
     this.firebaseService.status = "collectivites";
     localStorage.setItem("status","collectivites");
     this.router.navigate(['login']);
   }
 
-  loginParticuliers(){
+/**
+ * Login with particuliers status
+ *
+ * @memberof AccueilComponent
+ */
+loginParticuliers(){
     this.firebaseService.status = "particuliers";
     localStorage.setItem("status","particuliers");
     this.router.navigate(['login']);
   }
 
-  logout(): void{
+/**
+ * Method to Logout using firebaseService
+ *
+ * @memberof AccueilComponent
+ */
+logout(): void{
     this.firebaseService.logout();
   }
 
-  onClickExplorer(): void {
+/**
+ * On click on the button explorer, this show up the videos
+ *
+ * @memberof AccueilComponent
+ */
+onClickExplorer(): void {
     this.isExplorer = !this.isExplorer;
     this.content = "content-blur";
   }

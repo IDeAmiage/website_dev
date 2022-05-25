@@ -13,12 +13,11 @@ import * as _ from 'lodash';
 @Component({
   selector: 'app-mon-entreprise',
   templateUrl: './mon-entreprise.component.html',
-  styleUrls: ['./mon-entreprise.component.css'],
+  styleUrls: ['./mon-entreprise.component.scss'],
 })
 export class MonEntrepriseComponent implements OnInit {
   currentUser: any;
   userEntreprise: any;
-  consoEntreprise: number = 0;
 
   classementCo2 = new Map<string, number>();
   classementnbTrajets = new Map<string, number>();
@@ -45,7 +44,6 @@ export class MonEntrepriseComponent implements OnInit {
       .subscribe((res) => {
         this.currentUser = res[0];
         this.loadEntrepriseInfos(this.currentUser._entreprise.toUpperCase());
-        this.getEntrepriseCO2conso();
         this.getClassementEntreprise();
         this.getClassementUser();
       });
@@ -61,21 +59,6 @@ export class MonEntrepriseComponent implements OnInit {
     this.opendatasoft.getEntreprise(entreprise).subscribe((response) => {
       response.records.forEach((element: any) => {
         this.userEntreprise = element.fields;
-      });
-    });
-  }
-
-  /**
-   * Get the entire entreprise consommation of CO2
-   *
-   * @memberof MonEntrepriseComponent
-   */
-  getEntrepriseCO2conso() {
-    this.firestore.getObject('trajet').subscribe((res) => {
-      res.forEach((element: any) => {
-        if (element._user._entreprise === this.currentUser._entreprise) {
-          this.consoEntreprise += element._co2Emission;
-        }
       });
     });
   }

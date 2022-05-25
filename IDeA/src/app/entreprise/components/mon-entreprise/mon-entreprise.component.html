@@ -1,15 +1,13 @@
-<h1>
-  {{this.currentUser._entreprise}}
-</h1>
-
 <p>
-  {{this.userEntreprise | json}}
+  {{this.userEntreprise["trancheeffectifsetablissement"]}}
+</p>
+<p>
+  {{this.userEntreprise["datecreationunitelegale"]}}
 </p>
 
-<h1>{{this.consoEntreprise}}</h1>
+<h1>{{this.classementCo2.get(this.currentUser._entreprise)}}</h1>
 
-
-<iframe src="https://kepler.gl/#/demo?mapUrl=https://raw.githubusercontent.com/ikespand/ikespand.github.io/master/_data/sample_data/keplergl_road_network.json" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="100px" height="800px" width="1000px" allowfullscreen></iframe>
+<dashboard></dashboard>
 
 <h1>Classements</h1>
 <br>
@@ -27,3 +25,5 @@
 <div *ngFor="let entry of this.classementUser| keyvalue : originalOrder">
   {{entry.key}}:{{entry.value}}
 </div>
+
+<iframe src="https://kepler.gl/#/demo?mapUrl=https://raw.githubusercontent.com/ikespand/ikespand.github.io/master/_data/sample_data/keplergl_road_network.json" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="100px" height="800px" width="1000px" allowfullscreen></iframe>

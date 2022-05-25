@@ -88,8 +88,6 @@ ngOnInit(): void {
         this.test += element.fields.city +": "+element.fields.measurements_value + "\n"
       });
       console.log(this.test);
-
-
     })
   }
 

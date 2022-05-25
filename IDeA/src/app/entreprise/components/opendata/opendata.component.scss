@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap");
 @import "../../../../custom-theme.scss";
 
-
-.mat-h1{
+.mat-h1 {
   font-family: "Mulish", sans-serif;
   font-size: 40px;
 }
@@ -21,43 +20,10 @@
   font-family: "Mulish", sans-serif;
 }
 
-.title{
-  text-align: left;
-  @media (max-width: 1280px){
-    font-size: smaller;
-  }
-}
 .more-button {
   position: absolute;
   top: 5px;
   right: 10px;
-}
-
-.dashboard-card-content {
-  text-align: left;
-  font-weight: bold;
-  @media (max-width: 1280px){
-    margin-top: -20px;
-  }
-}
-
-.info{
-  margin-left: -0.5rem;
-  @media (max-width: 1280px){
-    font-size:small;
-  }
-}
-
-.info_title{
-  font-weight:bolder;
-  font-size:medium;
-  @media (max-width: 1280px){
-    font-size:small;
-  }
-}
-
-.info_data{
-  font-weight: lighter;
 }
 
 .data-button {
@@ -66,7 +32,7 @@
   right: 10px;
 }
 
-.loader-container{
+.loader-container {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -83,16 +49,365 @@
   left: 50%;
 }
 
-.gif_download{
+.gif_download {
   width: 70%;
 }
 
-.icon{
-  transform: scale(0.7);
-  margin-right: 0.1rem;
-  top: 5px;
-  position: relative;
-  @media (max-width: 1280px){
+@media (max-width: 2560px) {
+  span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+  }
+  .title {
+    width: 20rem;
+    font-size: 2rem;
+    text-align: left;
+  }
+
+  .mat-card-content {
+    text-align: left;
+    font-weight: bold;
+    margin-top: 5rem;
+    margin-left: 2rem;
+  }
+
+  .info {
+    margin-left: -1rem;
+    font-size: large;
+    margin-top: 2rem;
+  }
+
+  .info_data {
+    font-size: 1.5rem;
+    margin: 2rem;
+  }
+
+  .info_title {
+    font-weight: bolder;
+    font-size: 2rem;
+  }
+
+  .icon {
+    margin-right: 0.5rem;
+    top: 5px;
+    position: relative;
+    transform: scale(1.8);
+  }
+}
+
+@media (max-width: 1280px) {
+  span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+  }
+  .title {
+    width: 10rem;
+    text-align: left;
+    font-size: smaller;
+  }
+
+  .dashboard-card-content {
+    text-align: left;
+    font-weight: bold;
+    margin-top: -20px;
+    margin-left: 10rem;
+  }
+
+  .info {
+    margin-left: -0.5rem;
+    font-size: small;
+  }
+
+  .info_title {
+    font-weight: bolder;
+    font-size: medium;
+  }
+
+  .icon {
+    margin-right: 0.1rem;
+    top: 5px;
+    position: relative;
     transform: scale(0.5);
+  }
+}
+
+@media (max-width: 1920px) {
+  span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+  }
+  .title {
+    width: 15rem;
+    font-size: larger;
+    text-align: left;
+  }
+
+  .mat-card-content {
+    text-align: left;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+  }
+
+  .info {
+    margin-left: -0.3rem;
+    font-size: small;
+  }
+
+  .info_title {
+    font-weight: bolder;
+    font-size: 1.5rem;
+  }
+
+  .info_data {
+    font-size: 1rem;
+    margin: 1rem;
+  }
+
+  .icon {
+    margin-right: 0.1rem;
+    top: 5px;
+    position: relative;
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 1640px) {
+  span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+  }
+  .title {
+    width: 10rem;
+    font-size: medium;
+    text-align: left;
+  }
+
+  .mat-card-content {
+    text-align: left;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .info {
+    font-size: small;
+    margin-top: 0.5rem;
+  }
+
+  .info_title {
+    font-weight: bolder;
+    font-size: medium;
+  }
+
+  .info_data {
+    font-size: small;
+    margin: 0.5rem;
+  }
+
+  .icon {
+    margin-right: 0.1rem;
+    top: 5px;
+    position: relative;
+    transform: scale(0.7);
+  }
+}
+
+@media (max-width: 1439px) {
+  span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+  }
+  .title {
+    width: 10rem;
+    text-align: left;
+    font-size: Medium;
+    text-overflow: ellipsis;
+  }
+
+  .dashboard-card-content {
+    text-align: left;
+    margin-top: -1rem;
+  }
+
+  .info_title {
+    font-weight: bolder;
+    font-size: 0.8rem;
+  }
+  .info_data {
+    font-size: small;
+    margin: 0.5rem;
+  }
+
+  .icon {
+    margin-right: 0.1rem;
+    top: 5px;
+    position: relative;
+    transform: scale(0.5);
+  }
+}
+
+@media (max-width: 1280px) {
+  span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+  }
+  .title {
+    width: 8rem;
+    text-align: left;
+    font-size: 0.9rem;
+    text-overflow: ellipsis;
+  }
+
+  .dashboard-card-content {
+    text-align: left;
+    margin-top: -0.5rem;
+  }
+  .info {
+    margin-top: 0.1rem;
+  }
+
+  .info_title {
+    font-weight: bolder;
+    font-size: 0.8rem;
+  }
+  .info_data {
+    font-size: 0.6rem;
+    margin: 0.2rem;
+  }
+
+  .icon {
+    margin-right: 0.1rem;
+    top: 5px;
+    position: relative;
+    transform: scale(0.5);
+  }
+}
+@media (max-width: 1279px) {
+  span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+  }
+  .title {
+    width: 20rem;
+    text-align: left;
+    font-size: large;
+    text-overflow: ellipsis;
+  }
+
+  .dashboard-card-content {
+    text-align: left;
+    margin-top: 2rem;
+  }
+  .info {
+    margin-top: 1rem;
+  }
+
+  .info_title {
+    font-weight: bolder;
+    font-size: medium;
+  }
+  .info_data {
+    font-size: medium;
+    margin: 1rem;
+  }
+
+  .icon {
+    margin-right: 0.5rem;
+    top: 5px;
+    position: relative;
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 959px) {
+  span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+  }
+  .title {
+    width: 10rem;
+    text-align: left;
+    font-size: large;
+    text-overflow: ellipsis;
+  }
+
+  .dashboard-card-content {
+    text-align: left;
+    margin-top: 1rem;
+  }
+  .info {
+    margin-top: 0.5rem;
+  }
+
+  .info_title {
+    font-weight: bolder;
+    font-size: medium;
+  }
+  .info_data {
+    font-size: small;
+    margin: 0.5rem;
+  }
+
+  .icon {
+    margin-right: 0.5rem;
+    top: 5px;
+    position: relative;
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 768px) {
+  span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+  }
+  .title {
+    width: 10rem;
+    text-align: left;
+    font-size: large;
+    text-overflow: ellipsis;
+  }
+
+  .dashboard-card-content {
+    text-align: left;
+    margin-top: 0.5rem;
+  }
+  .info {
+    margin-top: 0.1rem;
+  }
+
+  .info_title {
+    font-weight: bolder;
+    font-size: small;
+  }
+  .info_data {
+    font-size: 0.5rem;
+    margin: 0.1rem;
+  }
+
+  .icon {
+    margin-right: 0.5rem;
+    top: 5px;
+    position: relative;
+    transform: scale(0.8);
   }
 }

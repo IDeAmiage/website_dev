@@ -11,6 +11,14 @@ import { map, shareReplay } from 'rxjs/operators';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import * as _ from 'lodash';
 
+/**
+ * Component responsible of the navbar that you see on the top and on the left
+ * It display some informations and different access to pages and profile
+ *
+ * @export
+ * @class NavComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -28,13 +36,31 @@ export class NavComponent implements OnInit{
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, public firebase: FirebaseService,
-     public router: Router, public notifier: NotifierService,
+/**
+ * Creates an instance of NavComponent.
+ * @param {BreakpointObserver} breakpointObserver
+ * @param {FirebaseService} firebase
+ * @param {Router} router
+ * @param {NotifierService} notifier
+ * @param {FirestorageService} firestore
+ * @param {MatDialog} dialog
+ * @param {OpendatasoftV1Service} opendatasoft
+ * @memberof NavComponent
+ */
+constructor(private breakpointObserver: BreakpointObserver,
+     public firebase: FirebaseService,
+     public router: Router,
+     public notifier: NotifierService,
      public firestore: FirestorageService,
      public dialog: MatDialog,
      public opendatasoft: OpendatasoftV1Service) {}
 
-  ngOnInit(): void {
+/**
+ *
+ *
+ * @memberof NavComponent
+ */
+ngOnInit(): void {
     this.firestore.getUser(localStorage.getItem('user_id')!).subscribe(res=>{
       this.EntrepriseUser = res;
     });
@@ -74,10 +100,8 @@ export class NavComponent implements OnInit{
 
   onCreate(){
     const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
-    //dialogConfig.height = "60%";
     this.dialog.open(ProfileComponent, dialogConfig);
   }
 }

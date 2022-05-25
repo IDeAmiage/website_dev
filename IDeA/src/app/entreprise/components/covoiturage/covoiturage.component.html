@@ -1,20 +1,41 @@
-<div align="end" style="padding: 5px;">
-  <button mat-raised-button (click)="onCreate()"  color="warn"> <mat-icon color="primary">post_add</mat-icon> Post an announce </button>
-  <br>
-  <mat-slide-toggle [(ngModel)]="isChecked" (ngModelChange)="getMyTrajects()" style="margin-right:10px;" matTooltip="Voir mes annonces">Mes annonces</mat-slide-toggle>
+<div align="end" style="padding: 5px">
+  <button mat-raised-button (click)="onCreate()" color="warn">
+    <mat-icon color="primary">post_add</mat-icon> Poster une annonce
+  </button>
+  <br />
+  <mat-slide-toggle
+    [(ngModel)]="isChecked"
+    (ngModelChange)="getMyTrajects()"
+    style="margin-right: 10px"
+    matTooltip="Voir mes annonces"
+    >Mes annonces</mat-slide-toggle
+  >
 </div>
 
 <div *ngIf="this.loader.isLoading | async" class="loader-container">
-  <mat-spinner style="top: 50%; left: 50%;"></mat-spinner>
+  <div class="loader-item">
+    <div class="loader loader-1">
+      <app-atom-spinner
+        [animationDuration]="1000"
+        [size]="100"
+        [color]="'#ff1d5e'"
+      ></app-atom-spinner>
+    </div>
+  </div>
 </div>
 
-<div id="back">
-</div>
+<div id="back"></div>
 
-<div  fxLayout="row" fxLayoutAlign="start center" >
+<div fxLayout="row" fxLayoutAlign="start center" class="search_margin">
   <mat-form-field>
     <mat-label>Search</mat-label>
-    <input matInput type="text" [(ngModel)]="query" name="query" matTooltip="Filtrer par destination">
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="query"
+      name="query"
+      matTooltip="Filtrer par destination"
+    />
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
   <button mat-icon-button color="primary" (click)="refreshByTime()">
@@ -22,44 +43,91 @@
   </button>
 </div>
 
-
-<div fxLayout="row wrap"  fxLayoutGap="100" style="margin-left: 3%" >
-  <mat-grid-list *ngFor="let item of this.TrajetListe | searchFilter: query; index as i" #grid [cols]="cols" rowHeight="10:10" gutterSize="10px" >
+<div fxLayout="row wrap" fxLayoutGap="100" style="margin-left: 3%">
+  <mat-grid-list
+    *ngFor="let item of this.TrajetListe | searchFilter: query; index as i"
+    #grid
+    [cols]="cols"
+    rowHeight="10:10"
+    gutterSize="10px"
+  >
     <mat-card class="example-card">
-      <mat-card-subtitle align="end">{{item._user._name}}
-        <button *ngIf="this.isChecked"  mat-icon-button aria-label="Delete the traject" (click)="this.deleteTraject(i)">
+      <mat-card-subtitle align="end"
+        >{{ item._user._name }}
+        <button
+          *ngIf="this.isChecked"
+          mat-icon-button
+          aria-label="Delete the traject"
+          (click)="this.deleteTraject(i)"
+        >
           <mat-icon color="warn">clear</mat-icon>
         </button>
       </mat-card-subtitle>
       <div>
-        <mat-card-title>{{item._depart}}</mat-card-title>
+        <mat-card-title>{{ item._depart }}</mat-card-title>
 
-        <img src="../../../../assets/Entreprise/jeep.gif" class="jeep" alt="Jeep Car"/>
-      <mat-card-content>
-        <p class="departure_hour">{{item._departure_time?.toDate() | date: 'HH:mm'}}</p>
-        <p class="departure_date">{{item._departure_time?.toDate() | date: 'dd/MM/yyyy'}}</p>
-        <ul>
-          <li>
-            <p>{{item._nbKms | number:'1.'}} Kms  <img src="/assets/Entreprise/distanceLooking.svg" width="5%" style="margin-left: 5%;" alt="Caracter looking forwards"/></p>
-          </li>
-          <li>
-            <p>{{item._co2Emission | number: '1.0-0'}} Kg de CO2</p>
-          </li>
-          <li>
-            <p>{{this.Userdistances[i]}} kms </p>
-          </li>
-          <li>
-            <p>{{item._passagers.length}} sur {{item._user._car._capacite}} Passagers</p>
-          </li>
-        </ul>
-        <mat-card-title><img src="../../../../assets/Entreprise/marker.png" class="jeep" alt="Jeep car"/>{{item._destination}}</mat-card-title>
-      </mat-card-content>
-    </div>
+        <img
+          src="../../../../assets/Entreprise/jeep.gif"
+          class="jeep"
+          alt="Jeep Car"
+        />
+        <mat-card-content>
+          <p class="departure_hour">
+            {{ item._departure_time?.toDate() | date: "HH:mm" }}
+          </p>
+          <p class="departure_date">
+            {{ item._departure_time?.toDate() | date: "dd/MM/yyyy" }}
+          </p>
+          <ul>
+            <li>
+              <p>
+                {{ item._nbKms | number: "1." }} Kms
+                <img
+                  src="/assets/Entreprise/distanceLooking.svg"
+                  width="5%"
+                  style="margin-left: 5%"
+                  alt="Caracter looking forwards"
+                />
+              </p>
+            </li>
+            <li>
+              <p>{{ item._co2Emission | number: "1.0-0" }} Kg de CO2</p>
+            </li>
+            <li>
+              <p>{{ this.Userdistances[i] }} kms</p>
+            </li>
+            <li>
+              <p>
+                {{ item._passagers.length }} sur
+                {{ item._user._car._capacite }} Passagers
+              </p>
+            </li>
+          </ul>
+          <mat-card-title
+            ><img
+              src="../../../../assets/Entreprise/marker.png"
+              class="jeep"
+              alt="Jeep car"
+            />{{ item._destination }}</mat-card-title
+          >
+        </mat-card-content>
+      </div>
       <mat-divider inset></mat-divider>
       <mat-card-actions align="end">
-        <a href="tel:{{item._user._phone}}" mat-button><mat-icon color="primary">chat</mat-icon> MESSAGE </a>
-        <a href="https://www.google.fr/maps/dir/{{item._depart}}/{{item._destination}}/" target="_blank" mat-button><mat-icon color="primary">map</mat-icon> MAP </a>
-        <a mat-button (click)="addPassenger(i)">ADD <mat-icon color="primary">add</mat-icon></a>
+        <a href="tel:{{ item._user._phone }}" mat-button
+          ><mat-icon color="primary">chat</mat-icon> Contacter
+        </a>
+        <a
+          href="https://www.google.fr/maps/dir/{{ item._depart }}/{{
+            item._destination
+          }}/"
+          target="_blank"
+          mat-button
+          ><mat-icon color="primary">map</mat-icon> Carte
+        </a>
+        <a mat-button (click)="addPassenger(i)"
+          ><mat-icon color="primary">add</mat-icon> S'ajouter</a
+        >
       </mat-card-actions>
     </mat-card>
   </mat-grid-list>

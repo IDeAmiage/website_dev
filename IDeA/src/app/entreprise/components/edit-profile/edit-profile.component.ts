@@ -7,6 +7,13 @@ import { KeyValue } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProfileComponent } from '../profile/profile.component';
 
+/**
+ * Component to manage and edit your profile data
+ *
+ * @export
+ * @class EditProfileComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -21,8 +28,18 @@ export class EditProfileComponent implements OnInit {
   capacity: number[] = [1,2,3,4];
   userForms: FormGroup;
 
-  constructor(public firestore: FirestorageService, public router: Router,
-    public dialogRef: MatDialogRef<NavComponent>, public dialog: MatDialog) {
+/**
+ * Creates an instance of EditProfileComponent.
+ * @param {FirestorageService} firestore
+ * @param {Router} router
+ * @param {MatDialogRef<NavComponent>} dialogRef
+ * @param {MatDialog} dialog
+ * @memberof EditProfileComponent
+ */
+constructor(public firestore: FirestorageService,
+    public router: Router,
+    public dialogRef: MatDialogRef<NavComponent>,
+    public dialog: MatDialog) {
       let defaultInputText = {value: '', disabled: true};
       let defaultInputNumber = {value: 0, disabled: true};
       let followInputText = {value: '', disabled: false};
@@ -46,7 +63,12 @@ export class EditProfileComponent implements OnInit {
     });
     }
 
-  public ngOnInit() {
+/**
+ * On init the user is loaded
+ *
+ * @memberof EditProfileComponent
+ */
+public ngOnInit() {
     this.firestore.getUser(localStorage.getItem('user_id')!).subscribe(res=>{
      this.currentUser = res[0];
      this.userForms.patchValue(this.currentUser._car);
@@ -54,7 +76,12 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
-  public onSubmit(){
+/**
+ * On submit the user modification is saved
+ *
+ * @memberof EditProfileComponent
+ */
+public onSubmit(){
     this.currentUser._name = this.userForms.controls['_name'].value;
     this.currentUser._phone = this.userForms.controls['_phone'].value;
     this.currentUser._car._capacite = this.userForms.controls['_capacite'].value;
@@ -64,13 +91,16 @@ export class EditProfileComponent implements OnInit {
     this.openProfile();
   }
 
-  public openProfile(){
+/**
+ * On click the profile view is showed
+ *
+ * @memberof EditProfileComponent
+ */
+public openProfile(){
     this.dialogRef.close();
     const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
-    //dialogConfig.height = "60%";
     this.dialog.open(ProfileComponent, dialogConfig);
   }
 }

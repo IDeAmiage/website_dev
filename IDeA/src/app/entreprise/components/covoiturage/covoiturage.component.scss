@@ -1,55 +1,72 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap");
 @import "../../../../custom-theme.scss";
 
-// mat-card:hover{
-//   -ms-transform: scale(1.5); /* IE 9 */
-//   -webkit-transform: scale(1.5); /* Safari 3-8 */
-//   transform: scale(1.1);
-// }
 .grid-container {
   height: 100%;
 }
 
-.mat-card-title{
+.loader-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: black;
+  opacity: 0.8;
+  z-index: 99;
+}
+
+.search_margin {
+  margin-left: 2rem !important;
+}
+
+.loader {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.mat-card-title {
   font-family: "Mulish", sans-serif;
   font-weight: bold;
 }
-.mat-card{
+
+.mat-card {
   margin: 2rem;
   border-radius: 20px;
   width: 300px;
-  height: 400px;
+  height: 420px;
   background-image: url(/assets/Entreprise/dottedLine.svg);
   background-position: center;
   background-size: 120%;
   background-repeat: no-repeat;
-  background-position: 30px;
+  background-position: 70px;
   z-index: 2;
 
 }
 
-.jeep{
+.jeep {
   width: 10%;
   margin: 2px;
 }
 
-.clean_air{
+.clean_air {
   width: 20%;
   margin-left: 20px;
 }
 
-.departure_hour{
+.departure_hour {
   font-weight: bold;
   font-size: large;
 }
 
-.departure_date{
-  font-weight:lighter;
-  font-size:medium;
+.departure_date {
+  font-weight: lighter;
+  font-size: medium;
   font-style: italic;
 }
 
-#back{
+#back {
   position: absolute;
   background-image: url(/assets/Entreprise/covoiturage.svg);
   height: 50%;
@@ -62,7 +79,7 @@
   /* width: 500px; */
 }
 
-.loader-container{
+.loader-container {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -70,3 +87,5 @@
   opacity: 0.8;
   z-index: 99;
 }
+
+.mat-card>:first-child {}

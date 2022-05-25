@@ -56,9 +56,6 @@ import { SearchFilterPipe } from '../search-filter.pipe';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 
-
-
-
 @NgModule({
   declarations: [
     HomeComponent,
@@ -122,7 +119,7 @@ import {MatRadioModule} from '@angular/material/radio';
     AtomSpinnerModule,
     MatTooltipModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}]
 })

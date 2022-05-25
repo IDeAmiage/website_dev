@@ -1,41 +1,123 @@
 <div [class]="content" fxLayout="column" fxFill>
-
   <div id="navbar">
-    <mat-toolbar [style.background-color]="'transparent'" fxLayout="row" fxLayoutAlign="start center">
+    <mat-toolbar
+      [style.background-color]="'transparent'"
+      fxLayout="row"
+      fxLayoutAlign="start center"
+    >
       <span>Bienvenue</span>
       <span fxFlex></span>
-      <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="loginEntreprise()">Entreprise</button>
-      <button *ngIf="!this.firebaseService.isLoggedIn"  mat-button (click)="loginCollectivites()">Collectivité</button>
-      <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="loginParticuliers()">Particulier</button>
-      <button *ngIf="this.firebaseService.isLoggedIn"  mat-button (click)="logout()">logout</button>
+      <button
+        *ngIf="!this.firebaseService.isLoggedIn"
+        mat-button
+        (click)="loginEntreprise()"
+      >
+        Entreprise
+      </button>
+      <button
+        *ngIf="!this.firebaseService.isLoggedIn"
+        mat-button
+        (click)="loginCollectivites()"
+      >
+        Collectivité
+      </button>
+      <button
+        *ngIf="!this.firebaseService.isLoggedIn"
+        mat-button
+        (click)="loginParticuliers()"
+      >
+        Particulier
+      </button>
+      <button
+        *ngIf="this.firebaseService.isLoggedIn"
+        mat-button
+        (click)="logout()"
+      >
+        logout
+      </button>
       <button mat-icon-button><mat-icon>menu</mat-icon></button>
     </mat-toolbar>
   </div>
 
-
-  <div *ngIf="this.isExplorer" id="welcome" fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="100px" fxFlex>
-      <span id="landes">Landes</span>
-      <button mat-raised-button (click)="onClickExplorer()">Explorer</button>
+  <div
+    *ngIf="this.isExplorer"
+    id="welcome"
+    fxLayoutAlign="center center"
+    fxLayout="column"
+    fxLayoutGap="100px"
+    fxFlex
+  >
+    <span id="landes">Landes</span>
+    <button mat-raised-button (click)="onClickExplorer()">Explorer</button>
   </div>
 
-
-  <div *ngIf="!this.isExplorer" id="explorer" fxLayout="column" fxLayoutAlign="space-evenly stretch" fxFlex>
+  <div
+    *ngIf="!this.isExplorer"
+    id="explorer"
+    fxLayout="column"
+    fxLayoutAlign="space-evenly stretch"
+    fxFlex
+  >
     <div id="plages">
       <span class="explorer-text" [style.padding-left]="'10%'">Nos plages</span>
-      <br><br><br>
+      <br /><br /><br />
       <div fxLayout="row" fxLayoutAlign="space-evenly center">
-        <iframe [src]="urlHossegor" width="25%" height="20%" frameborder="0" style="border:0" allowfullscreen></iframe>
-        <iframe [src]="urlCapbreton" width="25%" height="20%" frameborder="0" style="border:0" allowfullscreen></iframe>
-        <iframe [src]="urlBouceau" width="25%" height="20%" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <iframe
+          [src]="urlHossegor"
+          width="25%"
+          height="20%"
+          frameborder="0"
+          style="border: 0"
+          allowfullscreen
+        ></iframe>
+        <iframe
+          [src]="urlCapbreton"
+          width="25%"
+          height="20%"
+          frameborder="0"
+          style="border: 0"
+          allowfullscreen
+        ></iframe>
+        <iframe
+          [src]="urlBouceau"
+          width="25%"
+          height="20%"
+          frameborder="0"
+          style="border: 0"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
     <div id="histoire">
-      <span class="explorer-text" [style.padding-left]="'10%'">Notre histoire</span>
-      <br><br><br>
+      <span class="explorer-text" [style.padding-left]="'10%'"
+        >Notre histoire</span
+      >
+      <br /><br /><br />
       <div fxLayout="row" fxLayoutAlign="space-evenly center">
-        <iframe [src]="urlMimizan" width="25%" height="20%" frameborder="0" style="border:0" allowfullscreen></iframe>
-        <iframe [src]="urlMarsan" width="25%" height="20%" frameborder="0" style="border:0" allowfullscreen></iframe>
-        <iframe [src]="urlDax" width="25%" height="20%" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <iframe
+          [src]="urlMimizan"
+          width="25%"
+          height="20%"
+          frameborder="0"
+          style="border: 0"
+          allowfullscreen
+        ></iframe>
+        <iframe
+          [src]="urlMarsan"
+          width="25%"
+          height="20%"
+          frameborder="0"
+          style="border: 0"
+          allowfullscreen
+        ></iframe>
+        <iframe
+          [src]="urlDax"
+          width="25%"
+          height="20%"
+          frameborder="0"
+          style="border: 0"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
   </div>

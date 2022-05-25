@@ -1,11 +1,26 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+/**
+ * Pipe to filter an array of objects, on enter words in an input it will filter the array
+ *
+ * @export
+ * @class SearchFilterPipe
+ * @implements {PipeTransform}
+ */
 @Pipe({
   name: 'searchFilter'
 })
 export class SearchFilterPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
+/**
+ * Method to do the filter
+ *
+ * @param {*} value
+ * @param {*} [args]
+ * @return {*}  {*}
+ * @memberof SearchFilterPipe
+ */
+transform(value: any, args?: any): any {
     if(!value)return null;
     if(!args)return value;
 

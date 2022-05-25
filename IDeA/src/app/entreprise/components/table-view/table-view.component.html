@@ -4,19 +4,51 @@
   <button mat-raised-button (click)="JSON_Export()">JSON</button>
 </div>
 
-
 <div class="component data component-card">
-  <mat-paginator #paginatorColumns [length]="this.displayedColumns.length" hidePageSize="true" (page)="changeDisplayColumns($event)" [pageSize]="6"></mat-paginator>
-  <table mat-table [dataSource]="this.table" matSort class="table" matTableExporter #exporter="matTableExporter">
-    <ng-container class="container" [matColumnDef]="column" [matColumnDef]="column" *ngFor="let column of displayedColumns">
+  <mat-paginator
+    #paginatorColumns
+    [length]="this.displayedColumns.length"
+    hidePageSize="true"
+    (page)="changeDisplayColumns($event)"
+    [pageSize]="6"
+  ></mat-paginator>
+  <table
+    mat-table
+    [dataSource]="this.table"
+    matSort
+    class="table"
+    matTableExporter
+    #exporter="matTableExporter"
+  >
+    <ng-container
+      class="container"
+      [matColumnDef]="column"
+      [matColumnDef]="column"
+      *ngFor="let column of displayedColumns"
+    >
       <th mat-header-cell class="header-cell" *matHeaderCellDef>
-        <span mat-sort-header class="sort-header">{{ column | titlecase }}</span>
+        <span mat-sort-header class="sort-header">{{
+          column | titlecase
+        }}</span>
       </th>
-      <td mat-cell class="cell" *matCellDef="let element"> {{element.fields[column]}} </td>
+      <td mat-cell class="cell" *matCellDef="let element">
+        {{ element.fields[column] }}
+      </td>
     </ng-container>
-    <tr mat-header-row class="header-row" *matHeaderRowDef="columnsToDisplay"></tr>
-    <tr mat-row class="row" *matRowDef="let row; columns: columnsToDisplay;"></tr>
+    <tr
+      mat-header-row
+      class="header-row"
+      *matHeaderRowDef="columnsToDisplay"
+    ></tr>
+    <tr
+      mat-row
+      class="row"
+      *matRowDef="let row; columns: columnsToDisplay"
+    ></tr>
   </table>
-  <mat-paginator #paginatorRows [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <mat-paginator
+    #paginatorRows
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
 </div>
-

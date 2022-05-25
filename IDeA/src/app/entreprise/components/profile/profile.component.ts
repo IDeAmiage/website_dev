@@ -1,17 +1,20 @@
 import { FirestorageService } from './../../../firestorage.service';
-import { User } from './../../../User';
 import { Component, OnInit } from '@angular/core';
-import { KeyValue } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-
+/**
+ * Component that show the user profile
+ *
+ * @export
+ * @class ProfileComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  // ^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$
   currentUser : any;
   editActive = false;
   fuelList: string[] = ["diesel", "essence", "gpl", "cng"];
@@ -20,7 +23,13 @@ export class ProfileComponent implements OnInit {
   squareRate = 3;
   isPhonePortrait = false;
 
-  constructor(public firestore: FirestorageService, private responsive: BreakpointObserver) {
+/**
+ * Creates an instance of ProfileComponent.
+ * @param {FirestorageService} firestore
+ * @param {BreakpointObserver} responsive
+ * @memberof ProfileComponent
+ */
+constructor(public firestore: FirestorageService, private responsive: BreakpointObserver) {
 
     let defaultInputText = {value: '', disabled: true};
     let defaultInputNumber = {value: 0, disabled: true};
@@ -43,7 +52,12 @@ export class ProfileComponent implements OnInit {
     });
    }
 
-  ngOnInit() {
+/**
+ * On init get the current user
+ *
+ * @memberof ProfileComponent
+ */
+ngOnInit() {
     this.firestore.getUser(localStorage.getItem('user_id')!).subscribe(res=>{
       this.currentUser = res[0];
       this.userForms.patchValue(this.currentUser._car);
@@ -51,15 +65,20 @@ export class ProfileComponent implements OnInit {
     });
 
     this.responsive.observe(Breakpoints.XSmall).subscribe(result => {
-        this.isPhonePortrait = false; 
+        this.isPhonePortrait = false;
         if (result.matches) {
           this.isPhonePortrait = true;
         }
     });
   }
 
-  changeToEdit(){
+/**
+ * Change to the edit-profile component
+ *
+ * @memberof ProfileComponent
+ */
+changeToEdit(){
     this.editActive = true;
-  } 
+  }
 
 }

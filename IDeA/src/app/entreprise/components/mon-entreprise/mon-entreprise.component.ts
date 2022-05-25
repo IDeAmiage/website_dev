@@ -24,7 +24,7 @@ export class MonEntrepriseComponent implements OnInit {
 
     this.firestore.getUser(localStorage.getItem('user_id')!).subscribe(res=>{
       this.currentUser = res[0];
-      console.log(this.currentUser._entreprise.toUpperCase());
+      // console.log(this.currentUser._entreprise.toUpperCase());
 
       this.loadEntrepriseInfos(this.currentUser._entreprise.toUpperCase());
 
@@ -39,7 +39,7 @@ export class MonEntrepriseComponent implements OnInit {
   loadEntrepriseInfos(entreprise:string){
     this.opendatasoft.getEntreprise(entreprise).subscribe(
       response=>{
-        console.log(response);
+        // console.log(response);
 
         response.records.forEach((element:any) => {
           this.userEntreprise = element.fields;
@@ -62,12 +62,14 @@ export class MonEntrepriseComponent implements OnInit {
     this.firestore.getObject("trajet").subscribe((res:any)=>{
       res.forEach((element:any) => {
         if(this.classement.get(element._user._entreprise) == undefined){
-          this.classement.set(element._user._entreprise, element._co2Emission)
+          console.log(element._passagers.length);
+          
+          this.classement.set(element._user._entreprise, element._co2Emission*element._passagers.length)
           this.classementnbTrajets.set(element._user._entreprise, 1)
         }else {
           let temp = this.classement.get(element._user._entreprise);
           let temptraj = this.classementnbTrajets.get(element._user._entreprise);
-          this.classement.set(element._user._entreprise, element._co2Emission + temp)
+          this.classement.set(element._user._entreprise, element._co2Emission*element._passagers.length + temp!)
           this.classementnbTrajets.set(element._user._entreprise, 1 + temptraj!)
         }
       });

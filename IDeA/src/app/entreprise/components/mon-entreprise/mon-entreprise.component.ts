@@ -40,31 +40,23 @@ export class MonEntrepriseComponent implements OnInit {
    * @memberof MonEntrepriseComponent
    */
   ngOnInit() {
-
-    this.firestore.getUser(localStorage.getItem('user_id')!).subscribe(res=>{
-      this.currentUser = res[0];
-      // console.log(this.currentUser._entreprise.toUpperCase());
-
-      this.loadEntrepriseInfos(this.currentUser._entreprise.toUpperCase());
-
-      this.getEntrepriseCO2conso();
-
-      this.getClassementEntreprise();
-
-      this.getClassementUser();
-     });
+    this.firestore
+      .getUser(localStorage.getItem('user_id')!)
+      .subscribe((res) => {
+        this.currentUser = res[0];
+        this.loadEntrepriseInfos(this.currentUser._entreprise.toUpperCase());
+        this.getEntrepriseCO2conso();
+        this.getClassementEntreprise();
+        this.getClassementUser();
+      });
   }
 
-  loadEntrepriseInfos(entreprise:string){
-    this.opendatasoft.getEntreprise(entreprise).subscribe(
-      response=>{
-        // console.log(response);
-
-        response.records.forEach((element:any) => {
-          this.userEntreprise = element.fields;
-        });
-      }
-    )
+  loadEntrepriseInfos(entreprise: string) {
+    this.opendatasoft.getEntreprise(entreprise).subscribe((response) => {
+      response.records.forEach((element: any) => {
+        this.userEntreprise = element.fields;
+      });
+    });
   }
 
   /**
@@ -82,18 +74,18 @@ export class MonEntrepriseComponent implements OnInit {
     });
   }
 
-/**
- * Return classement of users and CO2 for the entreprise
- *
- * @memberof MonEntrepriseComponent
- */
-getClassementEntreprise() {
+  /**
+   * Return classement of users and CO2 for the entreprise
+   *
+   * @memberof MonEntrepriseComponent
+   */
+  getClassementEntreprise() {
     this.firestore.getObject('trajet').subscribe((res: any) => {
       res.forEach((element: any) => {
         if (this.classementCo2.get(element._user._entreprise) == undefined) {
           this.classementCo2.set(
             element._user._entreprise,
-            element._co2Emission*element._passagers.length
+            element._co2Emission * element._passagers.length
           );
           this.classementnbTrajets.set(element._user._entreprise, 1);
         } else {
@@ -103,7 +95,7 @@ getClassementEntreprise() {
           );
           this.classementCo2.set(
             element._user._entreprise,
-            element._co2Emission*element._passagers.length + temp!
+            element._co2Emission * element._passagers.length + temp!
           );
           this.classementnbTrajets.set(
             element._user._entreprise,

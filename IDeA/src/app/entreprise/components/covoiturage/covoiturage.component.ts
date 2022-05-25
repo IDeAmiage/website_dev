@@ -224,7 +224,7 @@ export class CovoiturageComponent implements OnInit {
       if (this.TrajetListe[i]._user._id == user[0]._id) {
         this.notifier.showNotification("You can't register in your traject", "OK", "error")
       } else {
-        if (this.TrajetListe[i]._passagers.length == this.TrajetListe[i]._user._car._capacite) {
+        if (this.TrajetListe[i]._passagers.length <= this.TrajetListe[i]._user._car._capacite) {
           this.notifier.showNotification("This traject is full", "OK", "error");
         } else if (this.TrajetListe[i]._passagers.some((item: any) => item._id === user[0]._id)) {
           this.notifier.showNotification("You are already register", "OK", "error");

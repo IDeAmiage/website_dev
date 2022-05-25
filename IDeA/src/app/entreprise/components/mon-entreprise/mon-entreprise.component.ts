@@ -80,7 +80,12 @@ export class MonEntrepriseComponent implements OnInit {
     });
   }
 
-  getClassementEntreprise() {
+/**
+ * Return classement of users and CO2 for the entreprise
+ *
+ * @memberof MonEntrepriseComponent
+ */
+getClassementEntreprise() {
     this.firestore.getObject('trajet').subscribe((res: any) => {
       res.forEach((element: any) => {
         if (this.classementCo2.get(element._user._entreprise) == undefined) {

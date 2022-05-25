@@ -1,63 +1,77 @@
-
 <div *ngIf="this.editActive; else view">
   <app-edit-profile></app-edit-profile>
 </div>
 
 <ng-template #view>
-  <div style="float:right;">
-    <button mat-button color="primary" (click)="changeToEdit()"><mat-icon>edit</mat-icon> Editer</button>
+  <div style="float: right">
+    <button mat-button color="primary" (click)="changeToEdit()">
+      <mat-icon>edit</mat-icon> editer
+    </button>
   </div>
-  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center" fxFill fxLayoutGap.lt-sm="20px" fxLayoutGap="100px">
+  <div
+    fxLayout="row"
+    fxLayout.lt-sm="column"
+    fxLayoutAlign="center center"
+    fxFill
+    fxLayoutGap.lt-sm="20px"
+    fxLayoutGap="100px"
+  >
     <!-- Name and statistique -->
     <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
-      <div id="name">{{this.currentUser['_name'] | titlecase}}</div>
-      <div id="entreprise">{{this.currentUser['_entreprise'] | titlecase}}</div>
-      <div id="niveau">Niveau {{this.currentUser['_level']}}</div>
-      <div *ngIf="(this.currentUser['_avis'] && this.currentUser['_avis'].length)">
+      <div id="name">{{ this.currentUser["_name"] | titlecase }}</div>
+      <div id="entreprise">
+        {{ this.currentUser["_entreprise"] | titlecase }}
+      </div>
+      <div id="niveau">Niveau {{ this.currentUser["_level"] }}</div>
+      <div
+        *ngIf="this.currentUser['_avis'] && this.currentUser['_avis'].length"
+      >
         <rating [rate]="3.5" [max]="5"></rating>
-        <!--{{this.currentUser['_note'] | number:"0.0-1"}}-->
       </div>
       <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="25px">
         <div fxLayout="column" fxLayoutAlign="center center">
-          <div>{{this.currentUser['_nbTrajects'] | number:"0.0-0"}}</div>
+          <div>{{ this.currentUser["_nbTrajects"] | number: "0.0-0" }}</div>
           <div>Trajets</div>
         </div>
         <mat-divider class="divider-stats" vertical></mat-divider>
         <div fxLayout="column" fxLayoutAlign="center center">
-          <div>{{this.currentUser['_co2'] | number:"0.0-0"}}</div>
+          <div>{{ this.currentUser["_co2"] | number: "0.0-0" }}</div>
           <div>Co2</div>
         </div>
       </div>
     </div>
 
-    <mat-divider [ngStyle]="!this.isPhonePortrait?{'height':'120px'}:{'width':'120px'}" [vertical]="!this.isPhonePortrait"></mat-divider>
+    <mat-divider
+      [ngStyle]="
+        !this.isPhonePortrait ? { height: '120px' } : { width: '120px' }
+      "
+      [vertical]="!this.isPhonePortrait"
+    ></mat-divider>
 
     <!-- Voiture -->
     <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
       <div>Voiture</div>
       <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
         <div fxLayout="column" fxLayoutAlign="center center">
-          <div>{{this.currentUser['_car']['_type'] | titlecase}}</div>
+          <div>{{ this.currentUser["_car"]["_type"] | titlecase }}</div>
           <div>Type</div>
         </div>
         <div fxLayout="column" fxLayoutAlign="center center">
-          <div>{{this.currentUser['_car']['_carburant'] | titlecase}}</div>
+          <div>{{ this.currentUser["_car"]["_carburant"] | titlecase }}</div>
           <div>Carburant</div>
         </div>
         <div fxLayout="row" fxLayoutAlign="center center">
-          <mat-icon>Personne</mat-icon>
-          <div>x {{this.currentUser['_car']['_capacite']}}</div>
+          <mat-icon>person</mat-icon>
+          <div>x {{ this.currentUser["_car"]["_capacite"] }}</div>
         </div>
         <div class="car-service-svg"></div>
       </div>
-      <!--TODO-->
-      <!--Gerer les 3 derniers avis de l'utilisateur-->
-      <div *ngIf="(this.currentUser['_avis'] && this.currentUser['_avis'].length)">
+      <div
+        *ngIf="this.currentUser['_avis'] && this.currentUser['_avis'].length"
+      >
         <div>Derniers avis:</div>
         <rating [rate]="5" [max]="5"></rating>
       </div>
-
     </div>
   </div>
 </ng-template>
-

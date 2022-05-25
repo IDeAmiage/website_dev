@@ -7,7 +7,6 @@
   padding-left: 15%;
 }*/
 
-
 // Colors
 $greenSeaweed: rgba(2, 128, 144, 1);
 $blueQueen: rgba(69, 105, 144, 1);
@@ -20,7 +19,12 @@ $gradient-right: linear-gradient(90deg, #bdecb6ff, #638475ff, #aba0baff);
 $gradient-bottom: linear-gradient(180deg, #bdecb6ff, #638475ff, #aba0baff);
 $gradient-left: linear-gradient(270deg, #bdecb6ff, #638475ff, #aba0baff);
 $gradient-top-right: linear-gradient(45deg, #bdecb6ff, #638475ff, #aba0baff);
-$gradient-bottom-right: linear-gradient(135deg, #bdecb6ff, #638475ff, #aba0baff);
+$gradient-bottom-right: linear-gradient(
+  135deg,
+  #bdecb6ff,
+  #638475ff,
+  #aba0baff
+);
 $gradient-top-left: linear-gradient(225deg, #bdecb6ff, #638475ff, #aba0baff);
 $gradient-bottom-left: linear-gradient(315deg, #bdecb6ff, #638475ff, #aba0baff);
 
@@ -33,7 +37,7 @@ $gradient-bottom-left: linear-gradient(315deg, #bdecb6ff, #638475ff, #aba0baff);
   margin-right: 5vw;
   margin-bottom: 5vw;
   p {
-    margin-top: 0.5vw ;
+    margin-top: 0.5vw;
   }
 }
 
@@ -50,8 +54,9 @@ $gradient-bottom-left: linear-gradient(315deg, #bdecb6ff, #638475ff, #aba0baff);
   transition: transform 300ms, box-shadow 300ms;
   box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
 
-  &::before, &::after {
-    content: '';
+  &::before,
+  &::after {
+    content: "";
     position: absolute;
     width: 600px;
     height: 600px;
@@ -118,9 +123,10 @@ $gradient-bottom-left: linear-gradient(315deg, #bdecb6ff, #638475ff, #aba0baff);
 }
 
 @keyframes wawes {
-  from { transform: rotate(0); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-
-
-

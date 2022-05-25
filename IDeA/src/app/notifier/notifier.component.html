@@ -1,10 +1,12 @@
 <div>
-  {{data.type | titlecase}}
+  {{ data.type | titlecase }}
 </div>
 <div class="content-style">
-  {{data.message}}
+  {{ data.message }}
 </div>
 
-<div style="text-align: center;">
-  <button mat-flat-button (click)="snackBarRef.dismiss()">{{data.buttonText}}</button>
+<div style="text-align: center">
+  <button mat-flat-button (click)="snackBarRef.dismiss()">
+    {{ data.buttonText }}
+  </button>
 </div>

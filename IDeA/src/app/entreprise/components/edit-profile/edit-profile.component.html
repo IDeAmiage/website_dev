@@ -1,43 +1,128 @@
-<h2>Modifiez vos informations</h2>
+<div fxLayout="column" fxLayoutAlign="start start" fxFill>
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
 
+    <h1><button mat-icon-button color="primary" (click)="openProfile()" title="Retourner au profil"><mat-icon>arrow_back</mat-icon></button> Modifiez vos informations</h1>
+  </div>
 
-<mat-card>
-  <!-- <mat-card-subtitle>Mettez à jour vos informations</mat-card-subtitle> -->
-  <mat-card-title>{{this.currentUser._name}}</mat-card-title>
-  <mat-card-content>
-    <div *ngFor="let item of this.currentUser | keyvalue:onCompare" >
-      <div *ngIf="editable.includes(item.key)">
-        <div *ngIf="item.key == '_car' else other_case">
-          <mat-form-field appearance="legacy">
-            <mat-label>car type</mat-label>
-            <input matInput placeholder="type" [(ngModel)]="this.currentUser._car._type">
-            <mat-icon matSuffix color="primary">edit</mat-icon>
-            <mat-hint>Hint</mat-hint>
-          </mat-form-field>
-          <br>
-          <mat-form-field appearance="legacy">
-            <mat-label>car carburant</mat-label>
-            <input matInput placeholder="carburant" [(ngModel)]="this.currentUser._car._carburant">
-            <mat-icon matSuffix color="primary">edit</mat-icon>
-            <mat-hint>Hint</mat-hint>
-          </mat-form-field>
-        </div>
-        <ng-template #other_case>
-          <mat-form-field appearance="legacy">
-            <mat-label>{{item.key}}</mat-label>
-            <input matInput placeholder="item.key" [(ngModel)]="this.currentUser[item.key]">
-            <mat-icon matSuffix color="primary">edit</mat-icon>
-            <mat-hint>Hint</mat-hint>
-          </mat-form-field>
-          <!-- <p>{{item.key}} {{item.value}}</p>
-          <p>{{this.currentUser}}</p>
-          <p>{{(this.currentUser|keyvalue)[i].value}}</p> -->
-        </ng-template>
+  <mat-dialog-content class="mat-typography" [formGroup]="userForms">
+    <div fxLayout="row wrap" fxFill fxLayoutAlign="start start" fxLayoutGap="20px">
+
+      <!-- Statistique -->
+      <div fxFlex="100"><h2>Statistique</h2></div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Score CO2</mat-label>
+          <input matInput type="number" formControlName="_co2">
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Nombre de trajets</mat-label>
+          <input matInput type="number" formControlName="_nbTrajects">
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Score</mat-label>
+          <input matInput type="number" formControlName="_score">
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Niveau utilisateur</mat-label>
+          <input matInput type="number" formControlName="_level">
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="calc(67% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Note</mat-label>
+          <input matInput type="number" formControlName="_note">
+        </mat-form-field>
+      </div>
+
+      <!--- Informations -->
+      <div fxFlex="100"><h2>Informations utilisateur</h2></div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Prénom</mat-label>
+          <input matInput type="text" formControlName="_name">
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Entreprise</mat-label>
+          <input matInput type="text" formControlName="_entreprise">
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Téléphone</mat-label>
+          <input type="tel" matInput placeholder="Ex. +33601010101" formControlName="_phone">
+          <mat-error *ngIf="userForms.get('_phone')?.hasError('pattern') && !userForms.get('_phone')?.hasError('required')">
+            Veuillez entrer un numéro de téléphone valide
+          </mat-error>
+          <mat-error *ngIf="userForms.get('_phone')?.hasError('required')">
+            Le numéro de téléphone est requis
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy" style="width: 30%">
+          <mat-label>Identifiant</mat-label>
+          <input type="text" matInput formControlName="_id">
+        </mat-form-field>
+      </div>
+
+      <!--
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Strava account</mat-label>
+          <input matInput type="text" formControlName="_strava_account">
+        </mat-form-field>
+      </div>-->
+
+      <!--- Voiture -->
+      <div fxFlex="100"><h2>Voiture</h2></div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Type de voiture</mat-label>
+          <mat-select placeholder="Type de voiture" formControlName="_type">
+            <mat-option *ngFor="let voiture of this.sizeList" [value]="voiture">{{voiture}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Carburant</mat-label>
+          <mat-select placeholder="Carburant" formControlName="_carburant">
+            <mat-option *ngFor="let carburant of this.fuelList" [value]="carburant">{{carburant.charAt(0).toUpperCase() + carburant.slice(1)}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="calc(33% - 20px)">
+        <mat-form-field appearance="legacy">
+          <mat-label>Capacité</mat-label>
+          <mat-select placeholder="Capacite" formControlName="_capacite">
+            <mat-option *ngFor="let i of this.capacity" [value]="i">{{i}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Enregistrer</button>
       </div>
     </div>
-  </mat-card-content>
-  <mat-divider inset></mat-divider>
-  <mat-card-actions align="end">
-    <button mat-button color="primary" (click)="save()">Sauvegarder</button>
-  </mat-card-actions>
-</mat-card>
+  </mat-dialog-content>
+</div>

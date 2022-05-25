@@ -9,6 +9,7 @@ import { SportComponent } from './components/sport/sport.component';
 import { ConferencesComponent } from './components/conferences/conferences.component';
 import { FoodTrucksComponent } from './components/food-trucks/food-trucks.component';
 import { TableViewComponent } from './components/table-view/table-view.component';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -43,11 +44,17 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { InterceptorService } from '../interceptor.service';
 import {MatChipsModule} from '@angular/material/chips';
-
-
-
-
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { ActiveRating, FractionRating, InactiveRating } from './components/rating/custom-rating';
+import { RatingComponent } from './components/rating/rating.component';
+import { RatingPipe } from './components/rating/rating.pipe';
+import { AtomSpinnerModule } from 'angular-epic-spinners';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { SearchFilterPipe } from '../search-filter.pipe';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -63,7 +70,14 @@ import {MatChipsModule} from '@angular/material/chips';
     PostCovoiturageComponent,
     ProfileComponent,
     EditProfileComponent,
-    MonEntrepriseComponent
+    MonEntrepriseComponent,
+    RatingComponent,
+    ActiveRating,
+    InactiveRating,
+    FractionRating,
+    RatingPipe,
+    SearchFilterPipe,
+
   ],
   imports: [
     CommonModule,
@@ -98,7 +112,14 @@ import {MatChipsModule} from '@angular/material/chips';
     ReactiveFormsModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSlideToggleModule,
+    AtomSpinnerModule,
+    MatTooltipModule,
+    MatCheckboxModule,
+    MatRadioModule,
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}]
 })

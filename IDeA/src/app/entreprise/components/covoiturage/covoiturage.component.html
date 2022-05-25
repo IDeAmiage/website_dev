@@ -1,38 +1,75 @@
-<!-- <button (click)="logout()" mat-raised-button>Logout</button> -->
-
-<!-- <button (click)="testfirestore()">test firestore</button> -->
-<!-- <button (click)="readTest()">get</button> -->
 <div align="end" style="padding: 5px;">
-  <button mat-raised-button (click)="onCreate()"  color="warn"> Post an announce <mat-icon color="primary">post_add</mat-icon></button>
+  <button mat-raised-button (click)="onCreate()"  color="warn"> <mat-icon color="primary">post_add</mat-icon> Poster une annonce </button>
+  <br>
+  <mat-slide-toggle [(ngModel)]="isChecked" (ngModelChange)="getMyTrajects()" style="margin-right:10px;" matTooltip="Voir mes annonces">Mes annonces</mat-slide-toggle>
 </div>
 
 <div *ngIf="this.loader.isLoading | async" class="loader-container">
-  <mat-spinner style="top: 50%; left: 50%;"></mat-spinner>
-</div>
-
-<!-- <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="100"> -->
-<div id="back">
-</div>
-
-<div fxLayout="row wrap"  fxLayoutGap="100" style="margin-left: 3%" >
-  <div *ngFor="let item of this.TrajetListe" fxFlex="30" style="margin-right: 15%;">
-    <mat-card class="example-card">
-      <mat-card-subtitle align="end">{{item._user._name}}</mat-card-subtitle>
-      <mat-card-title>{{item._depart}} -> {{item._destination}} <mat-icon color="primary">directions_car_filled</mat-icon></mat-card-title>
-      <mat-card-content>
-        <p>{{item._nbKms | number:'3.'}} Kms <mat-icon style="color: red;">timeline</mat-icon></p>
-        <p>{{item._co2Emission}} Kg <mat-icon style="color: rgb(6, 250, 6);">co2</mat-icon></p>
-      </mat-card-content>
-      <mat-divider inset></mat-divider>
-      <mat-card-actions align="end">
-        <a href="tel:{{item._user._phone}}" mat-button>MESSAGE <mat-icon color="primary">chat</mat-icon></a>
-        <a href="https://www.google.fr/maps/dir/{{item._depart}}/{{item._destination}}/" mat-button>MAP <mat-icon color="primary">map</mat-icon></a>
-      </mat-card-actions>
-      <!-- <mat-card-footer>
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-      </mat-card-footer> -->
-    </mat-card>
+  <!-- <mat-spinner style="top: 50%; left: 50%;"></mat-spinner> -->
+  <div class="loader-item">
+    <div class="loader loader-1">
+      <app-atom-spinner
+      [animationDuration]="1000"
+      [size]="100"
+      [color]="'#ff1d5e'"
+     ></app-atom-spinner>
+    </div>
   </div>
 </div>
 
+<div id="back">
+</div>
 
+<div  fxLayout="row" fxLayoutAlign="start center" class="search_margin">
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput type="text" [(ngModel)]="query" name="query" matTooltip="Filtrer par destination">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  <button mat-icon-button color="primary" (click)="refreshByTime()">
+    <mat-icon matTooltip="Filter par date">schedule</mat-icon>
+  </button>
+</div>
+
+
+<div fxLayout="row wrap"  fxLayoutGap="100" style="margin-left: 3%" >
+  <mat-grid-list *ngFor="let item of this.TrajetListe | searchFilter: query; index as i" #grid [cols]="cols" rowHeight="10:10" gutterSize="10px" >
+    <mat-card class="example-card">
+      <mat-card-subtitle align="end">{{item._user._name}}
+        <button *ngIf="this.isChecked"  mat-icon-button aria-label="Delete the traject" (click)="this.deleteTraject(i)">
+          <mat-icon color="warn">clear</mat-icon>
+        </button>
+      </mat-card-subtitle>
+      <div>
+        <mat-card-title>{{item._depart}}</mat-card-title>
+
+        <img src="../../../../assets/Entreprise/jeep.gif" class="jeep" alt="Jeep Car"/>
+      <mat-card-content>
+        <p class="departure_hour">{{item._departure_time?.toDate() | date: 'HH:mm'}}</p>
+        <p class="departure_date">{{item._departure_time?.toDate() | date: 'dd/MM/yyyy'}}</p>
+        <ul>
+          <li>
+            <p>{{item._nbKms | number:'1.'}} Kms  <img src="/assets/Entreprise/distanceLooking.svg" width="5%" style="margin-left: 5%;" alt="Caracter looking forwards"/></p>
+          </li>
+          <li>
+            <p>{{item._co2Emission | number: '1.0-0'}} Kg de CO2</p>
+          </li>
+          <li>
+            <p>{{this.Userdistances[i]}} kms </p>
+          </li>
+          <li>
+            <p>{{item._passagers.length}} sur {{item._user._car._capacite}} Passagers</p>
+          </li>
+        </ul>
+        <mat-card-title><img src="../../../../assets/Entreprise/marker.png" class="jeep" alt="Jeep car"/>{{item._destination}}</mat-card-title>
+      </mat-card-content>
+    </div>
+      <mat-divider inset></mat-divider>
+      <mat-card-actions align="end">
+        <a href="tel:{{item._user._phone}}" mat-button><mat-icon color="primary">chat</mat-icon> Contacter </a>
+        <a href="https://www.google.fr/maps/dir/{{item._depart}}/{{item._destination}}/" target="_blank" mat-button><mat-icon color="primary">map</mat-icon> Carte </a>
+        <a mat-button (click)="addPassenger(i)"><mat-icon color="primary">add</mat-icon> S'ajouter</a>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-list>
+</div>

@@ -1,7 +1,13 @@
 import { NotifierComponent } from './notifier/notifier.component';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+/**
+ * This service is used to notify the user of an information
+ * There is two type of message error and success and we can customize our message as we want
+ *
+ * @export
+ * @class NotifierService
+ */
 @Injectable({
   providedIn: 'root'
 })

@@ -3,9 +3,12 @@ export class Trajet {
   _user: User = new User();
   _passagers: User[] = Array();
   _depart: string='';
+  _start_latitude: number=0;
+  _start_longitude: number=0;
   _destination: string='';
   _nbKms: number=0;
   _co2Emission: number=0;
+  _departure_time: any = new Date();
 }
 
 export class Adress {

@@ -18,8 +18,6 @@ import {
 } from '@angular/fire/compat/auth-guard';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
-// const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
-
 
 const routes: Routes = [
   {
@@ -41,7 +39,12 @@ const routes: Routes = [
     ...canActivate(redirectUnauthorizedToLogin)
   }
 ];
-
+/**
+ * Routing submodule for entreprise part
+ *
+ * @export
+ * @class EntrepriseRoutingModule
+ */
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

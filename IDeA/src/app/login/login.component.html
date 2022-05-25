@@ -1,36 +1,38 @@
-<!-- <div *ngIf="!this.firebaseService.isLoggedIn">
-  <div *ngIf="this.firebaseService.status=='entreprise'">
-    <h2>Sign in</h2>
-    <input type="text" #email>
-    <input type="text" #password>
-    <button (click)="onSignin(email.value,password.value)">Sign up</button>
-  </div>
-</div> -->
-<div *ngIf="!this.firebaseService.isLoggedIn" >
-  <div *ngIf="this.firebaseService.status=='entreprise' || this.firebaseService.status=='collectivites'">
-    <mat-card>
-      <mat-card-title>Login</mat-card-title>
-      <mat-card-content>
-        <form [formGroup]="loginForm" (ngSubmit)="submit()" >
-          <p>
-            <mat-form-field>
-              <input matInput placeholder="Email address" formControlName="email" />
-              <mat-error *ngIf="email?.errors?.['required']" >Email is required</mat-error>
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-form-field>
-              <input matInput placeholder="Password" formControlName="password" type="password" />
-              <mat-error *ngIf="password?.errors?.['required']" >Password is required</mat-error>
-            </mat-form-field>
-          </p>
-          <div class="button">
-            <button mat-raised-button color="primary" type="submit">Login</button>
+<div *ngIf="!this.firebaseService.isLoggedIn" fxFill>
+  <div fxFill *ngIf="this.firebaseService.status=='entreprise' || this.firebaseService.status=='collectivites'">
+    <div class="container" fxLayout="row" fxLayout.lt-lg="column" fxFill fxLayoutAlign="space-around center">
+      <div fxFlex="80">
+        <form class="login" [formGroup]="loginForm" (ngSubmit)="submit()">
+          <div fxLayout="column">
+          <mat-form-field>
+            <input matInput placeholder="Email address" formControlName="email" />
+            <mat-error *ngIf="loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required')">
+              Veuillez entrer un email valide
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+              L'email est requis
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Mot de passe" formControlName="password" type="password" />
+            <mat-error *ngIf="loginForm.get('password')?.hasError('minlength') && !loginForm.get('password')?.hasError('required')">
+              Veuillez entrer un mot de passe valide (au moins 6 caractères)
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+              Le mot de passe est requis
+            </mat-error>
+          </mat-form-field>
           </div>
-          <span>New user? <a routerLink="/signup">Sign Up!</a></span>
+          <button>Login</button>
+          <a (click)="this.resetPassword()">Forget password?</a>
         </form>
-      </mat-card-content>
-    </mat-card>
+      </div>
+      <div class="signup" fxFlex="20" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="15px">
+        <p>Vous souhaitez nous </p><p> rejoindre ?</p>
+        <p>C'est par là !</p>
+        <a routerLink="/signup"><ng-lottie width="250px" height="200px"[options]="options"></ng-lottie></a>
+      </div>
+    </div>
   </div>
   <div *ngIf="this.firebaseService.status=='particuliers'" >
     <mat-card>
@@ -40,34 +42,28 @@
           <p>
             <mat-form-field>
               <input matInput placeholder="Email address" formControlName="email" />
-              <mat-error *ngIf="email?.errors?.['required']" >Email is required</mat-error>
+              <mat-error *ngIf="email?.errors?.['required']" >Un e-mail est requis</mat-error>
             </mat-form-field>
           </p>
           <p>
             <mat-form-field>
               <input matInput placeholder="Password" formControlName="password" type="password" />
-              <mat-error *ngIf="password?.errors?.['required']" >Password is required</mat-error>
+              <mat-error *ngIf="password?.errors?.['required']" >Un mot de passe est requis</mat-error>
             </mat-form-field>
           </p>
           <div class="button">
             <button mat-raised-button color="primary" type="submit">Login</button>
           </div>
-          <span>New user? <a routerLink="/signup">Sign Up!</a></span>
+          <span>Nouvel(le) utilisateur ? <a routerLink="/signup">Inscrivez vous !</a></span>
         </form>
       </mat-card-content>
       <mat-card-actions>
         <div class="button">
           <button mat-raised-button class="google-login-btn" (click)="this.firebaseService.googleSignin()">
-            Log in with Google
+            Connexion avec Google
           </button>
         </div>
       </mat-card-actions>
     </mat-card>
   </div>
 </div>
-
-
-
-
-
-

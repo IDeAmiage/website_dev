@@ -1,0 +1,528 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap");
+@import "../../../../custom-theme.scss";
+
+@mixin transition($property: all, $duration: 0.45s, $ease: cubic-bezier(0.65,0,.076,1)) {
+  transition: $property $duration $ease;
+}
+
+.grid-container {
+  background: $gradient-blue-bg;
+}
+
+// mat-card:hover{
+//   -ms-transform: scale(1.5); /* IE 9 */
+//   -webkit-transform: scale(1.5); /* Safari 3-8 */
+//   transform: scale(1.1);
+// }
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  text-align: center;
+  justify-content: center;
+  margin: 2rem;
+  border-radius: 20px;
+}
+$bg: #f3f8fa;
+$white: #fff;
+$black: #282936;
+// Responsive
+
+@media (max-width:2560px){
+
+  mat-card-content {
+    justify-content: center;
+    margin-top: -40px;
+  }
+
+  mat-card-header {
+    justify-content: center;
+  }
+
+  .mat-card-header,
+  .mat-card-title {
+    font-family: "Mulish", sans-serif;
+    font-size: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .mat-raised-button,
+  .mat-accent {
+    width: 60%;
+    background: $gradient-list-item;
+  }
+
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    top:4rem;
+    &.learn-more {
+      width: 12rem;
+      height: auto;
+      .circle {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: relative;
+        display: block;
+        margin: 0;
+        width: 3rem;
+        height: 3rem;
+        background: $black;
+        border-radius: 1.625rem;
+        .icon {
+          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          background: $white;
+          &.arrow {
+            @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+            left: 0.625rem;
+            width: 1.125rem;
+            height: 0.125rem;
+            background: none;
+            &::before {
+              position: absolute;
+              content: '';
+              top: -0.25rem;
+              right: 0.0625rem;
+              width: 0.625rem;
+              height: 0.625rem;
+              border-top: 0.125rem solid #fff;
+              border-right: 0.125rem solid #fff;
+              transform: rotate(45deg);
+            }
+          }
+        }
+      }
+      .button-text {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.75rem 0;
+        margin: 0 0 0 1.85rem;
+        color: $black;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+    &:hover {
+      .circle {
+        width: 100%;
+        .icon {
+          &.arrow {
+          background: $white;
+          transform: translate(1rem, 0);
+          }
+        }
+      }
+      .button-text {
+        color: $white;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 1920px) {
+  mat-card-content {
+    justify-content: center;
+    margin-top: -40px;
+  }
+
+  mat-card-header {
+    justify-content: center;
+  }
+
+  .mat-card-header,
+  .mat-card-title {
+    font-family: "Mulish", sans-serif;
+    font-size: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .mat-raised-button,
+  .mat-accent {
+    width: 60%;
+    background: $gradient-list-item;
+  }
+
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    top:4rem;
+    &.learn-more {
+      width: 12rem;
+      height: auto;
+      .circle {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: relative;
+        display: block;
+        margin: 0;
+        width: 3rem;
+        height: 3rem;
+        background: $black;
+        border-radius: 1.625rem;
+        .icon {
+          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          background: $white;
+          &.arrow {
+            @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+            left: 0.625rem;
+            width: 1.125rem;
+            height: 0.125rem;
+            background: none;
+            &::before {
+              position: absolute;
+              content: '';
+              top: -0.25rem;
+              right: 0.0625rem;
+              width: 0.625rem;
+              height: 0.625rem;
+              border-top: 0.125rem solid #fff;
+              border-right: 0.125rem solid #fff;
+              transform: rotate(45deg);
+            }
+          }
+        }
+      }
+      .button-text {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.75rem 0;
+        margin: 0 0 0 1.85rem;
+        color: $black;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+    &:hover {
+      .circle {
+        width: 100%;
+        .icon {
+          &.arrow {
+          background: $white;
+          transform: translate(1rem, 0);
+          }
+        }
+      }
+      .button-text {
+        color: $white;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 1280px) {
+
+  mat-card-header {
+    justify-content: center;
+  }
+
+  .mat-card-header,
+  .mat-card-title {
+    font-family: "Mulish", sans-serif;
+    font-size: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .mat-raised-button,
+  .mat-accent {
+    width: 60%;
+    background: $gradient-list-item;
+  }
+
+  .dashboard-card-content{
+    justify-content: center;
+  }
+
+  button {
+
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    top:2rem;
+    &.learn-more {
+      width: 12rem;
+      height: auto;
+      .circle {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: relative;
+        display: block;
+        margin: 0;
+        width: 3rem;
+        height: 3rem;
+        background: $black;
+        border-radius: 1.625rem;
+        .icon {
+          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          background: $white;
+          &.arrow {
+            @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+            left: 0.625rem;
+            width: 1.125rem;
+            height: 0.125rem;
+            background: none;
+            &::before {
+              position: absolute;
+              content: '';
+              top: -0.25rem;
+              right: 0.0625rem;
+              width: 0.625rem;
+              height: 0.625rem;
+              border-top: 0.125rem solid #fff;
+              border-right: 0.125rem solid #fff;
+              transform: rotate(45deg);
+            }
+          }
+        }
+      }
+      .button-text {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.75rem 0;
+        margin: 0 0 0 1.85rem;
+        color: $black;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+    .button-text {
+      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      // padding: 0.7rem 0;
+      margin: 0 0 0 1.8rem;
+      color: $black;
+      font-weight: 600;
+      line-height: 1.6;
+      text-align: center;
+      text-transform: uppercase;
+      @media (max-width: 1920px) {
+        padding: 0.5rem 0;
+      }
+      @media(max-width: 912px) {
+        top: -12px;
+        padding: 0rem 0;
+      }
+    }
+  }
+
+
+
+
+
+}
+
+@media (max-width: 1128px) {
+  mat-card-content {
+    justify-content: center;
+    margin-top: -10px;
+  }
+
+  mat-card-header {
+    justify-content: center;
+  }
+
+  .mat-card-header,
+  .mat-card-title {
+    font-family: "Mulish", sans-serif;
+    font-size: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .mat-raised-button,
+  .mat-accent {
+    width: 60%;
+    background: $gradient-list-item;
+  }
+
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    top:0.4rem;
+    &.learn-more {
+      width: 9rem;
+      height: auto;
+      .circle {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: relative;
+        display: block;
+        margin: 0;
+        width: 2rem;
+        height: 2rem;
+        background: $black;
+        border-radius: 1.625rem;
+        .icon {
+          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          background: $white;
+          &.arrow {
+            @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+            left: 0.225rem;
+            width: 1.125rem;
+            height: 0.125rem;
+            background: none;
+            &::before {
+              position: absolute;
+              content: '';
+              top: -0.25rem;
+              right: 0.0625rem;
+              width: 0.625rem;
+              height: 0.625rem;
+              border-top: 0.125rem solid #fff;
+              border-right: 0.125rem solid #fff;
+              transform: rotate(45deg);
+            }
+          }
+        }
+      }
+      .button-text {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.45rem 0;
+        margin: 0 0 0 1.85rem;
+        color: $black;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+    &:hover {
+      .circle {
+        width: 100%;
+        .icon {
+          &.arrow {
+          background: $white;
+          transform: translate(1rem, 0);
+          }
+        }
+      }
+      .button-text {
+        color: $white;
+      }
+    }
+  }
+
+
+
+
+
+}
+
+
+@media (max-width: 912px){
+  mat-card-content {
+    visibility: hidden;
+  }
+
+  mat-card-header {
+    justify-content: center;
+  }
+
+  .mat-card-header,
+  .mat-card-title {
+    font-family: "Mulish", sans-serif;
+    font-size: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .mat-raised-button,
+  .mat-accent {
+    width: 60%;
+    background: $gradient-list-item;
+  }
+}
+
+mat-card img {
+  object-fit: cover; /*this makes the image in src fit to the size specified below*/
+  width: 80%; /*Here you can use wherever you want to specify the width and also the height of the <img> */
+  height: 70%;
+  border-radius: 10px;
+}
+
+
+
+
+
+

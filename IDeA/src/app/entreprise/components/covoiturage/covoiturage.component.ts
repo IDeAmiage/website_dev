@@ -222,13 +222,16 @@ export class CovoiturageComponent implements OnInit {
       localStorage.setItem('user', JSON.stringify(res));
       const user = JSON.parse(localStorage.getItem("user")!);
       if (this.TrajetListe[i]._user._id == user[0]._id) {
-        this.notifier.showNotification("You can't register in your traject", "OK", "error")
-      } else {
-        if (this.TrajetListe[i]._passagers.length == this.TrajetListe[i]._user._car._capacite) {
+        this.notifier.showNotification("You can't register in your traject", "OK", "error");
+      return;
+      }
+      if (this.TrajetListe[i]._passagers.length == this.TrajetListe[i]._user._car._capacite) {
           this.notifier.showNotification("This traject is full", "OK", "error");
-        } else if (this.TrajetListe[i]._passagers.some((item: any) => item._id === user[0]._id)) {
+          return;
+      }
+      if (this.TrajetListe[i]._passagers.some((item: any) => item._id === user[0]._id)){
           this.notifier.showNotification("You are already register", "OK", "error");
-        }
+          return;
       }
       this.TrajetListe[i]._passagers.push(user[0]);
       this.firestore.updateTraject(this.TrajetListe[i], user[0])

@@ -183,7 +183,7 @@ async saveTraject(){
     this.trajet._user._co2 = this.trajet._user._co2 + this.trajet._co2Emission;
     this.trajet = Object.assign({}, this.trajet)
     await this.api.getCo2Calculation(this.trajet).toPromise().then((res)=>{
-      this.trajet._co2Emission = parseFloat(res.toString());
+      this.trajet._co2Emission = parseFloat(res.toString())* this.trajet._passagers.length;
     })
     switch (this.freq) {
       case "day":

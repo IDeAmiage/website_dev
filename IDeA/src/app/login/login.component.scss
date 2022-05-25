@@ -1,3 +1,5 @@
+@import "../../styles.scss";
+
 /*
 .google-login-btn {
   background-image: url('src/assets/google-logo.png');
@@ -28,94 +30,292 @@ $gradient-bottom-left: linear-gradient(315deg, #bdecb6ff, #638475ff, #aba0baff);
   background: $gradient-top-right;
 }
 
-.signup {
-  font-size: 2vw;
-  margin-right: 5vw;
-  margin-bottom: 5vw;
-  p {
-    margin-top: 0.5vw ;
-  }
-}
-
-.login {
-  overflow: hidden;
-  background-color: white;
-  padding: 40px 30px 30px 30px;
-  border-radius: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 400px;
-  transform: translate(-50%, -50%);
-  transition: transform 300ms, box-shadow 300ms;
-  box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
-
-  &::before, &::after {
-    content: '';
+@media (max-width:1920px){
+  .login {
+    overflow: hidden;
+    background-color: white;
+    padding: 40px 30px 30px 30px;
+    border-radius: 10px;
     position: absolute;
-    width: 600px;
-    height: 600px;
-    border-top-left-radius: 40%;
-    border-top-right-radius: 45%;
-    border-bottom-left-radius: 35%;
-    border-bottom-right-radius: 40%;
-    z-index: -1;
-  }
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    transform: translate(-50%, -50%);
+    transition: transform 300ms, box-shadow 300ms;
+    box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
 
-  &::before {
-    left: 40%;
-    bottom: -130%;
-    background-color: rgba($blueQueen, 0.15);
-    animation: wawes 6s infinite linear;
-  }
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-top-left-radius: 40%;
+      border-top-right-radius: 45%;
+      border-bottom-left-radius: 35%;
+      border-bottom-right-radius: 40%;
+      z-index: -1;
+    }
 
-  &::after {
-    left: 35%;
-    bottom: -125%;
-    background-color: rgba($greenSeaweed, 0.2);
-    animation: wawes 7s infinite;
-  }
+    &::before {
+      left: 40%;
+      bottom: -130%;
+      background-color: rgba($blueQueen, 0.15);
+      animation: wawes 6s infinite linear;
+    }
 
-  > input {
-    display: block;
-    border-radius: 5px;
-    font-size: 16px;
-    background: white;
-    width: 100%;
-    border: 0;
-    padding: 10px 10px;
-    margin: 15px -10px;
-  }
+    &::after {
+      left: 35%;
+      bottom: -125%;
+      background-color: rgba($greenSeaweed, 0.2);
+      animation: wawes 7s infinite;
+    }
 
-  > button {
-    cursor: pointer;
-    color: #fff;
-    font-size: 16px;
-    text-transform: uppercase;
-    width: 80px;
-    border: 0;
-    padding: 10px 0;
-    margin-top: 10px;
-    margin-left: -5px;
-    border-radius: 5px;
-    background-color: $wintergreen-dream;
-    transition: background-color 300ms;
+    > input {
+      display: block;
+      border-radius: 5px;
+      font-size: 16px;
+      background: white;
+      width: 100%;
+      border: 0;
+      padding: 10px 10px;
+      margin: 15px -10px;
+    }
 
-    &:hover {
-      background-color: darken($wintergreen-dream, 5%);
+    > button {
+      cursor: pointer;
+      color: #fff;
+      font-size: 16px;
+      text-transform: uppercase;
+      width: 80px;
+      border: 0;
+      padding: 10px 0;
+      margin-top: 10px;
+      margin-left: -5px;
+      border-radius: 5px;
+      background-color: $wintergreen-dream;
+      transition: background-color 300ms;
+
+      &:hover {
+        background-color: darken($wintergreen-dream, 5%);
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+      position: absolute;
+      right: 10px;
+      cursor: pointer;
+      bottom: 10px;
+      font-size: 12px;
     }
   }
 
-  a {
-    text-decoration: none;
-    color: black;
+  .signup {
+    font-size: 2vw;
+    margin-right: 5vw;
+    margin-bottom: 5vw;
+    p {
+      margin-top: 0.5vw ;
+    }
+    margin-top:10rem;
+  }
+
+}
+
+@media (max-width:541px){
+  .login {
+    overflow: hidden;
+    background-color: white;
+    padding: 40px 30px 30px 30px;
+    border-radius: 10px;
     position: absolute;
-    right: 10px;
-    cursor: pointer;
-    bottom: 10px;
-    font-size: 12px;
+    top: 30%;
+    left: 50%;
+    width: 300px;
+    transform: translate(-50%, -50%);
+    transition: transform 300ms, box-shadow 300ms;
+    box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-top-left-radius: 40%;
+      border-top-right-radius: 45%;
+      border-bottom-left-radius: 35%;
+      border-bottom-right-radius: 40%;
+      z-index: -1;
+    }
+
+    &::before {
+      left: 40%;
+      bottom: -130%;
+      background-color: rgba($blueQueen, 0.15);
+      animation: wawes 6s infinite linear;
+    }
+
+    &::after {
+      left: 35%;
+      bottom: -125%;
+      background-color: rgba($greenSeaweed, 0.2);
+      animation: wawes 7s infinite;
+    }
+
+    > input {
+      display: block;
+      border-radius: 5px;
+      font-size: 16px;
+      background: white;
+      width: 100%;
+      border: 0;
+      padding: 10px 10px;
+      margin: 15px -10px;
+    }
+
+    > button {
+      cursor: pointer;
+      color: #fff;
+      font-size: 16px;
+      text-transform: uppercase;
+      width: 80px;
+      border: 0;
+      padding: 10px 0;
+      margin-top: 10px;
+      margin-left: -5px;
+      border-radius: 5px;
+      background-color: $wintergreen-dream;
+      transition: background-color 300ms;
+
+      &:hover {
+        background-color: darken($wintergreen-dream, 5%);
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+      position: absolute;
+      right: 10px;
+      cursor: pointer;
+      bottom: 10px;
+      font-size: 12px;
+    }
+  }
+
+  .signup {
+    font-family: "Mulish", sans-serif;
+    font-size: 2rem;
+    margin-right: 5vw;
+    margin-bottom: 5vw;
+    // p {
+    //   margin-top: 0.5vw ;
+    // }
+    margin-top:-10rem;
+  }
+
+  ng-lotti{
+    width: 150px;
   }
 }
+@media (max-width:493px){
+  .login {
+    overflow: hidden;
+    background-color: white;
+    padding: 40px 30px 30px 30px;
+    border-radius: 10px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 200px;
+    transform: translate(-50%, -50%);
+    transition: transform 300ms, box-shadow 300ms;
+    box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-top-left-radius: 40%;
+      border-top-right-radius: 45%;
+      border-bottom-left-radius: 35%;
+      border-bottom-right-radius: 40%;
+      z-index: -1;
+    }
+
+    &::before {
+      left: 40%;
+      bottom: -130%;
+      background-color: rgba($blueQueen, 0.15);
+      animation: wawes 6s infinite linear;
+    }
+
+    &::after {
+      left: 35%;
+      bottom: -125%;
+      background-color: rgba($greenSeaweed, 0.2);
+      animation: wawes 7s infinite;
+    }
+
+    > input {
+      display: block;
+      border-radius: 5px;
+      font-size: 16px;
+      background: white;
+      width: 100%;
+      border: 0;
+      padding: 10px 10px;
+      margin: 15px -10px;
+    }
+
+    > button {
+      cursor: pointer;
+      color: #fff;
+      font-size: 16px;
+      text-transform: uppercase;
+      width: 80px;
+      border: 0;
+      padding: 10px 0;
+      margin-top: 10px;
+      margin-left: -5px;
+      border-radius: 5px;
+      background-color: $wintergreen-dream;
+      transition: background-color 300ms;
+
+      &:hover {
+        background-color: darken($wintergreen-dream, 5%);
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+      position: absolute;
+      right: 10px;
+      cursor: pointer;
+      bottom: 10px;
+      font-size: 12px;
+    }
+  }
+
+  .signup {
+    font-family: "Mulish", sans-serif;
+    font-size: 1.5rem;
+    margin-right: 5vw;
+    margin-bottom: 5vw;
+    // p {
+    //   margin-top: 0.5vw ;
+    // }
+    margin-top:-15rem;
+  }
+
+  ng-lotti{
+    width: 150px;
+  }
+}
+
 
 @keyframes wawes {
   from { transform: rotate(0); }

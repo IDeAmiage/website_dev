@@ -32,6 +32,7 @@
     "geolib": "^3.3.3",
     "lottie-web": "^5.9.4",
     "mat-table-exporter": "^10.2.4",
+    "ng-lottie": "^0.3.2",
     "ngx-lottie": "^7.1.0",
     "rxfire": "^6.0.0",
     "rxjs": "~6.6.0",

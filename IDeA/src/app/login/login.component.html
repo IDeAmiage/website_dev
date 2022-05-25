@@ -1,5 +1,5 @@
 <div *ngIf="!this.firebaseService.isLoggedIn" fxFill>
-  <div fxFill *ngIf="this.firebaseService.status=='entreprise' || this.firebaseService.status=='collectivites'">
+  <div fxFill *ngIf="this.firebaseService.status==='entreprise' || this.firebaseService.status==='collectivites'">
     <div class="container" fxLayout="row" fxLayout.lt-lg="column" fxFill fxLayoutAlign="space-around center">
       <div fxFlex="80">
         <form class="login" [formGroup]="loginForm" (ngSubmit)="submit()">
@@ -34,7 +34,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="this.firebaseService.status=='particuliers'" >
+  <div *ngIf="this.firebaseService.status==='particuliers'" >
     <mat-card>
       <mat-card-title>Login</mat-card-title>
       <mat-card-content>

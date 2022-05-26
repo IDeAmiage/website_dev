@@ -79,8 +79,8 @@
               *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">Menu</mat-icon>
       </button>
-      <div #entreprise>
-        <mat-icon>maps_home_work</mat-icon> {{this.EntrepriseUser[0]._entreprise}}
+      <div #entreprise *ngFor="let item of this.EntrepriseUser">
+        <mat-icon>maps_home_work</mat-icon> {{item._entreprise}}
       </div>
       <div class="spacer"></div>
       <!-- <div [style.color]="this.AirQuality>30? 'red': 'green'"> -->

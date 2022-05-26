@@ -29,8 +29,7 @@ export class NavComponent implements OnInit{
   public AirQuality: number = 0;
   public publicListcity : any = new Array();
   public test: string="";
-
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  public isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
@@ -64,6 +63,7 @@ ngOnInit(): void {
     this.firestore.getUser(localStorage.getItem('user_id')!).subscribe(res=>{
       this.EntrepriseUser = res;
     });
+
     this.opendatasoft.getAirquality().subscribe(res=>{
       res.records.reverse().forEach((element:any) => {
         if (element.fields.measurements_parameter === "PM10"){
@@ -71,6 +71,7 @@ ngOnInit(): void {
         }
       });
     });
+
     this.opendatasoft.getOtherAirQuality().subscribe(response=>{
       response.records.forEach((element:any) => {
         if (element.fields.measurements_parameter === "PM10"){
@@ -87,7 +88,6 @@ ngOnInit(): void {
       this.publicListcity.forEach((element:any) => {
         this.test += element.fields.city +": "+element.fields.measurements_value + "\n"
       });
-      console.log(this.test);
     })
   }
 

@@ -2,6 +2,10 @@ import { Router } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { map, shareReplay } from 'rxjs/operators';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-accueil',
@@ -19,6 +23,14 @@ export class AccueilComponent implements OnInit {
   isExplorer!: boolean;
   content!: string;
 
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+
+
+
 /**
  * Creates an instance of AccueilComponent.
  * @param {FirebaseService} firebaseService
@@ -26,7 +38,7 @@ export class AccueilComponent implements OnInit {
  * @param {DomSanitizer} _sanitizer
  * @memberof AccueilComponent
  */
-constructor(public firebaseService: FirebaseService, public router: Router, private _sanitizer: DomSanitizer){}
+constructor(public firebaseService: FirebaseService, public router: Router, private _sanitizer: DomSanitizer, private breakpointObserver: BreakpointObserver){}
 /**
  * On init this component load all the videos
  *

@@ -55,6 +55,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { SearchFilterPipe } from '../search-filter.pipe';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,7 @@ import {MatRadioModule} from '@angular/material/radio';
     FractionRating,
     RatingPipe,
     SearchFilterPipe,
+    DashboardComponent,
 
   ],
   imports: [
@@ -120,6 +123,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatTooltipModule,
     MatCheckboxModule,
     MatRadioModule,
+    NgxChartsModule,
+
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}]
 })

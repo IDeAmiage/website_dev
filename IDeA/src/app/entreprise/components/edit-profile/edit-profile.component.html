@@ -1,47 +1,60 @@
 <div fxLayout="column" fxLayoutAlign="start start" fxFill>
   <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
-
-    <h1><button mat-icon-button color="primary" (click)="openProfile()" title="Retourner au profil"><mat-icon>arrow_back</mat-icon></button> Modifiez vos informations</h1>
+    <h1>
+      <button
+        mat-icon-button
+        color="primary"
+        (click)="openProfile()"
+        title="Retourner au profil"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      Modifiez vos informations
+    </h1>
   </div>
 
   <mat-dialog-content class="mat-typography" [formGroup]="userForms">
-    <div fxLayout="row wrap" fxFill fxLayoutAlign="start start" fxLayoutGap="20px">
-
+    <div
+      fxLayout="row wrap"
+      fxFill
+      fxLayoutAlign="start start"
+      fxLayoutGap="20px"
+    >
       <!-- Statistique -->
       <div fxFlex="100"><h2>Statistique</h2></div>
 
       <div fxFlex="calc(33% - 20px)">
         <mat-form-field appearance="legacy">
           <mat-label>Score CO2</mat-label>
-          <input matInput type="number" formControlName="_co2">
+          <input matInput type="number" formControlName="_co2" />
         </mat-form-field>
       </div>
 
       <div fxFlex="calc(33% - 20px)">
         <mat-form-field appearance="legacy">
           <mat-label>Nombre de trajets</mat-label>
-          <input matInput type="number" formControlName="_nbTrajects">
+          <input matInput type="number" formControlName="_nbTrajects" />
         </mat-form-field>
       </div>
 
       <div fxFlex="calc(33% - 20px)">
         <mat-form-field appearance="legacy">
           <mat-label>Score</mat-label>
-          <input matInput type="number" formControlName="_score">
+          <input matInput type="number" formControlName="_score" />
         </mat-form-field>
       </div>
 
       <div fxFlex="calc(33% - 20px)">
         <mat-form-field appearance="legacy">
           <mat-label>Niveau utilisateur</mat-label>
-          <input matInput type="number" formControlName="_level">
+          <input matInput type="number" formControlName="_level" />
         </mat-form-field>
       </div>
 
       <div fxFlex="calc(67% - 20px)">
         <mat-form-field appearance="legacy">
           <mat-label>Note</mat-label>
-          <input matInput type="number" formControlName="_note">
+          <input matInput type="number" formControlName="_note" />
         </mat-form-field>
       </div>
 
@@ -51,22 +64,32 @@
       <div fxFlex="calc(33% - 20px)">
         <mat-form-field appearance="legacy">
           <mat-label>Prénom</mat-label>
-          <input matInput type="text" formControlName="_name">
+          <input matInput type="text" formControlName="_name" />
         </mat-form-field>
       </div>
 
       <div fxFlex="calc(33% - 20px)">
         <mat-form-field appearance="legacy">
           <mat-label>Entreprise</mat-label>
-          <input matInput type="text" formControlName="_entreprise">
+          <input matInput type="text" formControlName="_entreprise" />
         </mat-form-field>
       </div>
 
       <div fxFlex="calc(33% - 20px)">
         <mat-form-field appearance="legacy">
           <mat-label>Téléphone</mat-label>
-          <input type="tel" matInput placeholder="Ex. +33601010101" formControlName="_phone">
-          <mat-error *ngIf="userForms.get('_phone')?.hasError('pattern') && !userForms.get('_phone')?.hasError('required')">
+          <input
+            type="tel"
+            matInput
+            placeholder="Ex. +33601010101"
+            formControlName="_phone"
+          />
+          <mat-error
+            *ngIf="
+              userForms.get('_phone')?.hasError('pattern') &&
+              !userForms.get('_phone')?.hasError('required')
+            "
+          >
             Veuillez entrer un numéro de téléphone valide
           </mat-error>
           <mat-error *ngIf="userForms.get('_phone')?.hasError('required')">
@@ -78,7 +101,7 @@
       <div fxFlex="calc(33% - 20px)">
         <mat-form-field appearance="legacy" style="width: 30%">
           <mat-label>Identifiant</mat-label>
-          <input type="text" matInput formControlName="_id">
+          <input type="text" matInput formControlName="_id" />
         </mat-form-field>
       </div>
 
@@ -97,7 +120,11 @@
         <mat-form-field appearance="legacy">
           <mat-label>Type de voiture</mat-label>
           <mat-select placeholder="Type de voiture" formControlName="_type">
-            <mat-option *ngFor="let voiture of this.sizeList" [value]="voiture">{{voiture}}</mat-option>
+            <mat-option
+              *ngFor="let voiture of this.sizeList"
+              [value]="voiture"
+              >{{ voiture }}</mat-option
+            >
           </mat-select>
         </mat-form-field>
       </div>
@@ -106,7 +133,13 @@
         <mat-form-field appearance="legacy">
           <mat-label>Carburant</mat-label>
           <mat-select placeholder="Carburant" formControlName="_carburant">
-            <mat-option *ngFor="let carburant of this.fuelList" [value]="carburant">{{carburant.charAt(0).toUpperCase() + carburant.slice(1)}}</mat-option>
+            <mat-option
+              *ngFor="let carburant of this.fuelList"
+              [value]="carburant"
+              >{{
+                carburant.charAt(0).toUpperCase() + carburant.slice(1)
+              }}</mat-option
+            >
           </mat-select>
         </mat-form-field>
       </div>
@@ -115,13 +148,17 @@
         <mat-form-field appearance="legacy">
           <mat-label>Capacité</mat-label>
           <mat-select placeholder="Capacite" formControlName="_capacite">
-            <mat-option *ngFor="let i of this.capacity" [value]="i">{{i}}</mat-option>
+            <mat-option *ngFor="let i of this.capacity" [value]="i">{{
+              i
+            }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
 
       <div>
-        <button mat-raised-button color="primary" (click)="onSubmit()">Enregistrer</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">
+          Enregistrer
+        </button>
       </div>
     </div>
   </mat-dialog-content>

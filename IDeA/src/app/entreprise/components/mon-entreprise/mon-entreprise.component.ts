@@ -51,12 +51,6 @@ export class MonEntrepriseComponent implements OnInit {
       });
   }
 
-  /**
-   * Infos from opendatasoft sirene V3
-   *
-   * @param {string} entreprise
-   * @memberof MonEntrepriseComponent
-   */
   loadEntrepriseInfos(entreprise: string) {
     this.opendatasoft.getEntreprise(entreprise).subscribe((response) => {
       response.records.forEach((element: any) => {
@@ -80,13 +74,18 @@ export class MonEntrepriseComponent implements OnInit {
     });
   }
 
+  /**
+   * Return classement of users and CO2 for the entreprise
+   *
+   * @memberof MonEntrepriseComponent
+   */
   getClassementEntreprise() {
     this.firestore.getObject('trajet').subscribe((res: any) => {
       res.forEach((element: any) => {
         if (this.classementCo2.get(element._user._entreprise) == undefined) {
           this.classementCo2.set(
             element._user._entreprise,
-            element._co2Emission
+            element._co2Emission * element._passagers.length
           );
           this.classementnbTrajets.set(element._user._entreprise, 1);
         } else {
@@ -96,7 +95,7 @@ export class MonEntrepriseComponent implements OnInit {
           );
           this.classementCo2.set(
             element._user._entreprise,
-            element._co2Emission + temp
+            element._co2Emission * element._passagers.length + temp!
           );
           this.classementnbTrajets.set(
             element._user._entreprise,

@@ -23,6 +23,7 @@ export class TableViewComponent implements OnInit {
   public table: any;
   public displayedColumns: any[] = [];
   public columnsToDisplay: any[] = [];
+  public name: any;
 
 /**
  * Creates an instance of TableViewComponent.
@@ -62,5 +63,20 @@ changeDisplayColumns(page: PageEvent){
     let start = page.pageIndex * page.pageSize;
     let end = page.pageIndex * page.pageSize + page.pageSize;
     this.columnsToDisplay = this.displayedColumns.slice(start, end);
+  }
+
+  CSV_Export(){
+    window.open("https://public.opendatasoft.com/explore/dataset/"+this.opendata.current_dataset+
+    "/download/?format=csv&timezone=Europe/Berlin&lang=fr&use_labels_for_header=true&csv_separator=%3B")
+  }
+
+  JSON_Export(){
+    window.open("https://public.opendatasoft.com/explore/dataset/"+this.opendata.current_dataset+
+    "/download/?format=json&timezone=Europe/Berlin&lang=fr");
+  }
+
+  Excel_Export(){
+    window.open("https://public.opendatasoft.com/explore/dataset/"+this.opendata.current_dataset+
+    "/download/?format=xls&timezone=Europe/Berlin&lang=fr&use_labels_for_header=true")
   }
 }

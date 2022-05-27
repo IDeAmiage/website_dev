@@ -45,8 +45,6 @@ export function playerFactory() {
 }
 import { AtomSpinnerModule } from 'angular-epic-spinners';
 import {MatTooltipModule} from '@angular/material/tooltip';
-// import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-// import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({

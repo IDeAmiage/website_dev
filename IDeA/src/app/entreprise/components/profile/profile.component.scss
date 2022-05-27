@@ -1,26 +1,25 @@
-
 .divider-stats {
-    height:60px;
+  height: 60px;
 }
 
 #name {
-    font-size:1.6em;
-    font-weight: bold;
+  font-size: 1.6em;
+  font-weight: bold;
 }
 
 .car-service-svg {
-    background-image: url(/assets/Entreprise/car-service.svg);
-    background-size: 25%;
-    background-repeat: no-repeat;
-    background-position: bottom right;
+  background-image: url(/assets/Entreprise/car-service.svg);
+  background-size: 25%;
+  background-repeat: no-repeat;
+  background-position: bottom right;
 }
 
 mat-divider.mat-divider-vertical {
-    border-right-width: 2px;
-    border-color: #6C6C6C;
+  border-right-width: 2px;
+  border-color: #6c6c6c;
 } // #E6E6E6
 
 mat-divider {
-    border-top-width: 2px;
-    border-color: #6C6C6C;
+  border-top-width: 2px;
+  border-color: #6c6c6c;
 }

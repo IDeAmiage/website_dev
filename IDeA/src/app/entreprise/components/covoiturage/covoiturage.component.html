@@ -45,7 +45,7 @@
 
 <div fxLayout="row wrap" fxLayoutGap="100" style="margin-left: 3%">
   <mat-grid-list
-    *ngFor="let item of this.TrajetListe | searchFilter: query; index as i"
+    *ngFor="let item of this.filtered | searchFilter: query; index as i"
     #grid
     [cols]="cols"
     rowHeight="10:10"
@@ -81,7 +81,7 @@
           <ul>
             <li>
               <p>
-                {{ item._nbKms | number: "1." }} Kms
+                {{ item._nbKms/1000}} Kms
                 <img
                   src="/assets/Entreprise/distanceLooking.svg"
                   width="5%"

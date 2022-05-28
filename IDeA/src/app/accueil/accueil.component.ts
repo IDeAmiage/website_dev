@@ -1,3 +1,4 @@
+import { NotifierService } from './../notifier.service';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 import { Component, OnInit } from '@angular/core';
@@ -26,7 +27,10 @@ export class AccueilComponent implements OnInit {
  * @param {DomSanitizer} _sanitizer
  * @memberof AccueilComponent
  */
-constructor(public firebaseService: FirebaseService, public router: Router, private _sanitizer: DomSanitizer){}
+constructor(public firebaseService: FirebaseService,
+            public router: Router,
+            private _sanitizer: DomSanitizer,
+            public notifier: NotifierService){}
 /**
  * On init this component load all the videos
  *
@@ -41,6 +45,7 @@ ngOnInit(): void {
     this.urlHossegor = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/fFNZFThijT4');
     this.isExplorer = true;
     this.content = "content";
+    this.notifier.showCGU("Veuillez accepter les conditions d'utilisation","Accepter",'info')
   }
 
 /**

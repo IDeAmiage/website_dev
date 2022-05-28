@@ -43,6 +43,7 @@ import { LottieModule } from 'ngx-lottie';
 import { AtomSpinnerModule } from 'angular-epic-spinners';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import player from 'lottie-web';
+import { CGUComponent } from './CGU/CGU.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -51,13 +52,14 @@ export function playerFactory() {
 }
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     SignupComponent,
     LoginComponent,
     AccueilComponent,
     NotifierComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+      CGUComponent
    ],
   imports: [
     BrowserModule,

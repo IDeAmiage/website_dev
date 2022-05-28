@@ -177,7 +177,6 @@ async calculateDistance(ad1: Adress, ad2: Adress){
 async saveTraject(){
     await this.calculateDistance(this.depart, this.arrivee);
     this.trajet._user._car = Object.assign({}, this.trajet._user._car)
-    console.log(this.trajet._user._car);
     this.trajet._user = Object.assign({}, this.trajet._user)
     this.trajet._user._nbTrajects++;
     this.trajet._user._co2 = this.trajet._user._co2 + this.trajet._co2Emission;

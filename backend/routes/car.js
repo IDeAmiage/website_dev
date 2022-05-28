@@ -16,16 +16,16 @@ router.get('/carbonemission/:kms/:vtype/:fueltype', function(req, res, next) {
             break;
     }
     switch(req.params.fueltype){
-        case 'diesel':
+        case 'Diesel':
             var emission = (req.params.kms/1000000) * conso * 2640;
             break;
-        case 'essence':
+        case 'Essence':
             emission = (req.params.kms/1000000) * conso * 2392;
             break;
-        case 'gpl':
+        case 'GPL':
             emission = (req.params.kms/1000000) * conso * 1665;
             break;
-        case 'cng':
+        case 'CNG':
             emission = (req.params.kms/1000000) * conso * 1819;
             break;
     }

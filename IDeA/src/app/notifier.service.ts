@@ -28,4 +28,18 @@ export class NotifierService {
       panelClass: messageType
     });
   }
+
+  showCGU(displayMessage:string, buttonText:string, messageType: 'info'){
+    this.snackbar.openFromComponent(NotifierComponent, {
+      data: {
+        message: displayMessage,
+        buttonText: buttonText,
+        type: messageType
+      },
+      duration:10000,
+      horizontalPosition:'center',
+      verticalPosition: 'top',
+      panelClass: messageType
+    });
+  }
 }

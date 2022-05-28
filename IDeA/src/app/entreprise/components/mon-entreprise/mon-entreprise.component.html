@@ -1,39 +1,161 @@
-<h1>
-  {{ this.currentUser._entreprise }}
-</h1>
+<div class="grid-container">
+  <mat-grid-list cols="{{ (cardLayout | async)?.columns }}" rowHeight="200px">
+    <!--Mini Cards-->
+    <!--CO2 Total Economisé-->
+    <mat-grid-tile
+      [colspan]="(cardLayout | async)?.miniCard?.cols"
+      [rowspan]="(cardLayout | async)?.miniCard?.rows"
+    >
+      <mat-card class="dashboard-card">
+        <mat-card-title>CO2 Total Economisé</mat-card-title>
+        <mat-card-content class="minicards-content">
+          <p>
+            {{
+              this.classementCo2.get(this.currentUser?._entreprise)
+                | number: "1.0-0"
+            }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
 
-<p>
-  {{ this.userEntreprise | json }}
-</p>
+    <!--Date création-->
+    <mat-grid-tile
+      [colspan]="(cardLayout | async)?.miniCard?.cols"
+      [rowspan]="(cardLayout | async)?.miniCard?.rows"
+    >
+      <mat-card class="dashboard-card">
+        <mat-card-title>Création de l'entreprise</mat-card-title>
+        <mat-card-content class="minicards-content">
+          <p>{{ this.daysBetween }} jours depuis</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
 
-<h1>{{ this.consoEntreprise }}</h1>
+    <!--Nombre d'employé-->
+    <mat-grid-tile
+      [colspan]="(cardLayout | async)?.miniCard?.cols"
+      [rowspan]="(cardLayout | async)?.miniCard?.rows"
+    >
+      <mat-card class="dashboard-card">
+        <mat-card-title>Nombre de salarié</mat-card-title>
+        <mat-card-content class="minicards-content">
+          <p>{{ this.userEntreprise?.trancheeffectifsetablissement }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
 
-<iframe
-  src="https://kepler.gl/#/demo?mapUrl=https://raw.githubusercontent.com/ikespand/ikespand.github.io/master/_data/sample_data/keplergl_road_network.json"
-  style="border: 0px #ffffff none"
-  name="myiFrame"
-  scrolling="no"
-  frameborder="1"
-  marginheight="0px"
-  marginwidth="100px"
-  height="800px"
-  width="1000px"
-  allowfullscreen
-></iframe>
+    <!--Nombre de trajet-->
+    <mat-grid-tile
+      [colspan]="(cardLayout | async)?.miniCard?.cols"
+      [rowspan]="(cardLayout | async)?.miniCard?.rows"
+    >
+      <mat-card class="dashboard-card">
+        <mat-card-title>Nombre de trajet effectué</mat-card-title>
+        <mat-card-content class="minicards-content">
+          <p>
+            {{ this.classementnbTrajets.get(this.currentUser?._entreprise) }}
+            trajets
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
 
-<h1>Classements</h1>
-<br />
-<h2>Classement CO2</h2>
-<div *ngFor="let entry of this.classementCo2 | keyvalue: originalOrder">
-  {{ entry.key }}:{{ entry.value }}
+    <!--Charts-->
+    <!--Classement CO2-->
+    <mat-grid-tile
+      [colspan]="(cardLayout | async)?.chart?.cols"
+      [rowspan]="(cardLayout | async)?.chart?.rows"
+    >
+      <mat-card class="dashboard-card">
+        <mat-card-title>Classement CO2</mat-card-title>
+        <mat-card-content>
+          <ngx-charts-advanced-pie-chart
+            [results]="this.classementGoodCo2"
+            [gradient]="gradient"
+          >
+          </ngx-charts-advanced-pie-chart>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <!--Classement Nombre de trajets-->
+    <mat-grid-tile
+      [colspan]="(cardLayout | async)?.chart?.cols"
+      [rowspan]="(cardLayout | async)?.chart?.rows"
+    >
+      <mat-card class="dashboard-card">
+        <mat-card-title>Classement Nombre de trajets</mat-card-title>
+        <mat-card-content>
+          <ngx-charts-bar-horizontal
+            [results]="this.classementGoodnbTrajets"
+            [gradient]="gradient"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="showLegend"
+            [showXAxisLabel]="true"
+            [xAxisLabel]="'Nombre de trajets'"
+          >
+          </ngx-charts-bar-horizontal>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <!--Classement utilisateur-->
+    <mat-grid-tile
+      [colspan]="(cardLayout | async)?.chart?.cols"
+      [rowspan]="(cardLayout | async)?.chart?.rows"
+    >
+      <mat-card class="dashboard-card">
+        <mat-card-title>Classement Utilisateur Entreprise</mat-card-title>
+        <mat-card-content>
+          <ngx-charts-bar-horizontal
+            [results]="this.classementGoodInterneUser"
+            [gradient]="gradient"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="showLegend"
+            [showXAxisLabel]="true"
+            [xAxisLabel]="'Co2 économisé'"
+          >
+          </ngx-charts-bar-horizontal>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <!--Classement Global Utilisateur-->
+    <mat-grid-tile
+      [colspan]="(cardLayout | async)?.chart?.cols"
+      [rowspan]="(cardLayout | async)?.chart?.rows"
+    >
+      <mat-card class="dashboard-card">
+        <mat-card-title>Classement Global Utilisateur</mat-card-title>
+        <mat-card-content>
+          <ngx-charts-bar-horizontal
+            [results]="this.classementGoodGlobalUser"
+            [gradient]="gradient"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="showLegend"
+            [showXAxisLabel]="true"
+            [xAxisLabel]="'Co2 économisé'"
+          >
+          </ngx-charts-bar-horizontal>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
 
-<h2>Classement Nombre de trajets</h2>
-<div *ngFor="let item of this.classementnbTrajets | keyvalue: originalOrder">
-  {{ item.key }}:{{ item.value }}
-</div>
-
-<h2>Classement Utilisateur</h2>
-<div *ngFor="let entry of this.classementUser | keyvalue: originalOrder">
-  {{ entry.key }}:{{ entry.value }}
+<div #target class="kepler-map" fxHide.lt-md>
+  <iframe
+    src="https://kepler.gl/#/demo?mapUrl=https://gist.githubusercontent.com/IDeAmiage/fb3eee3267b9e2c4194f09067ed3f02c/raw/24accc707e31418d312d3b28abc1728cde1d2185/map_demo.json"
+    style="border: 0px #ffffff none"
+    name="myiFrame"
+    scrolling="no"
+    frameborder="1"
+    height="800px"
+    width="100%"
+    allowfullscreen
+  ></iframe>
 </div>

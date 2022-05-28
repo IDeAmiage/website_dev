@@ -149,6 +149,7 @@ export class FirestorageService {
       ref
       .where('_user._nbTrajects', '==', traj._user._nbTrajects)
       .where('_destination', '==', traj._destination)
+      .where('_departure_time', '==', traj._departure_time)
       .where('_depart', '==', traj._depart)
       .where('_user._id', "==", traj._user._id)
       .get().then(res => {

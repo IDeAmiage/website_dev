@@ -86,7 +86,9 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <div #entreprise><mat-icon>maps_home_work</mat-icon> Entreprise</div>
+      <div #entreprise *ngFor="let item of this.EntrepriseUser">
+        <mat-icon>maps_home_work</mat-icon> {{item._entreprise}}
+      </div>
       <div class="spacer"></div>
       <div
         [ngStyle]="{

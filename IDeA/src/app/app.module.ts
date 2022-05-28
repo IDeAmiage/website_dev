@@ -5,7 +5,7 @@ import { environment } from './../environments/environment';
 import { FirebaseService } from './firebase.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -37,24 +37,29 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { NotifierComponent } from './notifier/notifier.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 import { LottieModule } from 'ngx-lottie';
+import { AtomSpinnerModule } from 'angular-epic-spinners';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import player from 'lottie-web';
+import { CGUComponent } from './CGU/CGU.component';
+
+registerLocaleData(localeFr, 'fr');
 
 export function playerFactory() {
   return player;
 }
-import { AtomSpinnerModule } from 'angular-epic-spinners';
-import {MatTooltipModule} from '@angular/material/tooltip';
-
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     SignupComponent,
     LoginComponent,
     AccueilComponent,
     NotifierComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+      CGUComponent
    ],
   imports: [
     BrowserModule,
@@ -89,10 +94,13 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     AppRoutingModule,
     LottieModule.forRoot({ player: playerFactory }),
     AtomSpinnerModule,
-    MatTooltipModule
+    MatTooltipModule,
 
   ],
-  providers: [FirebaseService, {provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}],
+  providers: [
+    FirebaseService,
+    { provide: LOCALE_ID, useValue: "fr-FR" },
+    {provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

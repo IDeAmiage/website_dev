@@ -38,6 +38,7 @@ export class CovoiturageComponent implements OnInit {
 
   public TrajetListe: any = new Array();
   public Userdistances: any = new Array();
+  public filtered: any = new Array();
 
   public searchFilter: any = '';
   public query: any;
@@ -139,7 +140,11 @@ export class CovoiturageComponent implements OnInit {
         this.Userdistances[this.TrajetListe.indexOf(a)] - this.Userdistances[this.TrajetListe.indexOf(b)]
       );
       this.Userdistances.sort((a: any, b: any) => a - b);
-      console.log(this.Userdistances);
+      if(!this.isChecked){
+        this.filtered = this.TrajetListe.filter((item: any) =>
+          item._user._id != localStorage.getItem('user_id')!
+        );
+      }
     })
   }
 
@@ -186,7 +191,7 @@ export class CovoiturageComponent implements OnInit {
    */
   getMyTrajects() {
     if (this.isChecked) {
-      this.TrajetListe = this.TrajetListe.filter((item: any) =>
+      this.filtered = this.TrajetListe.filter((item: any) =>
         item._user._id === localStorage.getItem('user_id')!
       );
       this.refreshByTime()
@@ -224,7 +229,7 @@ export class CovoiturageComponent implements OnInit {
       if (this.TrajetListe[i]._user._id == user[0]._id) {
         this.notifier.showNotification("You can't register in your traject", "OK", "error")
       } else {
-        if (this.TrajetListe[i]._passagers.length <= this.TrajetListe[i]._user._car._capacite) {
+        if (this.TrajetListe[i]._passagers.length >= this.TrajetListe[i]._user._car._capacite) {
           this.notifier.showNotification("This traject is full", "OK", "error");
         } else if (this.TrajetListe[i]._passagers.some((item: any) => item._id === user[0]._id)) {
           this.notifier.showNotification("You are already register", "OK", "error");

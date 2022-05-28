@@ -1,6 +1,8 @@
 import { OpendatasoftV1Service } from './../../../opendatasoftV1.service';
 import { FirestorageService } from 'src/app/firestorage.service';
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import * as _ from 'lodash';
 
 /**
@@ -13,25 +15,60 @@ import * as _ from 'lodash';
 @Component({
   selector: 'app-mon-entreprise',
   templateUrl: './mon-entreprise.component.html',
-  styleUrls: ['./mon-entreprise.component.css'],
+  styleUrls: ['./mon-entreprise.component.scss'],
 })
 export class MonEntrepriseComponent implements OnInit {
   currentUser: any;
   userEntreprise: any;
-  consoEntreprise: number = 0;
+  daysBetween = 0;
+  view: any[] = [700, 400];
+
+  gradient: boolean = true;
+  showLegend: boolean = true;
+  showLabels: boolean = true;
+  isDoughnut: boolean = false;
+
+  colorScheme = { domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'] };
 
   classementCo2 = new Map<string, number>();
   classementnbTrajets = new Map<string, number>();
-  classementUser = new Map<string, number>();
+  classementGlobalUser = new Map<string, number>();
+  classementInterneUser = new Map<string, number>();
+
+  classementGoodCo2: any[] = [];
+  classementGoodnbTrajets: any[] = [];
+  classementGoodGlobalUser: any[] = [];
+  classementGoodInterneUser: any[] = [];
+
+  cardLayout = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+    map(({ matches }) => {
+      if (matches) {
+        return {
+          columns: 1,
+          miniCard: { cols: 1, rows: 1 },
+          chart: { cols: 1, rows: 2 },
+        };
+      }
+
+     return {
+        columns: 4,
+        miniCard: { cols: 1, rows: 1 },
+        chart: { cols: 2, rows: 2 },
+      };
+    })
+  );
+
   /**
    * Creates an instance of MonEntrepriseComponent.
    * @param {FirestorageService} firestore
    * @param {OpendatasoftV1Service} opendatasoft
+   * @param {BreakpointObserver} breakpointObserver
    * @memberof MonEntrepriseComponent
    */
   constructor(
     public firestore: FirestorageService,
-    public opendatasoft: OpendatasoftV1Service
+    public opendatasoft: OpendatasoftV1Service,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   /**
@@ -45,7 +82,6 @@ export class MonEntrepriseComponent implements OnInit {
       .subscribe((res) => {
         this.currentUser = res[0];
         this.loadEntrepriseInfos(this.currentUser._entreprise.toUpperCase());
-        this.getEntrepriseCO2conso();
         this.getClassementEntreprise();
         this.getClassementUser();
       });
@@ -56,21 +92,7 @@ export class MonEntrepriseComponent implements OnInit {
       response.records.forEach((element: any) => {
         this.userEntreprise = element.fields;
       });
-    });
-  }
-
-  /**
-   * Get the entire entreprise consommation of CO2
-   *
-   * @memberof MonEntrepriseComponent
-   */
-  getEntrepriseCO2conso() {
-    this.firestore.getObject('trajet').subscribe((res) => {
-      res.forEach((element: any) => {
-        if (element._user._entreprise === this.currentUser._entreprise) {
-          this.consoEntreprise += element._co2Emission;
-        }
-      });
+      this.daysBetween = this.getDaysBetween();
     });
   }
 
@@ -85,7 +107,7 @@ export class MonEntrepriseComponent implements OnInit {
         if (this.classementCo2.get(element._user._entreprise) == undefined) {
           this.classementCo2.set(
             element._user._entreprise,
-            element._co2Emission * element._passagers.length
+            Math.round(element._co2Emission + element._co2Emission * element._passagers.length)
           );
           this.classementnbTrajets.set(element._user._entreprise, 1);
         } else {
@@ -95,7 +117,7 @@ export class MonEntrepriseComponent implements OnInit {
           );
           this.classementCo2.set(
             element._user._entreprise,
-            element._co2Emission * element._passagers.length + temp!
+            Math.round(element._co2Emission + element._co2Emission * element._passagers.length + temp!)
           );
           this.classementnbTrajets.set(
             element._user._entreprise,
@@ -109,6 +131,8 @@ export class MonEntrepriseComponent implements OnInit {
       this.classementnbTrajets = new Map(
         [...this.classementnbTrajets].sort((a, b) => b[1] - a[1])
       );
+      this.classementGoodCo2 = this.transformGoodFormat(this.classementCo2);
+      this.classementGoodnbTrajets = this.transformGoodFormat(this.classementnbTrajets);
     });
   }
 
@@ -120,20 +144,64 @@ export class MonEntrepriseComponent implements OnInit {
   getClassementUser() {
     this.firestore.getObject('trajet').subscribe((res: any) => {
       res.forEach((element: any) => {
-        if (this.classementUser.get(element._user._name) == undefined) {
-          this.classementUser.set(element._user._name, element._co2Emission);
+        if (this.classementGlobalUser.get(element._user._name) == undefined) {
+          this.classementGlobalUser.set(element._user._name, Math.round(element._co2Emission + element._co2Emission * element._passagers.length));
         } else {
-          let temp = this.classementUser.get(element._user._name);
-          this.classementUser.set(
+          let temp = this.classementGlobalUser.get(element._user._name);
+          this.classementGlobalUser.set(
             element._user._name,
-            element._co2Emission + temp
+            Math.round(element._co2Emission + element._co2Emission * element._passagers.length + temp)
+          );
+        }
+
+        if (this.classementInterneUser.get(element._user._name) == undefined && element._user._entreprise == this.currentUser._entreprise) {
+          this.classementInterneUser.set(element._user._name, Math.round(element._co2Emission + element._co2Emission * element._passagers.length));
+        } else if (element._user._entreprise == this.currentUser._entreprise) {
+          let temp = this.classementInterneUser.get(element._user._name);
+          this.classementInterneUser.set(
+            element._user._name,
+            Math.round(element._co2Emission + element._co2Emission * element._passagers.length + temp)
           );
         }
       });
-      this.classementUser = new Map(
-        [...this.classementUser].sort((a, b) => b[1] - a[1])
+      this.classementGlobalUser = new Map(
+        [...this.classementGlobalUser].sort((a, b) => b[1] - a[1])
       );
+      this.classementInterneUser = new Map(
+        [...this.classementInterneUser].sort((a, b) => b[1] - a[1])
+      );
+      this.classementGoodGlobalUser = this.transformGoodFormat(this.classementGlobalUser);
+      this.classementGoodInterneUser = this.transformGoodFormat(this.classementInterneUser);
     });
+  }
+
+  /**
+   * Return the number of days between the current date and the date of creation of the entreprise
+   *
+   * @return {*}
+   * @memberof MonEntrepriseComponent
+   */
+  getDaysBetween() {
+    let date1 = new Date(this.userEntreprise["datecreationunitelegale"]);
+    let date2 = new Date();
+    let timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    return diffDays;
+  }
+
+  /**
+   * Transform the map in a good format for the chart
+   *
+   * @param {Map<String, Number>} map
+   * @return {*}
+   * @memberof MonEntrepriseComponent
+   */
+  transformGoodFormat(map: Map<String, Number>) {
+    let jsonObject = new Array();
+    map.forEach((value, key) => {
+      jsonObject.push({"name": key, "value": value})
+    });
+    return jsonObject;
   }
 
   originalOrder(a: any, b: any) {

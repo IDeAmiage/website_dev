@@ -107,7 +107,7 @@ export class MonEntrepriseComponent implements OnInit {
         if (this.classementCo2.get(element._user._entreprise) == undefined) {
           this.classementCo2.set(
             element._user._entreprise,
-            Math.round(element._co2Emission)
+            Math.round(element._co2Emission + element._co2Emission * element._passagers.length)
           );
           this.classementnbTrajets.set(element._user._entreprise, 1);
         } else {
@@ -117,7 +117,7 @@ export class MonEntrepriseComponent implements OnInit {
           );
           this.classementCo2.set(
             element._user._entreprise,
-            Math.round(element._co2Emission + temp)
+            Math.round(element._co2Emission + element._co2Emission * element._passagers.length + temp!)
           );
           this.classementnbTrajets.set(
             element._user._entreprise,
@@ -145,22 +145,22 @@ export class MonEntrepriseComponent implements OnInit {
     this.firestore.getObject('trajet').subscribe((res: any) => {
       res.forEach((element: any) => {
         if (this.classementGlobalUser.get(element._user._name) == undefined) {
-          this.classementGlobalUser.set(element._user._name, Math.round(element._co2Emission));
+          this.classementGlobalUser.set(element._user._name, Math.round(element._co2Emission + element._co2Emission * element._passagers.length));
         } else {
           let temp = this.classementGlobalUser.get(element._user._name);
           this.classementGlobalUser.set(
             element._user._name,
-            Math.round(element._co2Emission + temp)
+            Math.round(element._co2Emission + element._co2Emission * element._passagers.length + temp)
           );
         }
 
         if (this.classementInterneUser.get(element._user._name) == undefined && element._user._entreprise == this.currentUser._entreprise) {
-          this.classementInterneUser.set(element._user._name, Math.round(element._co2Emission));
+          this.classementInterneUser.set(element._user._name, Math.round(element._co2Emission + element._co2Emission * element._passagers.length));
         } else if (element._user._entreprise == this.currentUser._entreprise) {
           let temp = this.classementInterneUser.get(element._user._name);
           this.classementInterneUser.set(
             element._user._name,
-            Math.round(element._co2Emission + temp)
+            Math.round(element._co2Emission + element._co2Emission * element._passagers.length + temp)
           );
         }
       });

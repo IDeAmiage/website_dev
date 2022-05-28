@@ -43,8 +43,7 @@ import { LottieModule } from 'ngx-lottie';
 import { AtomSpinnerModule } from 'angular-epic-spinners';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import player from 'lottie-web';
-// import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-// import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { CGUComponent } from './CGU/CGU.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -59,7 +58,8 @@ export function playerFactory() {
     LoginComponent,
     AccueilComponent,
     NotifierComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+      CGUComponent
    ],
   imports: [
     BrowserModule,

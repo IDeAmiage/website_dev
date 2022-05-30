@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { map, shareReplay } from 'rxjs/operators';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-accueil',
@@ -19,6 +23,14 @@ export class AccueilComponent implements OnInit {
   urlHossegor!: SafeUrl
   isExplorer!: boolean;
   content!: string;
+
+  // isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  //   .pipe(
+  //     map(result => result.matches),
+  //     shareReplay()
+  //   );
+
+
 
 /**
  * Creates an instance of AccueilComponent.

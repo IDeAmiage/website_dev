@@ -52,7 +52,7 @@ export function playerFactory() {
 }
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     SignupComponent,
     LoginComponent,

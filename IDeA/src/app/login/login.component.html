@@ -2,8 +2,8 @@
   <div
     fxFill
     *ngIf="
-      this.firebaseService.status == 'entreprise' ||
-      this.firebaseService.status == 'collectivites'
+      this.firebaseService.status === 'entreprise' ||
+      this.firebaseService.status === 'collectivites'
     "
   >
     <div
@@ -80,7 +80,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="this.firebaseService.status == 'particuliers'">
+  <div *ngIf="this.firebaseService.status === 'particuliers'">
     <mat-card>
       <mat-card-title>Login</mat-card-title>
       <mat-card-content>

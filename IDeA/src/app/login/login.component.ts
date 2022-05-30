@@ -5,6 +5,7 @@ import { FirebaseService } from '../firebase.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 /**
  * Component used for Login to the app
@@ -23,6 +24,16 @@ export class LoginComponent implements OnInit {
     path: '/assets/animation.json',
   };
 
+  cols: number | undefined;
+
+  gridByBreakpoint = {
+    xl: 4,
+    lg: 4,
+    md: 2,
+    sm: 2,
+    xs: 1
+  }
+
 /**
  * Creates an instance of LoginComponent.
  * @param {FirebaseService} firebaseService
@@ -30,7 +41,35 @@ export class LoginComponent implements OnInit {
  * @param {NotifierService} notifier
  * @memberof LoginComponent
  */
-constructor(public firebaseService: FirebaseService, public router: Router, private notifier: NotifierService){
+constructor(public firebaseService: FirebaseService,
+   public router: Router,
+   private notifier: NotifierService,
+   private breakpointObserver: BreakpointObserver){
+    this.breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge,
+    ]).subscribe(result => {
+      if (result.matches) { // responsive part for the grid of cards
+        if (result.breakpoints[Breakpoints.XSmall]) {
+          this.cols = this.gridByBreakpoint.xs;
+        }
+        if (result.breakpoints[Breakpoints.Small]) {
+          this.cols = this.gridByBreakpoint.sm;
+        }
+        if (result.breakpoints[Breakpoints.Medium]) {
+          this.cols = this.gridByBreakpoint.md;
+        }
+        if (result.breakpoints[Breakpoints.Large]) {
+          this.cols = this.gridByBreakpoint.lg;
+        }
+        if (result.breakpoints[Breakpoints.XLarge]) {
+          this.cols = this.gridByBreakpoint.xl;
+        }
+      }
+    });
 
   }
 

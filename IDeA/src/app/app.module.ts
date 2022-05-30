@@ -1,7 +1,7 @@
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { InterceptorService } from './interceptor.service';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { environment } from './../environments/environment';
+import { environment } from './../environments/environment.prod';
 import { FirebaseService } from './firebase.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';

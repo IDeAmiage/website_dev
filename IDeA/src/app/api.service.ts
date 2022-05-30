@@ -1,4 +1,4 @@
-import { environment } from './../environments/environment';
+import { environment } from './../environments/environment.prod';
 import { Trajet } from './Trajet';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';

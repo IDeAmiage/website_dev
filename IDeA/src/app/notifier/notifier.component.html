@@ -1,21 +1,13 @@
-<div *ngIf="data.type === 'info'; elsetitle">
-  Conditions générales d'utilisation
-</div>
-<ng-template #elseBlock>
+<div>
   {{ data.type | titlecase }}
-</ng-template>
+</div>
 <div class="content-style">
   {{ data.message }}
   <div *ngIf="data.type==='info'" style="text-align: center"> <button mat-raised-button routerLink="cgu" align="center"> voir</button></div>
 </div>
 
 <div style="text-align: center">
-  <button *ngIf="data.type==='info'; elseblock" color="primary" mat-flat-button (click)="snackBarRef.dismiss()" routerLink="/">
-    {{ data.buttonText }}
-  </button>
-  <ng-template #elseBlock>
     <button mat-flat-button (click)="snackBarRef.dismiss()">
       {{ data.buttonText }}
     </button>
-  </ng-template>
 </div>

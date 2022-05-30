@@ -37,8 +37,8 @@ export class NotifierService {
         type: messageType
       },
       duration:10000,
-      horizontalPosition:'center',
-      verticalPosition: 'top',
+      horizontalPosition:'right',
+      verticalPosition: 'bottom',
       panelClass: messageType
     });
   }

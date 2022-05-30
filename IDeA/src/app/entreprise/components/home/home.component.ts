@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
             rows: 1,
           },
           {
-            imageSrc: 'assets/Entreprise/covoiturage.jpg',
+            imageSrc: 'assets/Entreprise/covoiturage.webp',
             title: 'Covoiturage',
             rlink: 'covoiturage',
             cols: 1,
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
             rows: 1,
           },
           {
-            imageSrc: 'assets/Entreprise/sport.jpg',
+            imageSrc: 'assets/Entreprise/sport.webp',
             title: 'Sport',
             rlink: 'sport',
             cols: 1,
@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
           rows: 1,
         },
         {
-          imageSrc: 'assets/Entreprise/covoiturage.jpg',
+          imageSrc: 'assets/Entreprise/covoiturage.webp',
           title: 'Covoiturage',
           rlink: 'covoiturage',
           cols: 1,
@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
           rows: 1,
         },
         {
-          imageSrc: 'assets/Entreprise/sport.jpg',
+          imageSrc: 'assets/Entreprise/sport.webp',
           title: 'Sport',
           rlink: 'sport',
           cols: 1,

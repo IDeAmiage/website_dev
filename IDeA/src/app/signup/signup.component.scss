@@ -32,6 +32,10 @@ $gradient-bottom-left: linear-gradient(315deg, #bdecb6ff, #638475ff, #aba0baff);
   background: $gradient-top-right;
 }
 
+
+@media (min-width:542px){
+
+}
 .login {
   overflow: hidden;
   background-color: white;
@@ -124,7 +128,7 @@ $gradient-bottom-left: linear-gradient(315deg, #bdecb6ff, #638475ff, #aba0baff);
   }
 }
 
-@media (max-width:541px){
+@media (max-width:3000px){
   .login {
     overflow: hidden;
     background-color: white;

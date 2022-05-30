@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
       if (matches) {
         return [
           {
-            imageSrc: 'assets/Entreprise/foodtruck.jpg',
+            imageSrc: 'assets/Entreprise/food-truck.webp',
             title: 'Food-trucks',
             rlink: 'foodtrucks',
             cols: 1,
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
             rows: 1,
           },
           {
-            imageSrc: 'assets/Entreprise/conferences.jpeg',
+            imageSrc: 'assets/Entreprise/conference.webp',
             title: 'Conférences',
             rlink: 'conferences',
             cols: 1,
@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
 
       return [
         {
-          imageSrc: 'assets/Entreprise/foodtruck.jpg',
+          imageSrc: 'assets/Entreprise/food-truck.webp',
           title: 'Food-trucks',
           rlink: 'foodtrucks',
           cols: 1,
@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
           rows: 1,
         },
         {
-          imageSrc: 'assets/Entreprise/conferences.jpeg',
+          imageSrc: 'assets/Entreprise/conference.webp',
           title: 'Conférences',
           rlink: 'conferences',
           cols: 1,

@@ -1,42 +1,37 @@
 <div [class]="content" fxLayout="column" fxFill>
   <div id="navbar">
-    <mat-toolbar
-      [style.background-color]="'transparent'"
-      fxLayout="row"
-      fxLayoutAlign="start center"
-    >
+    <!-- <mat-toolbar [style.background-color]="'transparent'" fxLayout="row" fxLayoutAlign="start center">
       <span>Bienvenue</span>
       <span fxFlex></span>
-      <button
-        *ngIf="!this.firebaseService.isLoggedIn"
-        mat-button
-        (click)="loginEntreprise()"
-      >
-        Entreprise
-      </button>
-      <button
-        *ngIf="!this.firebaseService.isLoggedIn"
-        mat-button
-        (click)="loginCollectivites()"
-      >
-        Collectivité
-      </button>
-      <button
-        *ngIf="!this.firebaseService.isLoggedIn"
-        mat-button
-        (click)="loginParticuliers()"
-      >
-        Particulier
-      </button>
-      <button
-        *ngIf="this.firebaseService.isLoggedIn"
-        mat-button
-        (click)="logout()"
-      >
-        logout
-      </button>
-      <button mat-icon-button><mat-icon>menu</mat-icon></button>
-    </mat-toolbar>
+      <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="loginEntreprise()">Entreprise</button>
+      <button *ngIf="!this.firebaseService.isLoggedIn"  mat-button (click)="loginCollectivites()">Collectivité</button>
+      <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="loginParticuliers()">Particulier</button>
+      <button *ngIf="this.firebaseService.isLoggedIn"  mat-button (click)="logout()">logout</button>
+      <button mat-icon-button class="hamburger"><mat-icon>menu</mat-icon></button>
+    </mat-toolbar> -->
+
+    <div class="nav">
+      <input type="checkbox" id="nav-check">
+      <div class="nav-header">
+        <div class="nav-title">
+          Bienvenue
+        </div>
+      </div>
+      <div class="nav-btn">
+        <label for="nav-check">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+
+      <div class="nav-links">
+        <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="loginEntreprise()">Entreprise</button>
+        <button *ngIf="!this.firebaseService.isLoggedIn"  mat-button (click)="loginCollectivites()">Collectivité</button>
+        <button *ngIf="!this.firebaseService.isLoggedIn" mat-button (click)="loginParticuliers()">Particulier</button>
+        <button *ngIf="this.firebaseService.isLoggedIn"  mat-button (click)="logout()">logout</button>
+      </div>
+    </div>
   </div>
 
   <div

@@ -27,6 +27,7 @@ mat-card-content {
 mat-card {
   display: flex;
   flex-direction: column;
+  border-radius: 1rem;
 }
 
 ::ng-deep .advanced-pie-legend .legend-items-container .legend-items {

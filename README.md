@@ -44,3 +44,11 @@ These following steps have to be executed in two differents terminals </br>
 *When all these steps are done just launch you web browser with this access:* </br>
 Access to localhost: [here](http://localhost:4200/)
 
+## Architecture of the website
+
+![](IDeA/src/assets/website_archi.drawio.png)
+## Futur Developpement
+>This app is an angular app, it means that all the pages and features are organized trough components that are reusable in multiple apps. </br>
+>All the architecture of the website has been created, including routing for differents parts of the app (Particuliers, Collectivités, Entreprise...) </br>
+>To add some new features to these parts you just need to add components on them and create the route corresponding in the submodule you want. </br>
+

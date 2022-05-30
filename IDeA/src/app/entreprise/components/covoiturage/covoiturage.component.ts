@@ -12,7 +12,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import * as geolib from 'geolib';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import * as _ from 'lodash';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 
 /**

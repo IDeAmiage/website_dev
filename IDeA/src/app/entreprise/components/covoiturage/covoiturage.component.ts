@@ -157,9 +157,9 @@ loadTrajects(){
   }
 
   refreshByTime(){
-    this.filtered =  _.orderBy(this.TrajetListe, [(obj) => obj._departure_time], ['asc'])
+    this.filtered =  _.orderBy(this.filtered, [(obj) => obj._departure_time], ['asc'])
     this.Userdistances = new Array()
-    this.TrajetListe.forEach((element:any) => {
+    this.filtered.forEach((element:any) => {
       this.Userdistances.push(
         geolib.getDistance(
           {
@@ -179,6 +179,8 @@ loadTrajects(){
       this.filtered = this.TrajetListe.filter((item:any)=>
         item._user._id === localStorage.getItem('user_id')!
       );
+      console.log(this.filtered);
+
       this.refreshByTime()
     }else{
       this.Userdistances = new Array()

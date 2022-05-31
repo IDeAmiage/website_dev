@@ -27,7 +27,7 @@
       <mat-card class="dashboard-card">
         <mat-card-title>Création de l'entreprise</mat-card-title>
         <mat-card-content class="minicards-content">
-          <p>{{ this.daysBetween }} année depuis</p>
+          <p>{{ this.daysBetween }} ans</p>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -38,7 +38,7 @@
       [rowspan]="(cardLayout | async)?.miniCard?.rows"
     >
       <mat-card class="dashboard-card">
-        <mat-card-title>Nombre de salarié</mat-card-title>
+        <mat-card-title>Nombre de salariés</mat-card-title>
         <mat-card-content class="minicards-content">
           <p>{{ this.userEntreprise?.trancheeffectifsetablissement }}</p>
         </mat-card-content>
@@ -51,7 +51,7 @@
       [rowspan]="(cardLayout | async)?.miniCard?.rows"
     >
       <mat-card class="dashboard-card">
-        <mat-card-title>Nombre de trajet effectué</mat-card-title>
+        <mat-card-title>Nombre de trajets effectués</mat-card-title>
         <mat-card-content class="minicards-content">
           <p>
             {{ this.classementnbTrajets.get(this.currentUser?._entreprise) }}

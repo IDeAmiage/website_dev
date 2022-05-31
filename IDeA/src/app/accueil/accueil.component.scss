@@ -3,7 +3,7 @@
     content: "";
     position: fixed;
     z-index: -1;
-    background: url(/assets/Accueil/background.jpg) no-repeat center;
+    background: url(/assets/Accueil/background.webp) no-repeat center;
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -13,7 +13,7 @@
     content: "";
     position: fixed;
     z-index: -1;
-    background: url(/assets/Accueil/background.jpg) no-repeat center;
+    background: url(/assets/Accueil/background.webp) no-repeat center;
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -68,7 +68,7 @@
     content: "";
     position: fixed;
     z-index: -1;
-    background: url(/assets/Accueil/background.jpg) no-repeat center;
+    background: url(/assets/Accueil/background.webp) no-repeat center;
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -78,7 +78,7 @@
     content: "";
     position: fixed;
     z-index: -1;
-    background: url(/assets/Accueil/background.jpg) no-repeat center;
+    background: url(/assets/Accueil/background.webp) no-repeat center;
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -87,8 +87,8 @@
   }
 
   @keyframes blur {
-    0% { transform: scale(1.0); filter: blur(0px);}
-    100% { transform: scale(1.1); filter: blur(10px);}
+    0% { filter: blur(0px);}
+    100% { filter: blur(10px);}
   }
 
   .content {
@@ -132,7 +132,7 @@
     content: "";
     position: fixed;
     z-index: -1;
-    background: url(/assets/Accueil/background.jpg) no-repeat center;
+    background: url(/assets/Accueil/background.webp) no-repeat center;
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -142,7 +142,7 @@
     content: "";
     position: fixed;
     z-index: -1;
-    background: url(/assets/Accueil/background.jpg) no-repeat center;
+    background: url(/assets/Accueil/background.webp) no-repeat center;
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -228,16 +228,15 @@
   color: #efefef;
 }
 
-.nav > .nav-links > button:hover {
-  background-color: rgba(0, 0, 0, 0.3);
-}
+// .nav > .nav-links > button:hover {
+//   background-color: rgba(0, 0, 0, 0.3);
+// }
 
 .nav > #nav-check {
   display: none;
 }
 
 @media (max-width: 600px) {
-
 
   .nav > .nav-btn {
     display: inline-block;
@@ -253,10 +252,7 @@
     padding: 13px;
   }
 
-  .nav > .nav-btn > label:hover,
-  .nav #nav-check:checked ~ .nav-btn > label {
-    //background-color: rgba(51, 51, 51);
-  }
+
   .nav > .nav-btn > label > span {
     display: block;
     width: 25px;

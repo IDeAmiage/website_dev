@@ -178,14 +178,14 @@ export class MonEntrepriseComponent implements OnInit {
   /**
    * Return the number of days between the current date and the date of creation of the entreprise
    *
-   * @return {*}
+   * @return {Number}
    * @memberof MonEntrepriseComponent
    */
   getDaysBetween() {
     let date1 = new Date(this.userEntreprise["datecreationunitelegale"]);
     let date2 = new Date();
     let timeDiff = Math.abs(date2.getTime() - date1.getTime());
-    let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24 * 365));
     return diffDays;
   }
 

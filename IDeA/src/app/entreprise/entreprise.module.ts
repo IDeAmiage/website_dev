@@ -55,7 +55,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { SearchFilterPipe } from '../search-filter.pipe';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
@@ -79,7 +78,6 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     FractionRating,
     RatingPipe,
     SearchFilterPipe,
-    DashboardComponent,
 
   ],
   imports: [

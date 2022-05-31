@@ -57,7 +57,7 @@ ngOnInit(): void {
     this.urlHossegor = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/fFNZFThijT4');
     this.isExplorer = true;
     this.content = "content";
-    this.notifier.showCGU("Veuillez accepter les conditions d'utilisation","Accepter",'info')
+    this.notifier.showCGU("Veuillez accepter les conditions d'utilisation", "Accepter", "info");
   }
 
 /**

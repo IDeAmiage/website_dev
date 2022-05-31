@@ -33,28 +33,28 @@ export class HomeComponent implements OnInit {
       if (matches) {
         return [
           {
-            imageSrc: 'assets/Entreprise/foodtruck.jpg',
+            imageSrc: 'assets/Entreprise/food-truck.webp',
             title: 'Food-trucks',
             rlink: 'foodtrucks',
             cols: 1,
             rows: 1,
           },
           {
-            imageSrc: 'assets/Entreprise/covoiturage.jpg',
+            imageSrc: 'assets/Entreprise/covoiturage.webp',
             title: 'Covoiturage',
             rlink: 'covoiturage',
             cols: 1,
             rows: 1,
           },
           {
-            imageSrc: 'assets/Entreprise/conferences.jpeg',
+            imageSrc: 'assets/Entreprise/conference.webp',
             title: 'Conférences',
             rlink: 'conferences',
             cols: 1,
             rows: 1,
           },
           {
-            imageSrc: 'assets/Entreprise/sport.jpg',
+            imageSrc: 'assets/Entreprise/sport.webp',
             title: 'Sport',
             rlink: 'sport',
             cols: 1,
@@ -65,28 +65,28 @@ export class HomeComponent implements OnInit {
 
       return [
         {
-          imageSrc: 'assets/Entreprise/foodtruck.jpg',
+          imageSrc: 'assets/Entreprise/food-truck.webp',
           title: 'Food-trucks',
           rlink: 'foodtrucks',
           cols: 1,
           rows: 1,
         },
         {
-          imageSrc: 'assets/Entreprise/covoiturage.jpg',
+          imageSrc: 'assets/Entreprise/covoiturage.webp',
           title: 'Covoiturage',
           rlink: 'covoiturage',
           cols: 1,
           rows: 1,
         },
         {
-          imageSrc: 'assets/Entreprise/conferences.jpeg',
+          imageSrc: 'assets/Entreprise/conference.webp',
           title: 'Conférences',
           rlink: 'conferences',
           cols: 1,
           rows: 1,
         },
         {
-          imageSrc: 'assets/Entreprise/sport.jpg',
+          imageSrc: 'assets/Entreprise/sport.webp',
           title: 'Sport',
           rlink: 'sport',
           cols: 1,

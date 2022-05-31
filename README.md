@@ -3,10 +3,10 @@
 This website is running with angular a web framework using Typescript and an Express server that does the job of the backend.
 
 Some formations are available here: </br>
-[beginner](https://www.youtube.com/watch?v=AAu8bjj6-UI)
-[angular-material](https://www.youtube.com/watch?v=jUfEn032IL8)
-[express integration](https://www.youtube.com/watch?v=dT1ID4q57fs&t=468s)
-[spinner](https://hackafro.github.io/angular-epic-spinners/)
+- [beginner](https://www.youtube.com/watch?v=AAu8bjj6-UI)
+- [angular-material](https://www.youtube.com/watch?v=jUfEn032IL8)
+- [express integration](https://www.youtube.com/watch?v=dT1ID4q57fs&t=468s)
+- [spinner](https://hackafro.github.io/angular-epic-spinners/)
 
 ## Collaboration
 To collaborate on this project please request access to the owner.</br>
@@ -39,7 +39,7 @@ These following steps have to be executed in two differents terminals </br>
 > - Go to the app directory: `cd backend` </br>
 > - Install dependencies: `npm install` </br>
 > - Run the app in localhost: `nodemon --exec npm start app.js`</br>
-> *If nodemon is not install ->`npm i nodemon`* </br>
+> *If nodemon is not install ->`npm i nodemon -g`* </br>
 
 *When all these steps are done just launch you web browser with this access:* </br>
 Access to localhost: [here](http://localhost:4200/)
@@ -72,3 +72,11 @@ Access to localhost: [here](http://localhost:4200/)
 > - [kubernetes](https://kubernetes.io/): Container manager created by google.
 > - [docker](https://www.docker.com/): Create containers and images
 > - [deploy-repository](https://github.com/IDeAmiage/website-deploy) The github repository for the deploy part.
+
+## build the app
+>
+> **Lines to run:** </br>
+> - build the app: `ng build` </br>
+> - Copy and paste the /dist directory to the [deploy-repository](https://github.com/IDeAmiage/website-deploy) </br>
+> - Update the deploy repository: `git add . && git commit -m "[NEW] my version" && git push`</br>
+> This process has not been automatise because of lack of time.

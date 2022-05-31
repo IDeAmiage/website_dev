@@ -41,6 +41,7 @@ export class CovoiturageComponent implements OnInit {
 
   public searchFilter:any = '';
   public query:any;
+  public filtered: any = new Array();
 
   cols : number | undefined;
 
@@ -140,7 +141,11 @@ loadTrajects(){
         this.Userdistances[this.TrajetListe.indexOf(a)] - this.Userdistances[this.TrajetListe.indexOf(b)]
       );
       this.Userdistances.sort((a:any, b:any) => a - b);
-      console.log(this.Userdistances);
+      if(!this.isChecked){
+        this.filtered = this.TrajetListe.filter((item: any) =>
+          item._user._id != localStorage.getItem('user_id')!
+        );
+      }
     })
   }
 
@@ -152,7 +157,7 @@ loadTrajects(){
   }
 
   refreshByTime(){
-    this.TrajetListe =  _.orderBy(this.TrajetListe, [(obj) => obj._departure_time], ['asc'])
+    this.filtered =  _.orderBy(this.TrajetListe, [(obj) => obj._departure_time], ['asc'])
     this.Userdistances = new Array()
     this.TrajetListe.forEach((element:any) => {
       this.Userdistances.push(
@@ -171,7 +176,7 @@ loadTrajects(){
 
   getMyTrajects(){
     if(this.isChecked){
-      this.TrajetListe = this.TrajetListe.filter((item:any)=>
+      this.filtered = this.TrajetListe.filter((item:any)=>
         item._user._id === localStorage.getItem('user_id')!
       );
       this.refreshByTime()

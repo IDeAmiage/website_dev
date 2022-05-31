@@ -72,3 +72,11 @@ Access to localhost: [here](http://localhost:4200/)
 > - [kubernetes](https://kubernetes.io/): Container manager created by google.
 > - [docker](https://www.docker.com/): Create containers and images
 > - [deploy-repository](https://github.com/IDeAmiage/website-deploy) The github repository for the deploy part.
+
+## build the app
+>
+> **Lines to run:** </br>
+> - build the app: `ng build` </br>
+> - Copy and paste the /dist directory to the [deploy-repository](https://github.com/IDeAmiage/website-deploy) </br>
+> - Update the deploy repository: `git add . && git commit -m "[NEW] my version" && git push`</br>
+> This process has not been automatise because of lack of time.

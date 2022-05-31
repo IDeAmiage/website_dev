@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 var axios = require('axios').default;
 
-/* GET home page. */
+/**
+ * Method to calculate the carbon emission based on vehicule params.
+ */
 router.get('/carbonemission/:kms/:vtype/:fueltype', function(req, res, next) {
     switch(req.params.vtype){
         case 'Little':

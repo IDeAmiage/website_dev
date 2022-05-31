@@ -4,7 +4,7 @@ var router = express.Router();
 const nodemailer = require("nodemailer")
 const details = require("../details.json")
 
-/* GET users listing. */
+// tests functions
 router.get('/', function(req, res, next) {
 
   res.json('ceci est un test')
@@ -15,6 +15,7 @@ router.get('/restid/:id', function(req, res, next) {
   res.json(req.params.id);
 });
 
+// Method to send an email trough smtp
 router.post("/sendmail", function(req, res){
   let user = req.body;
   sendMail(user, info=>{
@@ -24,7 +25,12 @@ router.post("/sendmail", function(req, res){
 })
 
 
-
+/**
+ * Send email to particular user
+ *
+ * @param {*} user
+ * @param {*} callback
+ */
 async function sendMail(user, callback){
   console.log(user);
   let transporter = nodemailer.createTransport({

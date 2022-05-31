@@ -1,197 +1,84 @@
+.content::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  background: url(/assets/Accueil/background.webp) no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.content-blur::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  background: url(/assets/Accueil/background.webp) no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  animation: blur 3s ;
+  animation-fill-mode: forwards;
+}
+
+@keyframes blur {
+  0% { filter: blur(0px);}
+  100% { filter: blur(10px);  transform: scale(1.1);}
+}
+
+.content {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+
+#navbar button{
+  color: white;
+}
+
+@media (max-width: 4096px){
+  #landes{
+    font-size: 2000%;
+  }
+}
+
 @media (max-width: 1920px){
-  .content::before {
-    content: "";
-    position: fixed;
-    z-index: -1;
-    background: url(/assets/Accueil/background.webp) no-repeat center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-  }
-
-  .content-blur::before {
-    content: "";
-    position: fixed;
-    z-index: -1;
-    background: url(/assets/Accueil/background.webp) no-repeat center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    animation: blur 3s ;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes blur {
-    0% { transform: scale(1.0); filter: blur(0px);}
-    100% { transform: scale(1.1); filter: blur(10px);}
-  }
-
-  .content {
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 0;
-  }
-
-  #navbar button{
-    color: white;
-  }
-
   #landes{
     font-size: 1500%;
   }
-
-  #welcome button{
-    color:black;
-  }
-
-  span{
-    color: white;
-  }
-
-  .explorer-text {
-    font-size: 500%;
-  }
-
-  .hamburger{
-    visibility: hidden;
-  }
-
-  iframe{
-    border-radius: 1rem;
-  }
-
 }
 
 @media (max-width: 820px){
-  .content::before {
-    content: "";
-    position: fixed;
-    z-index: -1;
-    background: url(/assets/Accueil/background.webp) no-repeat center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-  }
-
-  .content-blur::before {
-    content: "";
-    position: fixed;
-    z-index: -1;
-    background: url(/assets/Accueil/background.webp) no-repeat center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    animation: blur 3s ;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes blur {
-    0% { filter: blur(0px);}
-    100% { filter: blur(10px);}
-  }
-
-  .content {
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 0;
-  }
-
-  #navbar button{
-    color: white;
-  }
-
   #landes{
     font-size: 1200%;
   }
-
-  #welcome button{
-    color:black;
-  }
-
-  span{
-    color: white;
-  }
-
-  .explorer-text {
-    font-size: 500%;
-  }
-
-  .hamburger{
-    visibility: hidden;
-  }
-
-  iframe{
-    border-radius: 1rem;
-  }
-
 }
+
 @media (max-width: 414px){
-  .content::before {
-    content: "";
-    position: fixed;
-    z-index: -1;
-    background: url(/assets/Accueil/background.webp) no-repeat center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-  }
-
-  .content-blur::before {
-    content: "";
-    position: fixed;
-    z-index: -1;
-    background: url(/assets/Accueil/background.webp) no-repeat center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    animation: blur 3s ;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes blur {
-    0% { transform: scale(1.0); filter: blur(0px);}
-    100% { transform: scale(1.1); filter: blur(10px);}
-  }
-
-  .content {
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 0;
-  }
-
-  #navbar button{
-    color: white;
-  }
-
   #landes{
     font-size: 800%;
   }
-
-  #welcome button{
-    color:black;
-  }
-
-  span{
-    color: white;
-  }
-
-  .explorer-text {
-    font-size: 500%;
-  }
-
-  .hamburger{
-    visibility: hidden;
-  }
-
-  iframe{
-    border-radius: 1rem;
-  }
-
 }
 
+#welcome button{
+  color:black;
+}
+
+span{
+  color: white;
+}
+
+.explorer-text {
+  font-size: 500%;
+}
+
+.hamburger{
+  visibility: hidden;
+}
+
+iframe{
+  border-radius: 1rem;
+}
 
 .nav {
   height: 50px;

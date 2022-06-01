@@ -80,3 +80,10 @@ Access to localhost: [here](http://localhost:4200/)
 > - Copy and paste the /dist directory to the [deploy-repository](https://github.com/IDeAmiage/website-deploy) </br>
 > - Update the deploy repository: `git add . && git commit -m "[NEW] my version" && git push`</br>
 > This process has not been automatise because of lack of time.
+
+## generate the documentation
+>
+> **Lines to run:** </br>
+> - Go to the app directory `cd IDeA` </br>
+> - generate the doc: `compodoc -p tsconfig.doc.json` </br>
+> - Lauch the index.html file </br>
